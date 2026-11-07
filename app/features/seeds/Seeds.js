@@ -45,7 +45,7 @@ export default class Seeds extends Feature {
     this.mine = [...this.mine, s.id];
     this.save();
     this.emit('seeds:reserved', { id: s.id, name: s.name });
-    this.toast(`${s.name} reserved.`);
+    this.toast(`${s.name} reserved. Collect from [library location].`);
   }
 
   giveBack(s) {

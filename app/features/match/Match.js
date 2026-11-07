@@ -51,8 +51,14 @@ export default class Match extends Feature {
         ? el('div', { class: 'rt-card' }, el('span', { class: 'rt-pill on' }, 'With the team'),
           el('h3', {}, 'Request sent to our team'),
           el('p', {}, 'Someone from Rooted Together will contact you first to talk it through and arrange a meeting. ', el('span', { class: 'rt-ph' }, '[We aim to reply within X days]')))
-        : el('button', { type: 'button', class: 'rt-btn', onclick: () => this.request(match) }, 'Request an introduction'),
-      el('button', { type: 'button', class: 'rt-btn alt', onclick: () => { this.index = next(list, this.index); this.refresh(); } }, 'Show me someone else'),
+        : this.confirming === match.id
+          ? el('div', { class: 'rt-card strong' },
+            el('h3', {}, 'Send this request to our team?'),
+            el('p', {}, 'Someone from Rooted Together will get in touch with you first. Nobody else sees your details.'),
+            el('button', { type: 'button', class: 'rt-btn', onclick: () => this.request(match) }, 'Yes, send it'),
+            el('button', { type: 'button', class: 'rt-btn alt', onclick: () => { this.confirming = null; this.refresh(); } }, 'Not now'))
+          : el('button', { type: 'button', class: 'rt-btn', onclick: () => { this.confirming = match.id; this.refresh(); } }, 'Request an introduction'),
+      el('button', { type: 'button', class: 'rt-btn alt', onclick: () => { this.index = next(list, this.index); this.confirming = null; this.refresh(); } }, 'Show me someone else'),
     ];
   }
 
@@ -72,6 +78,7 @@ export default class Match extends Feature {
   }
 
   request(match) {
+    this.confirming = null;
     this.requests.push({ matchId: match.id, at: Date.now() });
     this.storage.set('requests', this.requests);
     this.emit('intro:requested', { matchId: match.id });

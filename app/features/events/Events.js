@@ -36,7 +36,7 @@ export default class Events extends Feature {
             el('dt', {}, 'When'), el('dd', {}, el('span', { class: 'rt-ph' }, '[date TBC]')),
             el('dt', {}, 'Where'), el('dd', {}, el('span', { class: 'rt-ph' }, '[venue TBC]'))),
           el('button', { type: 'button', class: 'rt-btn alt', 'aria-pressed': String(on), onclick: () => this.toggle(e) },
-            on ? '✓ We\'ll remind you' : 'Remind me'));
+            on ? '✓ On your list' : 'Remind me'));
       }),
     ];
   }
@@ -46,6 +46,6 @@ export default class Events extends Feature {
     this.remind = on ? this.remind.filter((id) => id !== e.id) : [...this.remind, e.id];
     this.storage.set('remind', this.remind);
     this.refresh();
-    if (!on) this.toast(`We'll remind you about the ${e.name.toLowerCase()} once the date is set.`);
+    if (!on) this.toast(`Added to your list. In this draft no reminder is sent yet.`);
   }
 }

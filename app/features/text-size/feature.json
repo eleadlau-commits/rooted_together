@@ -1,0 +1,6 @@
+{
+  "name": "Text size",
+  "description": "Make everything in the app bigger, from Settings or the menu. Saved on this phone.",
+  "version": "0.1.0",
+  "main": "TextSize.js"
+}

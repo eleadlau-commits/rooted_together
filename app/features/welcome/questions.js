@@ -13,7 +13,7 @@ export const PATHS = {
         { key: 'area', label: 'Roughly where is it?', kind: 'area', note: 'Just the area. Please don\'t add your street or house number.' },
       ] },
       { heading: 'What help would you like?', questions: [
-        { key: 'help', label: 'Pick any that fit', kind: 'many', options: ['Weeding', 'Growing vegetables', 'Mowing the lawn', 'Pruning', 'Just some company'] },
+        { key: 'help', label: 'Pick any that fit', check: 'Help you would like', kind: 'many', options: ['Weeding', 'Growing vegetables', 'Mowing the lawn', 'Pruning', 'Just some company'] },
         { key: 'visits', label: 'How often can a grower visit?', kind: 'one', options: ['Once a week', 'Twice a week', 'Once a fortnight', 'Not sure yet'] },
       ] },
     ],
@@ -23,11 +23,11 @@ export const PATHS = {
     finish: 'Find me a garden',
     steps: [
       { heading: 'What would you like to grow?', questions: [
-        { key: 'interests', label: 'Pick any that interest you', kind: 'many', options: ['Vegetables', 'Fruit', 'Herbs', 'Flowers', 'Anything!'] },
+        { key: 'interests', label: 'Pick any that interest you', check: 'What you would like to grow', kind: 'many', options: ['Vegetables', 'Fruit', 'Herbs', 'Flowers', 'Anything!'] },
         { key: 'experience', label: 'How much growing have you done?', kind: 'one', options: ['None yet', 'A little', 'Lots'] },
       ] },
       { heading: 'When are you free?', questions: [
-        { key: 'free', label: 'Pick any that fit', kind: 'many', options: ['Weekday mornings', 'Weekday afternoons', 'Evenings', 'Weekends'] },
+        { key: 'free', label: 'Pick any that fit', check: 'When you are free', kind: 'many', options: ['Weekday mornings', 'Weekday afternoons', 'Evenings', 'Weekends'] },
         { key: 'area', label: 'Which area suits you?', kind: 'area' },
       ] },
     ],

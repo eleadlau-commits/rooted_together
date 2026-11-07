@@ -1,5 +1,5 @@
 // Welcome and sign-up. On first open, a full-screen page asks "I have a garden" or "I want to
-// grow", then two short steps of big buttons (questions.js). The answers are saved on this
+// grow", then two short steps of big buttons (questions.js) and a page to check the answers. The answers are saved on this
 // phone. "Edit my details" in the menu opens it again.
 //
 // Service 'profile':
@@ -38,7 +38,8 @@ export default class Welcome extends Feature {
   draw() {
     const path = PATHS[this.draft.role];
     this.window.setTitle(this.step < 0 ? 'Welcome' : path.title);
-    this.window.setContent(el('div', { class: 'rt welcome' }, this.step < 0 ? this.choosePage() : this.stepPage(path)));
+    const page = this.step < 0 ? this.choosePage() : this.step >= path.steps.length ? this.checkPage(path) : this.stepPage(path);
+    this.window.setContent(el('div', { class: 'rt welcome' }, page));
     this.window.content.scrollTop = 0;
   }
 
@@ -63,9 +64,25 @@ export default class Welcome extends Feature {
       step.questions.map((q) => this.question(q, answers)),
       el('button', {
         type: 'button', class: 'rt-btn', disabled: !stepDone(step, answers),
-        onclick: () => (last ? this.finish() : (this.step += 1, this.draw())),
-      }, last ? path.finish : 'Next'),
+        onclick: () => { this.step += 1; this.draw(); },
+      }, last ? 'Check my answers' : 'Next'),
       el('button', { type: 'button', class: 'rt-btn alt', onclick: () => { this.step -= 1; this.draw(); } }, 'Back'),
+    ];
+  }
+
+  // The last page: every answer in plain words, with a way back to change them.
+  checkPage(path) {
+    const answers = this.draft.answers;
+    const rows = path.steps.flatMap((step) => step.questions).map((q) => {
+      const v = answers[q.key];
+      return [el('dt', {}, q.check || q.label), el('dd', {}, Array.isArray(v) ? v.join(', ') : v)];
+    });
+    return [
+      el('p', { class: 'rt-eyebrow' }, 'Nearly done'),
+      el('h2', {}, 'Check your answers'),
+      el('div', { class: 'rt-card' }, el('dl', { class: 'rt-facts welcome-check' }, rows)),
+      el('button', { type: 'button', class: 'rt-btn', onclick: () => this.finish() }, path.finish),
+      el('button', { type: 'button', class: 'rt-btn alt', onclick: () => { this.step = 0; this.draw(); } }, 'Change my answers'),
     ];
   }
 
