@@ -9,6 +9,8 @@ testing, not a finished product.
 > energy, and nobody is bringing them together. Elderly cannot manage them, and students have no
 > space. Both are missing out on fresh food, exercise, companionship and learning from each other.
 
+**Live site:** https://eleadlau-commits.github.io/rooted_together/ (website) and /try-app/ (the app).
+
 ## What's here
 
 | Folder | What it is |
