@@ -16,6 +16,7 @@ testing, not a finished product.
 | `app/`, `folio/`, `build.py` | The phone app, built with Folio (the framework from Mobile Durham). One folder per feature in `app/features/`. |
 | `website/index.html` | The one-page website. Opens on its own. |
 | `prototype/index.html` | The first plain-HTML click-through, kept as a backup. |
+| `try-app/index.html` | The built app in one file (from `python standalone.py`), for GitHub Pages. Rebuild it after changing `app/`. |
 
 ## Running the app
 
