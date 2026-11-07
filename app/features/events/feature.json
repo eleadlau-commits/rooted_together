@@ -1,0 +1,6 @@
+{
+  "name": "Events",
+  "description": "Harvest markets and the end of season festival, with dates to come.",
+  "version": "0.1.0",
+  "main": "Events.js"
+}

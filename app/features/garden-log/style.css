@@ -1,0 +1,5 @@
+.log-totals { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.log-num { display: block; font: 800 34px/1 var(--font-head); color: var(--accent); font-variant-numeric: tabular-nums; }
+.log-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.log-list li { padding: 12px 14px; border-radius: 10px; background: var(--surface); border-left: 6px solid var(--accent); }
+.log-list li.food { border-left-color: var(--marigold); }

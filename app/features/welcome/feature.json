@@ -1,0 +1,8 @@
+{
+  "name": "Welcome and sign-up",
+  "description": "The first screen and the two short sign-up paths, for garden owners and for growers. Saved on this phone only.",
+  "version": "0.1.0",
+  "main": "Welcome.js",
+  "styles": ["style.css"],
+  "uses": ["safeguarding"]
+}

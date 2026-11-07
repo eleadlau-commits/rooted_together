@@ -1,0 +1,7 @@
+{
+  "name": "Keeping everyone safe",
+  "description": "The safeguarding page in the menu, built from short notes the other features add about what they do.",
+  "version": "0.1.0",
+  "main": "Safeguarding.js",
+  "styles": ["style.css"]
+}

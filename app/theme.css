@@ -1,0 +1,115 @@
+/* Rooted Together's look: earthy greens and soil, big text, strong contrast, few steps.
+   Older users come first: body text 20px, every button at least 56px tall.
+   Fonts: Alegreya (headings) and Alegreya Sans (everything else), loaded by the page;
+   Georgia and the system font stand in if they don't load.
+   Sign-in is left out of this app, so the account button, the menu's account line and its
+   Account row are hidden here (the framework's Account row is always the menu's first). */
+
+:root {
+  --font: "Alegreya Sans", system-ui, "Segoe UI", Arial, sans-serif;
+  --font-head: "Alegreya", Georgia, "Times New Roman", serif;
+  --bg: #f1f3ea;
+  --surface: #ffffff;
+  --surface-2: #e2e8d5;
+  --text: #1d2a1c;
+  --muted: #45533f;
+  --line: #c9d1bc;
+  --accent: #2f5d34;
+  --accent-ink: #ffffff;
+  --accent-soft: #e2e8d5;
+  --soil: #5b3d27;
+  --marigold: #e3a82b;
+  --marigold-ink: #3a2a00;
+  --placeholder-bg: #fff3c9;
+  --placeholder-fg: #5a4300;
+  --danger: #b3261e;
+  --top: #2a3d26;
+  --top-2: #2f4a2a;
+  --on-top: #ffffff;
+  --on-top-muted: #d6e2cf;
+  --tab-ink: #45533f;
+  --glow: var(--marigold);
+  --radius: 16px;
+  --shape: 16px;
+  --shape-btn: 14px;
+  --shape-sm: 999px;
+  --gutter: 18px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #151c14;
+    --surface: #1f291e;
+    --surface-2: #1b2519;
+    --text: #eef2e6;
+    --muted: #c3cdb8;
+    --line: #3a4a37;
+    --accent: #8cc68f;
+    --accent-ink: #10200f;
+    --accent-soft: #24331f;
+    --soil: #e0b48e;
+    --marigold: #f2c14e;
+    --placeholder-bg: #4a3b0a;
+    --placeholder-fg: #ffe69a;
+    --danger: #ffb4ab;
+    --top: #0e130d;
+    --top-2: #141c13;
+    --tab-ink: #c3cdb8;
+  }
+}
+
+body { font-size: 20px; line-height: 1.5; }
+.page-title h1, .dialog-head h2, .rt h2, .rt h3 { font-family: var(--font-head); }
+.page-title h1 { font-size: 32px; font-weight: 800; }
+.page-sub { font-size: 17px; }
+.tab { height: 62px; font-size: 15px; }
+.tab svg { width: 26px; height: 26px; }
+.menu-row { font-size: 20px; min-height: 56px; }
+.menu-list { padding-top: calc(16px + env(safe-area-inset-top)); }
+
+/* No sign-in in this app. */
+.top-btn.account, .menu-top, .menu-list > .menu-row:first-child { display: none !important; }
+
+/* ---- Shared pieces every Rooted Together feature uses ---- */
+.rt { display: flex; flex-direction: column; gap: 18px; padding-bottom: 24px; }
+.rt h2 { font-size: 27px; font-weight: 800; line-height: 1.15; text-wrap: balance; }
+.rt h3 { font-size: 22px; font-weight: 600; }
+.rt p { margin: 0; }
+.rt-muted { color: var(--muted); }
+.rt-small { font-size: 17px; }
+.rt-ph { background: var(--placeholder-bg); color: var(--placeholder-fg); padding: 0 .3em; border-radius: 4px; }
+.rt-eyebrow { font-size: 16px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--soil); }
+
+.rt-btn { display: block; width: 100%; min-height: 60px; padding: 14px 18px; border: 0; border-radius: var(--shape-btn);
+  background: var(--accent); color: var(--accent-ink); font: 700 21px/1.2 var(--font); cursor: pointer; text-align: center; }
+.rt-btn.alt { background: var(--surface); color: var(--accent); box-shadow: inset 0 0 0 3px var(--accent); }
+.rt-btn.small { display: inline-block; width: auto; min-height: 50px; padding: 10px 18px; font-size: 18px; }
+.rt-btn:disabled { opacity: .45; cursor: not-allowed; }
+.rt-btn:focus-visible, .rt-chip:focus-visible, .rt-choice:focus-visible { outline: 4px solid var(--marigold); outline-offset: 2px; }
+
+.rt-choice { display: grid; gap: 4px; text-align: left; width: 100%; padding: 20px; border: 3px solid var(--line);
+  border-radius: 18px; background: var(--surface); color: var(--text); font: inherit; cursor: pointer; }
+.rt-choice b { font: 800 25px var(--font-head); color: var(--accent); }
+
+.rt-q { display: grid; gap: 10px; }
+.rt-q > .rt-label, .rt-q > label { font-weight: 700; }
+.rt-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.rt-chip { min-height: 54px; padding: 10px 18px; border-radius: 999px; border: 2px solid var(--muted);
+  background: var(--surface); color: var(--text); font: 500 19px var(--font); cursor: pointer; }
+.rt-chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.rt-chip[aria-pressed="true"]::before { content: "✓ "; }
+.rt select, .rt input[type=text], .rt input[type=number] { width: 100%; min-height: 58px; padding: 12px; font: 20px var(--font);
+  border: 2px solid var(--muted); border-radius: 12px; background: var(--surface); color: var(--text); }
+
+.rt-card { display: grid; gap: 10px; padding: 18px; background: var(--surface); border: 2px solid var(--line); border-radius: var(--shape); }
+.rt-card.strong { border: 3px solid var(--accent); }
+.rt-facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; }
+.rt-facts dt { font-weight: 700; color: var(--muted); }
+.rt-facts dd { margin: 0; }
+.rt-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.rt-row > div { min-width: 0; }
+.rt-pill { justify-self: start; padding: 3px 12px; border-radius: 999px; background: var(--surface-2); font-size: 16px; font-weight: 700; }
+.rt-pill.on { background: var(--marigold); color: var(--marigold-ink); }
+.rt-example { font-size: 15px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--soil); }
+.rt-safe { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 14px; background: var(--surface-2); font-size: 18px; }
+.rt-safe svg { width: 26px; height: 26px; flex: none; color: var(--accent); }
+.rt-error { color: var(--danger); font-weight: 700; }

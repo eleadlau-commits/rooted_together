@@ -1,0 +1,278 @@
+<title>Rooted Together App</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: one phone-sized column, one task per screen, a big bottom bar with four places. Same palette as the website. */
+:root {
+  --bg: #f1f3ea; --surface: #ffffff; --fg: #1d2a1c; --muted: #45533f;
+  --moss: #2f5d34; --moss-ink: #ffffff; --soil: #5b3d27; --marigold: #e3a82b;
+  --line: #c9d1bc; --band: #e2e8d5; --stage: #d9dfcc;
+  --placeholder-bg: #fff3c9; --placeholder-fg: #5a4300;
+  --display: "Alegreya", Georgia, serif;
+  --body: "Alegreya Sans", "Segoe UI", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #151c14; --surface: #1f291e; --fg: #eef2e6; --muted: #c3cdb8;
+  --moss: #8cc68f; --moss-ink: #10200f; --soil: #e0b48e; --marigold: #f2c14e;
+  --line: #3a4a37; --band: #1b2519; --stage: #0e130d;
+  --placeholder-bg: #4a3b0a; --placeholder-fg: #ffe69a; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #151c14; --surface: #1f291e; --fg: #eef2e6; --muted: #c3cdb8;
+  --moss: #8cc68f; --moss-ink: #10200f; --soil: #e0b48e; --marigold: #f2c14e;
+  --line: #3a4a37; --band: #1b2519; --stage: #0e130d;
+  --placeholder-bg: #4a3b0a; --placeholder-fg: #ffe69a; color-scheme: dark; }
+
+body { background: var(--stage); color: var(--fg); font-family: var(--body); font-size: 1.25rem; line-height: 1.5; }
+.stage { padding-block: 1.5rem; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; justify-items: center; gap: 1rem; }
+.note { font-size: 1rem; color: var(--muted); max-width: 26rem; text-align: center; }
+.phone { width: 100%; max-width: 26rem; height: 50rem; max-height: calc(100vh - 6rem); min-height: 36rem; background: var(--bg); border-radius: 28px; border: 2px solid var(--line); box-shadow: 0 20px 50px rgba(0,0,0,.18); display: flex; flex-direction: column; overflow: hidden; }
+@media (max-width: 480px) { .stage { padding-block: .5rem; } .phone { border-radius: 16px; max-height: none; height: calc(100vh - 4rem); } }
+
+.bar { display: flex; align-items: center; gap: .5rem; padding: .9rem 1rem; border-bottom: 1px solid var(--line); background: var(--surface); min-height: 3.5rem; }
+.bar h1 { font: 800 1.45rem/1.1 var(--display); margin: 0; flex: 1; }
+.back { background: none; border: 0; color: var(--moss); font: 700 1.15rem var(--body); padding: .5rem .6rem; border-radius: 10px; cursor: pointer; min-height: 48px; }
+.screen { flex: 1; overflow-y: auto; padding: 1.2rem 1.1rem 1.5rem; display: flex; flex-direction: column; gap: 1.1rem; }
+h2 { font: 800 1.7rem/1.15 var(--display); margin: 0; text-wrap: balance; }
+h3 { font: 600 1.3rem/1.2 var(--display); margin: 0; }
+p { margin: 0; }
+.muted { color: var(--muted); }
+.ph { background: var(--placeholder-bg); color: var(--placeholder-fg); padding: 0 .3em; border-radius: 4px; }
+.progress { font-size: 1rem; font-weight: 700; color: var(--soil); letter-spacing: .05em; text-transform: uppercase; }
+:focus-visible { outline: 4px solid var(--marigold); outline-offset: 2px; }
+
+.btn { display: block; width: 100%; background: var(--moss); color: var(--moss-ink); font: 700 1.3rem/1.2 var(--body); padding: 1rem; border: 0; border-radius: 14px; cursor: pointer; min-height: 60px; text-align: center; }
+.btn.alt { background: var(--surface); color: var(--moss); box-shadow: inset 0 0 0 3px var(--moss); }
+.btn.small { width: auto; display: inline-block; min-height: 48px; padding: .6rem 1.1rem; font-size: 1.1rem; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.big-choice { display: grid; gap: .3rem; text-align: left; background: var(--surface); border: 3px solid var(--line); border-radius: 18px; padding: 1.2rem; cursor: pointer; font: inherit; color: inherit; }
+.big-choice strong { font: 800 1.5rem var(--display); color: var(--moss); }
+.big-choice:hover { border-color: var(--moss); }
+
+.q { display: grid; gap: .6rem; }
+.q > label, .q > .label { font-weight: 700; }
+.chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chip { font: 500 1.15rem var(--body); padding: .7rem 1rem; border-radius: 999px; border: 2px solid var(--muted); background: var(--surface); color: var(--fg); cursor: pointer; min-height: 52px; }
+.chip[aria-pressed="true"] { background: var(--moss); color: var(--moss-ink); border-color: var(--moss); font-weight: 700; }
+.chip[aria-pressed="true"]::before { content: "✓ "; }
+select, input[type=text], input[type=number] { width: 100%; box-sizing: border-box; font: 1.2rem var(--body); padding: .8rem; border: 2px solid var(--muted); border-radius: 12px; background: var(--surface); color: var(--fg); min-height: 56px; }
+.spacer { flex: 1; }
+
+.card { background: var(--surface); border: 2px solid var(--line); border-radius: 16px; padding: 1.1rem; display: grid; gap: .6rem; }
+.card.match { border-color: var(--moss); border-width: 3px; }
+.facts { display: grid; grid-template-columns: auto 1fr; gap: .3rem .9rem; margin: 0; }
+.facts dt { font-weight: 700; color: var(--muted); }
+.facts dd { margin: 0; }
+.shield { display: flex; gap: .7rem; align-items: flex-start; background: var(--band); border-radius: 12px; padding: .9rem; font-size: 1.1rem; }
+.shield b { font-size: 1.4rem; line-height: 1; }
+.example { font-size: .95rem; font-weight: 700; color: var(--soil); text-transform: uppercase; letter-spacing: .05em; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: .8rem; flex-wrap: wrap; }
+.row > div { min-width: 0; }
+.pill { font-size: .95rem; font-weight: 700; padding: .2rem .7rem; border-radius: 999px; background: var(--band); color: var(--fg); }
+.pill.on { background: var(--marigold); color: #3a2a00; }
+.totals { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+.total { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: .9rem; }
+.total strong { display: block; font: 800 2rem/1 var(--display); color: var(--moss); font-variant-numeric: tabular-nums; }
+ul.log { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
+ul.log li { background: var(--surface); border-left: 5px solid var(--moss); border-radius: 8px; padding: .7rem .9rem; }
+ul.log li.food { border-left-color: var(--marigold); }
+.toast { background: var(--fg); color: var(--bg); border-radius: 12px; padding: .8rem 1rem; font-weight: 700; }
+
+nav.tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); background: var(--surface); padding-bottom: env(safe-area-inset-bottom, 0px); }
+nav.tabs button { background: none; border: 0; font: 700 1rem var(--body); color: var(--muted); padding: .55rem .2rem .7rem; cursor: pointer; display: grid; justify-items: center; gap: .15rem; min-height: 64px; }
+nav.tabs svg { width: 26px; height: 26px; }
+nav.tabs button[aria-current="page"] { color: var(--moss); box-shadow: inset 0 4px 0 var(--moss); }
+</style>
+
+<div class="stage">
+  <p class="note">Clickable draft for testing. Nothing is saved or sent. Highlighted text is a placeholder for the team to fill in.</p>
+  <div class="phone" role="application" aria-label="Rooted Together app prototype">
+    <div class="bar"><button class="back" id="back" hidden>‹ Back</button><h1 id="title">Rooted Together</h1></div>
+    <main class="screen" id="screen"></main>
+    <nav class="tabs" id="tabs" hidden aria-label="Main">
+      <button data-go="match"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M12 20c0-3 3-5 6-5"/></svg>Match</button>
+      <button data-go="seeds"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21V11"/><path d="M12 11C12 6 8 4 4 4c0 5 3 7 8 7zM12 13c0-4 3-6 8-6 0 4-3 6-8 6z"/></svg>Seeds</button>
+      <button data-go="events"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Events</button>
+      <button data-go="garden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16M7 20v-6h10v6M12 14V8M12 8c-2-3-5-3-6-2 1 2 4 3 6 2zM12 8c2-3 5-3 6-2-1 2-4 3-6 2z"/></svg>My garden</button>
+    </nav>
+  </div>
+</div>
+
+<script>
+var AREAS = ['Belmont','Elvet','Framwellgate Moor','Gilesgate','Neville\'s Cross','Newton Hall','Pity Me','Sherburn Road','Other / not sure'];
+var S = {
+  role: null, history: [], screen: 'welcome', toast: '',
+  owner: { size: null, area: '', help: [], visits: null },
+  grower: { interests: [], exp: null, avail: [] },
+  introRequested: false,
+  seeds: [
+    { name: 'Runner beans', note: 'Easy for beginners', left: 6, mine: false },
+    { name: 'Kale', note: 'Good in small spaces', left: 4, mine: false },
+    { name: 'Courgette', note: 'Big harvests', left: 0, mine: false },
+    { name: 'Salad leaves', note: 'Quick to grow', left: 8, mine: false },
+    { name: 'Potatoes (seed)', note: 'Needs a bigger bed', left: 3, mine: false }
+  ],
+  log: [
+    { type: 'job', text: 'Weeded the vegetable bed', ex: true },
+    { type: 'food', text: 'Picked salad leaves', kg: 0.5, ex: true },
+    { type: 'job', text: 'Sowed runner beans', ex: true }
+  ],
+  newType: 'job'
+};
+var TABS = ['match','seeds','events','garden'];
+var el = function (id) { return document.getElementById(id); };
+function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+function go(name, opts) {
+  opts = opts || {};
+  if (!opts.noHistory && S.screen !== name) S.history.push(S.screen);
+  if (TABS.indexOf(name) > -1) S.history = [];
+  S.screen = name; S.toast = opts.toast || '';
+  render(); el('screen').scrollTop = 0;
+}
+function back() { var p = S.history.pop(); if (p) { S.screen = p; S.toast = ''; render(); } }
+el('back').onclick = back;
+document.querySelectorAll('[data-go]').forEach(function (b) { b.onclick = function () { go(b.dataset.go); }; });
+
+function chips(group, options, multi) {
+  return '<div class="chips">' + options.map(function (o) {
+    var v = getPath(group); var on = multi ? v.indexOf(o) > -1 : v === o;
+    return '<button class="chip" aria-pressed="' + on + '" data-chip="' + group + '" data-multi="' + (multi ? 1 : 0) + '" data-val="' + esc(o) + '">' + esc(o) + '</button>';
+  }).join('') + '</div>';
+}
+function getPath(p) { var a = p.split('.'); return S[a[0]][a[1]]; }
+function setPath(p, v) { var a = p.split('.'); S[a[0]][a[1]] = v; }
+
+var screens = {
+  welcome: function () { return { title: 'Rooted Together', html:
+    '<h2>Welcome! What would you like to do?</h2>' +
+    '<p class="muted">Choose one. You can change it later.</p>' +
+    '<button class="big-choice" data-act="role-owner"><strong>I have a garden</strong><span>I\'d like some help, and some company.</span></button>' +
+    '<button class="big-choice" data-act="role-grower"><strong>I want to grow</strong><span>I\'d like some space to grow food.</span></button>' +
+    '<div class="spacer"></div>' +
+    '<div class="shield"><b>🔒</b><span>We never show your address or phone number. Our team arranges every first meeting.</span></div>' }; },
+
+  'owner-1': function () { var o = S.owner; return { title: 'Your garden', html:
+    '<p class="progress">Step 1 of 2</p><h2>Tell us about your garden</h2>' +
+    '<div class="q"><span class="label">How big is it?</span>' + chips('owner.size', ['Small','Medium','Large'], false) + '</div>' +
+    '<div class="q"><label for="area">Roughly where is it?</label><select id="area"><option value="">Choose an area</option>' +
+      AREAS.map(function (a) { return '<option' + (o.area === a ? ' selected' : '') + '>' + esc(a) + '</option>'; }).join('') + '</select>' +
+      '<p class="muted" style="font-size:1.05rem">Just the area. Please don\'t add your street or house number.</p></div>' +
+    '<div class="spacer"></div><button class="btn" data-act="owner-next"' + (o.size && o.area ? '' : ' disabled') + '>Next</button>' }; },
+
+  'owner-2': function () { var o = S.owner; return { title: 'Your garden', html:
+    '<p class="progress">Step 2 of 2</p><h2>What help would you like?</h2>' +
+    '<div class="q"><span class="label">Pick any that fit</span>' + chips('owner.help', ['Weeding','Growing vegetables','Mowing the lawn','Pruning','Just some company'], true) + '</div>' +
+    '<div class="q"><span class="label">How often can a grower visit?</span>' + chips('owner.visits', ['Once a week','Twice a week','Once a fortnight','Not sure yet'], false) + '</div>' +
+    '<div class="spacer"></div><button class="btn" data-act="finish"' + (o.help.length && o.visits ? '' : ' disabled') + '>Find me a grower</button>' }; },
+
+  'grower-1': function () { return { title: 'About you', html:
+    '<p class="progress">Step 1 of 2</p><h2>What would you like to grow?</h2>' +
+    '<div class="q"><span class="label">Pick any that interest you</span>' + chips('grower.interests', ['Vegetables','Fruit','Herbs','Flowers','Anything!'], true) + '</div>' +
+    '<div class="q"><span class="label">How much growing have you done?</span>' + chips('grower.exp', ['None yet','A little','Lots'], false) + '</div>' +
+    '<div class="spacer"></div><button class="btn" data-act="grower-next"' + (S.grower.interests.length && S.grower.exp ? '' : ' disabled') + '>Next</button>' }; },
+
+  'grower-2': function () { return { title: 'About you', html:
+    '<p class="progress">Step 2 of 2</p><h2>When are you free?</h2>' +
+    '<div class="q"><span class="label">Pick any that fit</span>' + chips('grower.avail', ['Weekday mornings','Weekday afternoons','Evenings','Weekends'], true) + '</div>' +
+    '<div class="shield"><b>ℹ️</b><span>Growers will need to complete <span class="ph">[checks to be confirmed]</span> before meeting a garden owner.</span></div>' +
+    '<div class="spacer"></div><button class="btn" data-act="finish"' + (S.grower.avail.length ? '' : ' disabled') + '>Find me a garden</button>' }; },
+
+  match: function () {
+    var isOwner = S.role === 'owner';
+    var card = isOwner
+      ? '<p class="example">Example match</p><h3>A grower near you</h3><dl class="facts"><dt>Likes</dt><dd>Vegetables and herbs</dd><dt>Experience</dt><dd>A little</dd><dt>Free</dt><dd>Weekends</dd><dt>Area</dt><dd>' + esc(S.owner.area || 'Durham') + '</dd></dl>'
+      : '<p class="example">Example match</p><h3>A medium garden</h3><dl class="facts"><dt>Area</dt><dd>Gilesgate</dd><dt>Help wanted</dt><dd>Growing vegetables, weeding</dd><dt>Visits</dt><dd>Once a week</dd></dl>';
+    var action = S.introRequested
+      ? '<div class="card"><h3>Request sent to our team ✓</h3><p>A member of the Rooted Together team will contact you first to talk it through and arrange a meeting. <span class="ph">[We aim to reply within X days]</span></p></div>'
+      : '<button class="btn" data-act="intro">Request an introduction</button><button class="btn alt" data-act="skip">Show me someone else</button>';
+    return { title: 'Your match', html:
+      (S.toast ? '<div class="toast">' + esc(S.toast) + '</div>' : '') +
+      '<h2>' + (isOwner ? 'We think you\'d get on' : 'Here\'s a garden for you') + '</h2>' +
+      '<div class="card match">' + card + '</div>' +
+      '<div class="shield"><b>🔒</b><span>Requests go to our team first, never straight to ' + (isOwner ? 'the grower' : 'the garden owner') + '. Addresses are only shared after the team has met you both.</span></div>' + action };
+  },
+
+  seeds: function () {
+    var mine = S.seeds.filter(function (s) { return s.mine; });
+    return { title: 'Seed library', html:
+      (S.toast ? '<div class="toast">' + esc(S.toast) + '</div>' : '') +
+      '<h2>Borrow seeds for free</h2><p class="muted">Reserve a packet, then collect it from <span class="ph">[library location]</span>. Save some seeds and bring them back at the end of the season.</p>' +
+      (mine.length ? '<h3>My seeds</h3>' + mine.map(function (s) { var i = S.seeds.indexOf(s); return '<div class="card"><div class="row"><div><strong>' + esc(s.name) + '</strong><br><span class="muted">Reserved</span></div><button class="btn small alt" data-act="return" data-i="' + i + '">Return</button></div></div>'; }).join('') : '') +
+      '<h3>Browse</h3><p class="example">Example stock</p>' +
+      S.seeds.map(function (s, i) {
+        var btn = s.mine ? '<span class="pill on">Reserved</span>' : s.left > 0 ? '<button class="btn small" data-act="reserve" data-i="' + i + '">Reserve</button>' : '<span class="pill">None left</span>';
+        return '<div class="card"><div class="row"><div><strong>' + esc(s.name) + '</strong><br><span class="muted">' + esc(s.note) + ' · ' + s.left + ' left</span></div>' + btn + '</div></div>';
+      }).join('') };
+  },
+
+  events: function () { return { title: 'Events', html:
+    '<h2>Coming up</h2>' +
+    '<div class="card"><span class="pill on" style="justify-self:start">Dates coming soon</span><h3>Harvest market</h3><p>Growers share and sell what they\'ve grown at the end of each crop cycle.</p><dl class="facts"><dt>When</dt><dd><span class="ph">[date TBC]</span></dd><dt>Where</dt><dd><span class="ph">[venue TBC]</span></dd></dl><button class="btn alt" data-act="remind" data-what="harvest market">Remind me</button></div>' +
+    '<div class="card"><span class="pill on" style="justify-self:start">Dates coming soon</span><h3>End of season festival</h3><p>Food, music and a big thank you to everyone who grew with us.</p><dl class="facts"><dt>When</dt><dd><span class="ph">[date TBC]</span></dd><dt>Where</dt><dd><span class="ph">[venue TBC]</span></dd></dl><button class="btn alt" data-act="remind" data-what="festival">Remind me</button></div>' +
+    (S.toast ? '<div class="toast">' + esc(S.toast) + '</div>' : '') }; },
+
+  garden: function () {
+    var jobs = S.log.filter(function (l) { return l.type === 'job'; }).length;
+    var kg = S.log.reduce(function (t, l) { return t + (l.kg || 0); }, 0);
+    return { title: 'My garden', html:
+      '<h2>What have you done this week?</h2>' +
+      '<div class="totals"><div class="total"><strong>' + jobs + '</strong>jobs done</div><div class="total"><strong>' + kg.toFixed(1) + '</strong>kg of food grown</div></div>' +
+      '<div class="card"><h3>Add to your log</h3>' +
+        '<div class="chips"><button class="chip" aria-pressed="' + (S.newType === 'job') + '" data-act="type" data-t="job">A job I did</button><button class="chip" aria-pressed="' + (S.newType === 'food') + '" data-act="type" data-t="food">Food I picked</button></div>' +
+        '<label for="logtext" style="font-weight:700">' + (S.newType === 'job' ? 'What did you do?' : 'What did you pick?') + '</label><input type="text" id="logtext" placeholder="' + (S.newType === 'job' ? 'e.g. Watered the beans' : 'e.g. Courgettes') + '">' +
+        (S.newType === 'food' ? '<label for="logkg" style="font-weight:700">Roughly how much? (kg)</label><input type="number" id="logkg" min="0" step="0.1" inputmode="decimal" placeholder="e.g. 1.5">' : '') +
+        '<p class="muted" id="logerr" hidden style="color:#b3261e;font-weight:700"></p>' +
+        '<button class="btn" data-act="addlog">Add</button></div>' +
+      (S.toast ? '<div class="toast">' + esc(S.toast) + '</div>' : '') +
+      '<h3>Your log</h3><ul class="log">' + S.log.slice().reverse().map(function (l) {
+        return '<li class="' + l.type + '">' + esc(l.text) + (l.kg ? ' · ' + l.kg + ' kg' : '') + (l.ex ? ' <span class="example">(example)</span>' : '') + '</li>';
+      }).join('') + '</ul>' +
+      '<p class="muted" style="font-size:1rem">Your log helps us show the difference Rooted Together makes. <span class="ph">[How impact data is used and stored]</span></p>' };
+  }
+};
+
+function render() {
+  var s = screens[S.screen]();
+  el('title').textContent = s.title;
+  el('screen').innerHTML = s.html;
+  el('back').hidden = S.history.length === 0;
+  var inApp = TABS.indexOf(S.screen) > -1;
+  el('tabs').hidden = !inApp;
+  document.querySelectorAll('nav.tabs button').forEach(function (b) { if (b.dataset.go === S.screen) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+  var area = el('area'); if (area) area.onchange = function () { S.owner.area = area.value; var t = el('screen').scrollTop; render(); el('screen').scrollTop = t; };
+}
+
+el('screen').addEventListener('click', function (e) {
+  var c = e.target.closest('[data-chip]');
+  if (c) {
+    var g = c.dataset.chip, v = c.dataset.val;
+    if (c.dataset.multi === '1') { var arr = getPath(g).slice(); var i = arr.indexOf(v); i > -1 ? arr.splice(i, 1) : arr.push(v); setPath(g, arr); }
+    else setPath(g, getPath(g) === v ? null : v);
+    var t = el('screen').scrollTop; render(); el('screen').scrollTop = t; return;
+  }
+  var b = e.target.closest('[data-act]'); if (!b) return;
+  var a = b.dataset.act;
+  if (a === 'role-owner') { S.role = 'owner'; go('owner-1'); }
+  else if (a === 'role-grower') { S.role = 'grower'; go('grower-1'); }
+  else if (a === 'owner-next') go('owner-2');
+  else if (a === 'grower-next') go('grower-2');
+  else if (a === 'finish') go('match', { toast: 'You\'re signed up. Here\'s a suggested match.' });
+  else if (a === 'intro') { S.introRequested = true; render(); }
+  else if (a === 'skip') go('match', { noHistory: true, toast: 'In the real app we\'d show another match here.' });
+  else if (a === 'reserve') { var s = S.seeds[+b.dataset.i]; s.mine = true; s.left--; go('seeds', { noHistory: true, toast: s.name + ' reserved. Collect from [library location].' }); }
+  else if (a === 'return') { var r = S.seeds[+b.dataset.i]; r.mine = false; r.left++; go('seeds', { noHistory: true, toast: 'Thanks for returning ' + r.name + '!' }); }
+  else if (a === 'remind') go('events', { noHistory: true, toast: 'We\'ll remind you about the ' + b.dataset.what + ' once the date is set. (Draft only)' });
+  else if (a === 'type') { S.newType = b.dataset.t; render(); }
+  else if (a === 'addlog') {
+    var txt = el('logtext').value.trim(), kgEl = el('logkg'), kg = kgEl ? parseFloat(kgEl.value) : 0, err = el('logerr');
+    if (!txt) { err.textContent = 'Please write a few words first.'; err.hidden = false; return; }
+    if (kgEl && !(kg > 0)) { err.textContent = 'Please add roughly how many kg.'; err.hidden = false; return; }
+    S.log.push(S.newType === 'food' ? { type: 'food', text: txt, kg: Math.round(kg * 10) / 10 } : { type: 'job', text: txt });
+    go('garden', { noHistory: true, toast: 'Added to your log.' });
+  }
+});
+render();
+</script>

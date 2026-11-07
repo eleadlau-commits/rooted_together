@@ -1,0 +1,14 @@
+{
+  "id": "rooted-together",
+  "name": "Rooted Together",
+  "description": "Garden Share for Durham: people with gardens meet people who want to grow food. A draft by Team Green Durham for testing. Nothing you enter leaves this phone.",
+  "version": "0.1.0",
+  "lang": "en-GB",
+  "theme": {
+    "accent": "#2f5d34",
+    "accentDark": "#8cc68f",
+    "background": "#2a3d26",
+    "backgroundDark": "#0e130d"
+  },
+  "native": { "appId": "io.github.rootedtogether.app" }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Seed library",
+  "description": "Browse the shared seed box, reserve a packet and return saved seeds.",
+  "version": "0.1.0",
+  "main": "Seeds.js",
+  "styles": ["style.css"]
+}

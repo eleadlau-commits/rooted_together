@@ -1,0 +1,8 @@
+{
+  "name": "Match",
+  "description": "A suggested match for you, and asking our team for an introduction. The app never contacts the other person itself.",
+  "version": "0.1.0",
+  "main": "Match.js",
+  "styles": ["style.css"],
+  "uses": ["welcome", "safeguarding"]
+}
