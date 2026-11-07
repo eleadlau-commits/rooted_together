@@ -1,13 +1,11 @@
 # Rooted Together
 
-Garden Share for Durham: older people who can no longer manage their gardens meet students and
-young people who want space to grow food. Plus a seed library, harvest markets and an end of
-season festival. A first draft by **Team Green Durham** (Enactus Durham) for pitching and user
+A community allotment in Durham bringing generations together: up to 20 member plots, three
+memberships (Starter, Standard, Supported), Wednesday Social Gardening and Sunday Community and
+Skills days, a seed library, harvest markets and a festival. Garden Share is a future plan. A first draft by **Team Green Durham** (Enactus Durham) for pitching and user
 testing, not a finished product.
 
-> Notice the overgrown gardens around Durham? Older people have the space, students have the
-> energy, and nobody is bringing them together. Elderly cannot manage them, and students have no
-> space. Both are missing out on fresh food, exercise, companionship and learning from each other.
+> How might we help older people feel less isolated and more connected to their communities?
 
 **Live site:** https://eleadlau-commits.github.io/rooted_together/ (website) and /try-app/ (the app).
 

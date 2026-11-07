@@ -751,6 +751,22 @@ body { font-size: 20px; line-height: 1.5; }
 .rt-safe { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 14px; background: var(--surface-2); font-size: 18px; }
 .rt-safe svg { width: 26px; height: 26px; flex: none; color: var(--accent); }
 .rt-error { color: var(--danger); font-weight: 700; }
+.about-hmw { font: 800 22px/1.3 var(--font-head); color: var(--accent); }
+
+/* ---- feature: safeguarding (style.css) ---- */
+.safety-list { margin: 0; padding-left: 1.3em; display: grid; gap: 10px; }
+
+/* ---- feature: welcome (style.css) ---- */
+.welcome .rt-btn.alt { margin-top: -6px; }
+.welcome-check { grid-template-columns: 1fr; gap: 2px; }
+.welcome-check dd { margin-bottom: 10px; font-weight: 700; }
+
+/* ---- feature: allotment (style.css) ---- */
+.allot-tier { font: 800 23px var(--font-head); color: var(--accent); }
+.allot-later { border-style: dashed; border-color: var(--soil); }
+
+/* ---- feature: events (style.css) ---- */
+.week-list { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
 
 /* ---- feature: seeds (style.css) ---- */
 /* Seeds uses the shared pieces in app/theme.css. */
@@ -761,17 +777,6 @@ body { font-size: 20px; line-height: 1.5; }
 .log-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .log-list li { padding: 12px 14px; border-radius: 10px; background: var(--surface); border-left: 6px solid var(--accent); }
 .log-list li.food { border-left-color: var(--marigold); }
-
-/* ---- feature: safeguarding (style.css) ---- */
-.safety-list { margin: 0; padding-left: 1.3em; display: grid; gap: 10px; }
-
-/* ---- feature: welcome (style.css) ---- */
-.welcome .rt-btn.alt { margin-top: -6px; }
-.welcome-check { grid-template-columns: 1fr; gap: 2px; }
-.welcome-check dd { margin-bottom: 10px; font-weight: 700; }
-
-/* ---- feature: match (style.css) ---- */
-/* Match uses the shared pieces in app/theme.css; nothing of its own yet. */
 
 </style>
 </head>
@@ -2143,8 +2148,10 @@ body { font-size: 20px; line-height: 1.5; }
           el2("h2", {}, "Team Green Durham"),
           el2("p", {}, "We're students from Durham University's Enactus society. ", el2("span", { class: "rt-ph" }, "[Team names and roles]")),
           el2("h3", {}, "Why we're doing this"),
-          el2("p", {}, "Notice the overgrown gardens around Durham? Older people have the space, students have the energy, and nobody is bringing them together. Elderly cannot manage them, and students have no space. Both are missing out on fresh food, exercise, companionship and learning from each other."),
-          el2("p", {}, "Rooted Together pairs people who have a garden with people who want to grow food. It also runs a seed library, harvest markets and an end of season festival."),
+          el2("p", { class: "about-hmw" }, "How might we help older people feel less isolated and more connected to their communities?"),
+          el2("p", {}, "Rooted Together is a community allotment designed to improve mental wellbeing, encourage healthy lifestyles and bring younger and older generations together through gardening."),
+          el2("p", {}, "Our vision: a place where people of different ages and backgrounds meet, build friendships, learn new skills and help create a more connected, environmentally conscious Durham."),
+          el2("p", {}, el2("b", {}, "Future plan: "), "Garden Share, matching people who can no longer manage their gardens with people who want space to grow."),
           el2("h3", {}, "UN goals we support"),
           el2("div", { class: "rt-chips" }, GOALS.map((g) => el2("span", { class: "rt-pill" }, g))),
           el2("p", { class: "rt-muted rt-small" }, "This is a draft for testing. ", el2("span", { class: "rt-ph" }, "[contact email]"))
@@ -2154,8 +2161,316 @@ body { font-size: 20px; line-height: 1.5; }
     }
   };
 
-  // dist/web/features/events/Events.js
+  // dist/web/features/safeguarding/rules.js
+  var PROMISES = [
+    "We never show anyone's home address or phone number.",
+    "Sessions are run by the Rooted Together team, with a named person you can talk to.",
+    "Everything you type in this draft app stays on this phone."
+  ];
+  var CHECKS_PLACEHOLDER = "[Checks for growers and volunteers, e.g. DBS, to be confirmed with Enactus Durham and the university]";
+  var CONTACT_PLACEHOLDER = "[safeguarding lead name and email]";
+
+  // dist/web/features/safeguarding/Safeguarding.js
   var { el: el3 } = ui_exports;
+  var Safeguarding = class extends Feature {
+    start() {
+      this.defineSlot("safety.notes", "A line on the safeguarding page about what a feature does to keep people safe. Item: { order, text() → one sentence }.");
+      this.add("header.buttons", { id: "safety", label: "Keeping everyone safe", icon: "help", order: 30, onClick: () => this.open() });
+    }
+    open() {
+      if (!this.window) this.window = ui_exports.dialog({ title: "Keeping everyone safe", className: "safety-dialog" });
+      const notes = this.slot("safety.notes").map((n) => n.text()).filter(Boolean);
+      this.window.setContent(el3(
+        "div",
+        { class: "rt" },
+        el3("h2", {}, "Your safety comes first"),
+        el3("ul", { class: "safety-list" }, [...PROMISES, ...notes].map((line) => el3("li", {}, line))),
+        el3(
+          "div",
+          { class: "rt-card" },
+          el3("h3", {}, "Checks"),
+          el3("p", {}, el3("span", { class: "rt-ph" }, CHECKS_PLACEHOLDER))
+        ),
+        el3(
+          "div",
+          { class: "rt-card" },
+          el3("h3", {}, "Worried about something?"),
+          el3("p", {}, "Talk to ", el3("span", { class: "rt-ph" }, CONTACT_PLACEHOLDER), ".")
+        )
+      ));
+      this.window.open();
+    }
+  };
+
+  // dist/web/features/welcome/questions.js
+  var AREAS = ["Belmont", "Elvet", "Framwellgate Moor", "Gilesgate", "Neville's Cross", "Newton Hall", "Pity Me", "Sherburn Road", "Other or not sure"];
+  var PATHS = {
+    member: {
+      title: "Your plot",
+      finish: "Ask for a plot",
+      steps: [
+        { heading: "Which membership suits you?", questions: [
+          { key: "tier", label: "Choose one", check: "Membership", kind: "one", options: ["Starter", "Standard", "Supported"] }
+        ] },
+        { heading: "What would you like to grow?", questions: [
+          { key: "interests", label: "Pick any that interest you", check: "What you would like to grow", kind: "many", options: ["Vegetables", "Fruit", "Herbs", "Flowers", "Anything!"] },
+          { key: "experience", label: "How much growing have you done?", kind: "one", options: ["None yet", "A little", "Lots"] }
+        ] },
+        { heading: "Which days suit you?", questions: [{ key: "days", label: "Pick any that suit you", check: "Days", kind: "many", options: ["Wednesday: Social Gardening", "Sunday: Community and Skills"] }] }
+      ]
+    },
+    volunteer: {
+      title: "Helping out",
+      finish: "Offer to help",
+      steps: [
+        { heading: "How would you like to help?", questions: [
+          { key: "help", label: "Pick any that fit", check: "How you would like to help", kind: "many", options: ["Teaching growing skills", "Running a workshop", "Sharing music", "Building wildlife homes", "Refreshments", "Anything!"] }
+        ] },
+        { heading: "Which days suit you?", questions: [{ key: "days", label: "Pick any that suit you", check: "Days", kind: "many", options: ["Wednesday: Social Gardening", "Sunday: Community and Skills"] }] }
+      ]
+    }
+  };
+  function stepDone(step, answers) {
+    return step.questions.every((q) => {
+      const v = answers[q.key];
+      return Array.isArray(v) ? v.length > 0 : !!v;
+    });
+  }
+  function choose(question, current, option) {
+    if (question.kind === "many") {
+      const list = Array.isArray(current) ? current : [];
+      return list.includes(option) ? list.filter((o) => o !== option) : [...list, option];
+    }
+    return current === option ? null : option;
+  }
+
+  // dist/web/features/welcome/Welcome.js
+  var { el: el4 } = ui_exports;
+  var Welcome = class extends Feature {
+    start() {
+      this.profile = this.storage.get("profile", null);
+      this.provide("profile", {
+        get: () => this.profile,
+        isSet: () => !!this.profile,
+        edit: () => this.open()
+      });
+      this.add("header.buttons", { id: "details", label: "Edit my details", icon: "note", order: 20, onClick: () => this.open() });
+      this.add("safety.notes", { order: 10, text: () => "Sign-up never asks for your address or phone number." });
+      this.on("app:ready", () => {
+        if (!this.profile) this.open();
+      });
+    }
+    open() {
+      if (!this.window) this.window = ui_exports.dialog({ title: "Welcome", className: "welcome-dialog" });
+      this.draft = { role: this.profile?.role || null, answers: { ...this.profile?.answers || {} } };
+      this.step = this.profile ? 0 : -1;
+      this.draw();
+      this.window.open();
+    }
+    draw() {
+      const path = PATHS[this.draft.role];
+      this.window.setTitle(this.step < 0 ? "Welcome" : path.title);
+      const page = this.step < 0 ? this.choosePage() : this.step >= path.steps.length ? this.checkPage(path) : this.stepPage(path);
+      this.window.setContent(el4("div", { class: "rt welcome" }, page));
+      this.window.content.scrollTop = 0;
+    }
+    choosePage() {
+      const pick = (role) => () => {
+        this.draft = { role, answers: {} };
+        this.step = 0;
+        this.draw();
+      };
+      return [
+        el4("h2", {}, "Welcome to Rooted Together! What would you like to do?"),
+        el4("p", { class: "rt-muted" }, "Choose one. You can change it later."),
+        el4("button", { type: "button", class: "rt-choice", onclick: pick("member") }, el4("b", {}, "I'd like a plot"), el4("span", {}, "Grow your own food and join the community.")),
+        el4("button", { type: "button", class: "rt-choice", onclick: pick("volunteer") }, el4("b", {}, "I'd like to help out"), el4("span", {}, "Share your skills on Wednesdays or Sundays.")),
+        el4("div", { class: "rt-safe" }, ui_exports.icon("help"), el4("span", {}, "We never ask for or show your address or phone number."))
+      ];
+    }
+    stepPage(path) {
+      const step = path.steps[this.step];
+      const last = this.step === path.steps.length - 1;
+      const answers = this.draft.answers;
+      return [
+        el4("p", { class: "rt-eyebrow" }, `Step ${this.step + 1} of ${path.steps.length}`),
+        el4("h2", {}, step.heading),
+        step.questions.map((q) => this.question(q, answers)),
+        el4("button", {
+          type: "button",
+          class: "rt-btn",
+          disabled: !stepDone(step, answers),
+          onclick: () => {
+            this.step += 1;
+            this.draw();
+          }
+        }, last ? "Check my answers" : "Next"),
+        el4("button", { type: "button", class: "rt-btn alt", onclick: () => {
+          this.step -= 1;
+          this.draw();
+        } }, "Back")
+      ];
+    }
+    // The last page: every answer in plain words, with a way back to change them.
+    checkPage(path) {
+      const answers = this.draft.answers;
+      const rows = path.steps.flatMap((step) => step.questions).map((q) => {
+        const v = answers[q.key];
+        return [el4("dt", {}, q.check || q.label), el4("dd", {}, Array.isArray(v) ? v.join(", ") : v)];
+      });
+      return [
+        el4("p", { class: "rt-eyebrow" }, "Nearly done"),
+        el4("h2", {}, "Check your answers"),
+        el4("div", { class: "rt-card" }, el4("dl", { class: "rt-facts welcome-check" }, rows)),
+        el4("button", { type: "button", class: "rt-btn", onclick: () => this.finish() }, path.finish),
+        el4("button", { type: "button", class: "rt-btn alt", onclick: () => {
+          this.step = 0;
+          this.draw();
+        } }, "Change my answers")
+      ];
+    }
+    question(q, answers) {
+      if (q.kind === "area") {
+        const id = `welcome-area-${this.draft.role}`;
+        const select2 = el4(
+          "select",
+          { id, onchange: () => {
+            answers.area = select2.value || null;
+            this.draw();
+          } },
+          el4("option", { value: "" }, "Choose an area"),
+          AREAS.map((a) => el4("option", { value: a, selected: answers.area === a }, a))
+        );
+        return el4("div", { class: "rt-q" }, el4("label", { for: id }, q.label), select2, q.note && el4("p", { class: "rt-muted rt-small" }, q.note));
+      }
+      const value = answers[q.key];
+      return el4(
+        "div",
+        { class: "rt-q", role: "group", "aria-label": q.label },
+        el4("span", { class: "rt-label" }, q.label),
+        el4("div", { class: "rt-chips" }, q.options.map((o) => el4("button", {
+          type: "button",
+          class: "rt-chip",
+          "aria-pressed": String(Array.isArray(value) ? value.includes(o) : value === o),
+          onclick: () => {
+            answers[q.key] = choose(q, value, o);
+            this.draw();
+          }
+        }, o)))
+      );
+    }
+    finish() {
+      this.profile = { role: this.draft.role, answers: this.draft.answers };
+      this.storage.set("profile", this.profile);
+      this.window.close();
+      this.emit("profile:saved", { role: this.profile.role });
+      this.app.shell.selectView("allotment");
+      this.refresh();
+      this.toast("Thank you! Our team will be in touch.");
+    }
+  };
+
+  // dist/web/features/allotment/tiers.js
+  var TIERS = [
+    { id: "Starter", what: "A smaller growing plot and shared community activities.", fee: "[£ fee TBC]" },
+    { id: "Standard", what: "A larger plot, the seed library and workshops.", fee: "[£ fee TBC]" },
+    { id: "Supported", what: "Reduced-cost or sponsored, for anyone who may struggle to afford the standard fee.", fee: "Reduced or sponsored" }
+  ];
+  var PLOTS = 20;
+  function tierFor(id) {
+    return TIERS.find((t) => t.id === id) || null;
+  }
+
+  // dist/web/features/allotment/Allotment.js
+  var { el: el5 } = ui_exports;
+  var ph = (text) => el5("span", { class: "rt-ph" }, text);
+  var Allotment = class extends Feature {
+    start() {
+      this.add("views", {
+        id: "allotment",
+        label: "Allotment",
+        icon: "home",
+        order: 5,
+        start: true,
+        subtitle: () => "Rooted Together",
+        mount: (container) => {
+          this.box = el5("div", { class: "rt", "data-own-swipe": true });
+          container.append(this.box);
+        },
+        render: () => this.box.replaceChildren(...this.page().flat(Infinity).filter(Boolean))
+      });
+    }
+    page() {
+      const profile = this.use("profile");
+      const me = profile?.get();
+      return [
+        el5("h2", {}, "A community allotment bringing generations together"),
+        el5("p", {}, `Your own plot to grow flowers, fruit or vegetables, in a first group of up to ${PLOTS} members at `, ph("[site TBC]"), "."),
+        this.yours(profile, me),
+        el5("h3", {}, "Memberships"),
+        TIERS.map((t) => el5(
+          "div",
+          { class: `rt-card${me?.answers?.tier === t.id ? " strong" : ""}` },
+          el5("div", { class: "rt-row" }, el5("b", { class: "allot-tier" }, t.id), t.fee.startsWith("[") ? ph(t.fee) : el5("span", { class: "rt-pill" }, t.fee)),
+          el5("p", {}, t.what)
+        )),
+        el5("p", { class: "rt-muted rt-small" }, "You keep what you grow, and may sell permitted surplus at the harvest market."),
+        el5(
+          "div",
+          { class: "rt-card allot-later" },
+          el5("span", { class: "rt-pill" }, "Future plan"),
+          el5("h3", {}, "Garden Share"),
+          el5("p", {}, "Later, we'd like to match people who can no longer manage their gardens with people who want space to grow. Every first introduction would go through our team.")
+        )
+      ];
+    }
+    yours(profile, me) {
+      if (me?.role === "member") {
+        const tier = tierFor(me.answers.tier);
+        return el5(
+          "div",
+          { class: "rt-card strong" },
+          el5("span", { class: "rt-pill on" }, "With the team"),
+          el5("h3", {}, `Your plot request: ${tier ? tier.id : "membership"}`),
+          el5("p", {}, "Someone from Rooted Together will get in touch about a plot. ", ph("[We aim to reply within X days]")),
+          el5("button", { type: "button", class: "rt-btn alt", onclick: () => profile.edit() }, "Change my answers")
+        );
+      }
+      if (me?.role === "volunteer") {
+        return el5(
+          "div",
+          { class: "rt-card strong" },
+          el5("span", { class: "rt-pill on" }, "With the team"),
+          el5("h3", {}, "Thank you for offering to help"),
+          el5("p", {}, "We'll be in touch about Wednesday and Sunday sessions.")
+        );
+      }
+      return profile ? el5("button", { type: "button", class: "rt-btn", onclick: () => profile.edit() }, "Ask for a plot") : null;
+    }
+  };
+
+  // dist/web/features/events/Events.js
+  var { el: el6 } = ui_exports;
+  var WEEK = [
+    {
+      day: "Wednesdays",
+      name: "Social Gardening",
+      about: "A relaxed afternoon to tend your plot and enjoy each other's company.",
+      things: ["Gardening on your plot", "Music-sharing across generations", "Shared picnics and refreshments"]
+    },
+    {
+      day: "Sundays",
+      name: "Community and Skills",
+      about: "Learning, sharing skills and helping local wildlife.",
+      things: ["Gardening workshops", "Older members teaching growing skills", "Bird feeders, hedgehog shelters and insect homes", "Composting and recycling"]
+    }
+  ];
+  var SEASONS = [
+    ["Spring", "Planting days, seed sharing and preparing plots"],
+    ["Summer", "Gardening, outdoor socials and environmental workshops"],
+    ["Autumn", "Harvest celebrations and the community market"],
+    ["Winter", "Seed library, planning and indoor workshops"]
+  ];
   var EVENTS = [
     { id: "market", name: "Harvest market", about: "Growers share and sell what they've grown at the end of each crop cycle." },
     { id: "festival", name: "End of season festival", about: "Food, music and a big thank you to everyone who grew with us." }
@@ -2165,12 +2480,12 @@ body { font-size: 20px; line-height: 1.5; }
       this.remind = this.storage.get("remind", []);
       this.add("views", {
         id: "events",
-        label: "Events",
+        label: "What's on",
         icon: "calendar",
         order: 30,
-        subtitle: () => "Dates coming soon",
+        subtitle: () => "Every week",
         mount: (container) => {
-          this.box = el3("div", { class: "rt", "data-own-swipe": true });
+          this.box = el6("div", { class: "rt", "data-own-swipe": true });
           container.append(this.box);
         },
         render: () => this.box.replaceChildren(...this.page().flat(Infinity).filter(Boolean))
@@ -2178,24 +2493,36 @@ body { font-size: 20px; line-height: 1.5; }
     }
     page() {
       return [
-        el3("h2", {}, "Coming up"),
+        el6("h2", {}, "Every week"),
+        WEEK.map((w) => el6(
+          "div",
+          { class: "rt-card" },
+          el6("span", { class: "rt-pill on" }, w.day),
+          el6("h3", {}, w.name),
+          el6("p", {}, w.about),
+          el6("ul", { class: "week-list" }, w.things.map((t) => el6("li", {}, t))),
+          el6("p", { class: "rt-muted rt-small" }, "Times: ", el6("span", { class: "rt-ph" }, "[TBC]"))
+        )),
+        el6("h3", {}, "Through the year"),
+        el6("dl", { class: "rt-facts" }, SEASONS.map(([s, what]) => [el6("dt", {}, s), el6("dd", {}, what)])),
+        el6("h3", {}, "Coming up"),
         EVENTS.map((e) => {
           const on = this.remind.includes(e.id);
-          return el3(
+          return el6(
             "div",
             { class: "rt-card" },
-            el3("span", { class: "rt-pill on" }, "Dates coming soon"),
-            el3("h3", {}, e.name),
-            el3("p", {}, e.about),
-            el3(
+            el6("span", { class: "rt-pill on" }, "Dates coming soon"),
+            el6("h3", {}, e.name),
+            el6("p", {}, e.about),
+            el6(
               "dl",
               { class: "rt-facts" },
-              el3("dt", {}, "When"),
-              el3("dd", {}, el3("span", { class: "rt-ph" }, "[date TBC]")),
-              el3("dt", {}, "Where"),
-              el3("dd", {}, el3("span", { class: "rt-ph" }, "[venue TBC]"))
+              el6("dt", {}, "When"),
+              el6("dd", {}, el6("span", { class: "rt-ph" }, "[date TBC]")),
+              el6("dt", {}, "Where"),
+              el6("dd", {}, el6("span", { class: "rt-ph" }, "[venue TBC]"))
             ),
-            el3(
+            el6(
               "button",
               { type: "button", class: "rt-btn alt", "aria-pressed": String(on), onclick: () => this.toggle(e) },
               on ? "✓ On your list" : "Remind me"
@@ -2229,7 +2556,7 @@ body { font-size: 20px; line-height: 1.5; }
   }
 
   // dist/web/features/seeds/Seeds.js
-  var { el: el4 } = ui_exports;
+  var { el: el7 } = ui_exports;
   var Seeds = class extends Feature {
     start() {
       this.mine = this.storage.get("mine", []);
@@ -2240,7 +2567,7 @@ body { font-size: 20px; line-height: 1.5; }
         order: 20,
         subtitle: () => "Free to borrow",
         mount: (container) => {
-          this.box = el4("div", { class: "rt", "data-own-swipe": true });
+          this.box = el7("div", { class: "rt", "data-own-swipe": true });
           container.append(this.box);
         },
         render: () => this.box.replaceChildren(...this.page().flat(Infinity).filter(Boolean))
@@ -2249,22 +2576,23 @@ body { font-size: 20px; line-height: 1.5; }
     page() {
       const mine = STOCK.filter((s) => this.mine.includes(s.id));
       return [
-        el4("h2", {}, "Borrow seeds for free"),
-        el4("p", { class: "rt-muted" }, "Reserve a packet, then collect it from ", el4("span", { class: "rt-ph" }, "[library location]"), ". Save some seeds at the end of the season and bring them back."),
-        mine.length > 0 && el4("h3", {}, "My seeds"),
-        mine.map((s) => el4("div", { class: "rt-card" }, el4(
+        el7("h2", {}, "Borrow seeds for free"),
+        el7("p", { class: "rt-pill on" }, "Comes with Standard membership"),
+        el7("p", { class: "rt-muted" }, "Reserve a packet, then collect it from ", el7("span", { class: "rt-ph" }, "[library location]"), ". Save some seeds at the end of the season and bring them back."),
+        mine.length > 0 && el7("h3", {}, "My seeds"),
+        mine.map((s) => el7("div", { class: "rt-card" }, el7(
           "div",
           { class: "rt-row" },
-          el4("div", {}, el4("b", {}, s.name), el4("br"), el4("span", { class: "rt-muted" }, "Reserved")),
-          el4("button", { type: "button", class: "rt-btn small alt", onclick: () => this.giveBack(s) }, "Return")
+          el7("div", {}, el7("b", {}, s.name), el7("br"), el7("span", { class: "rt-muted" }, "Reserved")),
+          el7("button", { type: "button", class: "rt-btn small alt", onclick: () => this.giveBack(s) }, "Return")
         ))),
-        el4("h3", {}, "Browse"),
-        el4("p", { class: "rt-example" }, "Example stock"),
-        STOCK.map((s) => el4("div", { class: "rt-card" }, el4(
+        el7("h3", {}, "Browse"),
+        el7("p", { class: "rt-example" }, "Example stock"),
+        STOCK.map((s) => el7("div", { class: "rt-card" }, el7(
           "div",
           { class: "rt-row" },
-          el4("div", {}, el4("b", {}, s.name), el4("br"), el4("span", { class: "rt-muted" }, `${s.note} · ${left(s, this.mine)} left`)),
-          this.mine.includes(s.id) ? el4("span", { class: "rt-pill on" }, "Reserved") : canReserve(s, this.mine) ? el4("button", { type: "button", class: "rt-btn small", onclick: () => this.reserve(s) }, "Reserve") : el4("span", { class: "rt-pill" }, "None left")
+          el7("div", {}, el7("b", {}, s.name), el7("br"), el7("span", { class: "rt-muted" }, `${s.note} · ${left(s, this.mine)} left`)),
+          this.mine.includes(s.id) ? el7("span", { class: "rt-pill on" }, "Reserved") : canReserve(s, this.mine) ? el7("button", { type: "button", class: "rt-btn small", onclick: () => this.reserve(s) }, "Reserve") : el7("span", { class: "rt-pill" }, "None left")
         )))
       ];
     }
@@ -2305,7 +2633,7 @@ body { font-size: 20px; line-height: 1.5; }
   ];
 
   // dist/web/features/garden-log/GardenLog.js
-  var { el: el5 } = ui_exports;
+  var { el: el8 } = ui_exports;
   var GardenLog = class extends Feature {
     start() {
       this.log = this.storage.get("log", EXAMPLES);
@@ -2314,12 +2642,12 @@ body { font-size: 20px; line-height: 1.5; }
       this.on("seeds:reserved", ({ name }) => this.addEntry({ type: "job", text: `Reserved ${name} seeds` }));
       this.add("views", {
         id: "garden",
-        label: "My garden",
-        icon: "home",
+        label: "My plot",
+        icon: '<path d="M4 20h16"/><path d="M7 20v-6h10v6"/><path d="M12 14V8"/><path d="M12 8c-2-3-5-3-6-2 1 2 4 3 6 2zM12 8c2-3 5-3 6-2-1 2-4 3-6 2z"/>',
         order: 40,
         subtitle: () => "Your log",
         mount: (container) => {
-          this.box = el5("div", { class: "rt", "data-own-swipe": true });
+          this.box = el8("div", { class: "rt", "data-own-swipe": true });
           container.append(this.box);
         },
         render: () => this.box.replaceChildren(...this.page().flat(Infinity).filter(Boolean))
@@ -2328,30 +2656,30 @@ body { font-size: 20px; line-height: 1.5; }
     page() {
       const t = totals(this.log);
       const food = this.type === "food";
-      const text = el5("input", { type: "text", id: "log-text", placeholder: food ? "e.g. Courgettes" : "e.g. Watered the beans" });
-      const kg = food && el5("input", { type: "number", id: "log-kg", min: "0", step: "0.1", inputmode: "decimal", placeholder: "e.g. 1.5" });
+      const text = el8("input", { type: "text", id: "log-text", placeholder: food ? "e.g. Courgettes" : "e.g. Watered the beans" });
+      const kg = food && el8("input", { type: "number", id: "log-kg", min: "0", step: "0.1", inputmode: "decimal", placeholder: "e.g. 1.5" });
       const error = ui_exports.errorBox();
-      const kind = (value, label) => el5("button", { type: "button", class: "rt-chip", "aria-pressed": String(this.type === value), onclick: () => {
+      const kind = (value, label) => el8("button", { type: "button", class: "rt-chip", "aria-pressed": String(this.type === value), onclick: () => {
         this.type = value;
         this.refresh();
       } }, label);
       return [
-        el5("h2", {}, "What have you done this week?"),
-        el5(
+        el8("h2", {}, "What have you done this week?"),
+        el8(
           "div",
           { class: "log-totals" },
-          el5("div", { class: "rt-card" }, el5("strong", { class: "log-num" }, String(t.jobs)), "jobs done"),
-          el5("div", { class: "rt-card" }, el5("strong", { class: "log-num" }, t.kg.toFixed(1)), "kg of food grown")
+          el8("div", { class: "rt-card" }, el8("strong", { class: "log-num" }, String(t.jobs)), "jobs done"),
+          el8("div", { class: "rt-card" }, el8("strong", { class: "log-num" }, t.kg.toFixed(1)), "kg of food grown")
         ),
-        el5(
+        el8(
           "div",
           { class: "rt-card" },
-          el5("h3", {}, "Add to your log"),
-          el5("div", { class: "rt-chips" }, kind("job", "A job I did"), kind("food", "Food I picked")),
-          el5("div", { class: "rt-q" }, el5("label", { for: "log-text" }, food ? "What did you pick?" : "What did you do?"), text),
-          kg && el5("div", { class: "rt-q" }, el5("label", { for: "log-kg" }, "Roughly how much? (kg)"), kg),
+          el8("h3", {}, "Add to your log"),
+          el8("div", { class: "rt-chips" }, kind("job", "A job I did"), kind("food", "Food I picked")),
+          el8("div", { class: "rt-q" }, el8("label", { for: "log-text" }, food ? "What did you pick?" : "What did you do?"), text),
+          kg && el8("div", { class: "rt-q" }, el8("label", { for: "log-kg" }, "Roughly how much? (kg)"), kg),
           error,
-          el5("button", { type: "button", class: "rt-btn", onclick: () => {
+          el8("button", { type: "button", class: "rt-btn", onclick: () => {
             const message = problem(this.type, text.value, kg?.value);
             if (message) {
               error.show(message);
@@ -2361,363 +2689,21 @@ body { font-size: 20px; line-height: 1.5; }
             this.toast("Added to your log.");
           } }, "Add")
         ),
-        el5("h3", {}, "Your log"),
-        el5("ul", { class: "log-list" }, this.log.map((e) => el5(
+        el8("h3", {}, "Your log"),
+        el8("ul", { class: "log-list" }, this.log.map((e) => el8(
           "li",
           { class: e.type },
           e.text,
           e.kg ? ` · ${e.kg} kg` : "",
-          e.example && el5("span", { class: "rt-example" }, " (example)")
+          e.example && el8("span", { class: "rt-example" }, " (example)")
         ))),
-        el5("p", { class: "rt-muted rt-small" }, "Your log helps us show the difference Rooted Together makes. ", el5("span", { class: "rt-ph" }, "[How impact data is used and stored]"))
+        el8("p", { class: "rt-muted rt-small" }, "Your log helps us show the difference Rooted Together makes to health, food and friendships. ", el8("span", { class: "rt-ph" }, "[How impact data is used and stored]"))
       ];
     }
     addEntry(entry) {
       this.log = [{ ...entry, at: Date.now() }, ...this.log];
       this.storage.set("log", this.log);
       this.refresh();
-    }
-  };
-
-  // dist/web/features/safeguarding/rules.js
-  var PROMISES = [
-    "We never show anyone's home address or phone number.",
-    "Every first introduction is arranged by the Rooted Together team, never straight between people.",
-    "Everything you type in this draft app stays on this phone."
-  ];
-  var CHECKS_PLACEHOLDER = "[Checks for growers and volunteers, e.g. DBS, to be confirmed with Enactus Durham and the university]";
-  var CONTACT_PLACEHOLDER = "[safeguarding lead name and email]";
-
-  // dist/web/features/safeguarding/Safeguarding.js
-  var { el: el6 } = ui_exports;
-  var Safeguarding = class extends Feature {
-    start() {
-      this.defineSlot("safety.notes", "A line on the safeguarding page about what a feature does to keep people safe. Item: { order, text() → one sentence }.");
-      this.add("header.buttons", { id: "safety", label: "Keeping everyone safe", icon: "help", order: 30, onClick: () => this.open() });
-    }
-    open() {
-      if (!this.window) this.window = ui_exports.dialog({ title: "Keeping everyone safe", className: "safety-dialog" });
-      const notes = this.slot("safety.notes").map((n) => n.text()).filter(Boolean);
-      this.window.setContent(el6(
-        "div",
-        { class: "rt" },
-        el6("h2", {}, "Your safety comes first"),
-        el6("ul", { class: "safety-list" }, [...PROMISES, ...notes].map((line) => el6("li", {}, line))),
-        el6(
-          "div",
-          { class: "rt-card" },
-          el6("h3", {}, "Checks"),
-          el6("p", {}, el6("span", { class: "rt-ph" }, CHECKS_PLACEHOLDER))
-        ),
-        el6(
-          "div",
-          { class: "rt-card" },
-          el6("h3", {}, "Worried about something?"),
-          el6("p", {}, "Talk to ", el6("span", { class: "rt-ph" }, CONTACT_PLACEHOLDER), ".")
-        )
-      ));
-      this.window.open();
-    }
-  };
-
-  // dist/web/features/welcome/questions.js
-  var AREAS = ["Belmont", "Elvet", "Framwellgate Moor", "Gilesgate", "Neville's Cross", "Newton Hall", "Pity Me", "Sherburn Road", "Other or not sure"];
-  var PATHS = {
-    owner: {
-      title: "Your garden",
-      finish: "Find me a grower",
-      steps: [
-        { heading: "Tell us about your garden", questions: [
-          { key: "size", label: "How big is it?", kind: "one", options: ["Small", "Medium", "Large"] },
-          { key: "area", label: "Roughly where is it?", kind: "area", note: "Just the area. Please don't add your street or house number." }
-        ] },
-        { heading: "What help would you like?", questions: [
-          { key: "help", label: "Pick any that fit", check: "Help you would like", kind: "many", options: ["Weeding", "Growing vegetables", "Mowing the lawn", "Pruning", "Just some company"] },
-          { key: "visits", label: "How often can a grower visit?", kind: "one", options: ["Once a week", "Twice a week", "Once a fortnight", "Not sure yet"] }
-        ] }
-      ]
-    },
-    grower: {
-      title: "About you",
-      finish: "Find me a garden",
-      steps: [
-        { heading: "What would you like to grow?", questions: [
-          { key: "interests", label: "Pick any that interest you", check: "What you would like to grow", kind: "many", options: ["Vegetables", "Fruit", "Herbs", "Flowers", "Anything!"] },
-          { key: "experience", label: "How much growing have you done?", kind: "one", options: ["None yet", "A little", "Lots"] }
-        ] },
-        { heading: "When are you free?", questions: [
-          { key: "free", label: "Pick any that fit", check: "When you are free", kind: "many", options: ["Weekday mornings", "Weekday afternoons", "Evenings", "Weekends"] },
-          { key: "area", label: "Which area suits you?", kind: "area" }
-        ] }
-      ]
-    }
-  };
-  function stepDone(step, answers) {
-    return step.questions.every((q) => {
-      const v = answers[q.key];
-      return Array.isArray(v) ? v.length > 0 : !!v;
-    });
-  }
-  function choose(question, current, option) {
-    if (question.kind === "many") {
-      const list = Array.isArray(current) ? current : [];
-      return list.includes(option) ? list.filter((o) => o !== option) : [...list, option];
-    }
-    return current === option ? null : option;
-  }
-
-  // dist/web/features/welcome/Welcome.js
-  var { el: el7 } = ui_exports;
-  var Welcome = class extends Feature {
-    start() {
-      this.profile = this.storage.get("profile", null);
-      this.provide("profile", {
-        get: () => this.profile,
-        isSet: () => !!this.profile,
-        edit: () => this.open()
-      });
-      this.add("header.buttons", { id: "details", label: "Edit my details", icon: "note", order: 20, onClick: () => this.open() });
-      this.add("safety.notes", { order: 10, text: () => "Sign-up only asks for a rough area, never your street, house number or phone number." });
-      this.on("app:ready", () => {
-        if (!this.profile) this.open();
-      });
-    }
-    open() {
-      if (!this.window) this.window = ui_exports.dialog({ title: "Welcome", className: "welcome-dialog" });
-      this.draft = { role: this.profile?.role || null, answers: { ...this.profile?.answers || {} } };
-      this.step = this.profile ? 0 : -1;
-      this.draw();
-      this.window.open();
-    }
-    draw() {
-      const path = PATHS[this.draft.role];
-      this.window.setTitle(this.step < 0 ? "Welcome" : path.title);
-      const page = this.step < 0 ? this.choosePage() : this.step >= path.steps.length ? this.checkPage(path) : this.stepPage(path);
-      this.window.setContent(el7("div", { class: "rt welcome" }, page));
-      this.window.content.scrollTop = 0;
-    }
-    choosePage() {
-      const pick = (role) => () => {
-        this.draft = { role, answers: {} };
-        this.step = 0;
-        this.draw();
-      };
-      return [
-        el7("h2", {}, "Welcome to Rooted Together! What would you like to do?"),
-        el7("p", { class: "rt-muted" }, "Choose one. You can change it later."),
-        el7("button", { type: "button", class: "rt-choice", onclick: pick("owner") }, el7("b", {}, "I have a garden"), el7("span", {}, "I'd like some help, and some company.")),
-        el7("button", { type: "button", class: "rt-choice", onclick: pick("grower") }, el7("b", {}, "I want to grow"), el7("span", {}, "I'd like some space to grow food.")),
-        el7("div", { class: "rt-safe" }, ui_exports.icon("help"), el7("span", {}, "We never show your address or phone number. Our team arranges every first meeting."))
-      ];
-    }
-    stepPage(path) {
-      const step = path.steps[this.step];
-      const last = this.step === path.steps.length - 1;
-      const answers = this.draft.answers;
-      return [
-        el7("p", { class: "rt-eyebrow" }, `Step ${this.step + 1} of ${path.steps.length}`),
-        el7("h2", {}, step.heading),
-        step.questions.map((q) => this.question(q, answers)),
-        el7("button", {
-          type: "button",
-          class: "rt-btn",
-          disabled: !stepDone(step, answers),
-          onclick: () => {
-            this.step += 1;
-            this.draw();
-          }
-        }, last ? "Check my answers" : "Next"),
-        el7("button", { type: "button", class: "rt-btn alt", onclick: () => {
-          this.step -= 1;
-          this.draw();
-        } }, "Back")
-      ];
-    }
-    // The last page: every answer in plain words, with a way back to change them.
-    checkPage(path) {
-      const answers = this.draft.answers;
-      const rows = path.steps.flatMap((step) => step.questions).map((q) => {
-        const v = answers[q.key];
-        return [el7("dt", {}, q.check || q.label), el7("dd", {}, Array.isArray(v) ? v.join(", ") : v)];
-      });
-      return [
-        el7("p", { class: "rt-eyebrow" }, "Nearly done"),
-        el7("h2", {}, "Check your answers"),
-        el7("div", { class: "rt-card" }, el7("dl", { class: "rt-facts welcome-check" }, rows)),
-        el7("button", { type: "button", class: "rt-btn", onclick: () => this.finish() }, path.finish),
-        el7("button", { type: "button", class: "rt-btn alt", onclick: () => {
-          this.step = 0;
-          this.draw();
-        } }, "Change my answers")
-      ];
-    }
-    question(q, answers) {
-      if (q.kind === "area") {
-        const id = `welcome-area-${this.draft.role}`;
-        const select2 = el7(
-          "select",
-          { id, onchange: () => {
-            answers.area = select2.value || null;
-            this.draw();
-          } },
-          el7("option", { value: "" }, "Choose an area"),
-          AREAS.map((a) => el7("option", { value: a, selected: answers.area === a }, a))
-        );
-        return el7("div", { class: "rt-q" }, el7("label", { for: id }, q.label), select2, q.note && el7("p", { class: "rt-muted rt-small" }, q.note));
-      }
-      const value = answers[q.key];
-      return el7(
-        "div",
-        { class: "rt-q", role: "group", "aria-label": q.label },
-        el7("span", { class: "rt-label" }, q.label),
-        el7("div", { class: "rt-chips" }, q.options.map((o) => el7("button", {
-          type: "button",
-          class: "rt-chip",
-          "aria-pressed": String(Array.isArray(value) ? value.includes(o) : value === o),
-          onclick: () => {
-            answers[q.key] = choose(q, value, o);
-            this.draw();
-          }
-        }, o)))
-      );
-    }
-    finish() {
-      this.profile = { role: this.draft.role, answers: this.draft.answers };
-      this.storage.set("profile", this.profile);
-      this.window.close();
-      this.emit("profile:saved", { role: this.profile.role });
-      this.app.shell.selectView("match");
-      this.refresh();
-      this.toast("You're signed up. Here's a suggested match.");
-    }
-  };
-
-  // dist/web/features/match/examples.js
-  var GARDENS = [
-    { id: "g1", size: "A medium garden", area: "Gilesgate", help: "Growing vegetables, weeding", visits: "Once a week" },
-    { id: "g2", size: "A small garden", area: "Newton Hall", help: "Just some company, pruning", visits: "Once a fortnight" },
-    { id: "g3", size: "A large garden", area: "Belmont", help: "Growing vegetables, mowing the lawn", visits: "Twice a week" }
-  ];
-  var GROWERS = [
-    { id: "p1", likes: "Vegetables and herbs", experience: "A little", free: "Weekends" },
-    { id: "p2", likes: "Fruit and flowers", experience: "Lots", free: "Weekday mornings" },
-    { id: "p3", likes: "Anything!", experience: "None yet", free: "Evenings" }
-  ];
-  function next(list, index) {
-    return (index + 1) % list.length;
-  }
-
-  // dist/web/features/match/Match.js
-  var { el: el8 } = ui_exports;
-  var Match = class extends Feature {
-    start() {
-      this.index = 0;
-      this.requests = this.storage.get("requests", []);
-      this.add("safety.notes", { order: 20, text: () => "Asking for an introduction goes to our team first. Addresses are only shared after the team has met you both." });
-      this.on("profile:saved", () => {
-        this.index = 0;
-      });
-      this.add("views", {
-        id: "match",
-        label: "Match",
-        icon: "people",
-        order: 10,
-        start: true,
-        subtitle: () => "Garden Share",
-        mount: (container) => {
-          this.box = el8("div", { class: "rt", "data-own-swipe": true });
-          container.append(this.box);
-        },
-        render: () => this.box.replaceChildren(...this.page().flat(Infinity).filter(Boolean))
-      });
-    }
-    page() {
-      const profile = this.use("profile");
-      const me = profile?.get();
-      if (!me) {
-        return [
-          el8("h2", {}, "Tell us about you, and we'll suggest a match"),
-          el8("p", { class: "rt-muted" }, "It takes two short steps."),
-          profile ? el8("button", { type: "button", class: "rt-btn", onclick: () => profile.edit() }, "Get started") : ui_exports.missing("Sign-up isn't in this version.")
-        ];
-      }
-      const owner = me.role === "owner";
-      const list = owner ? GROWERS : GARDENS;
-      const match = list[this.index % list.length];
-      const asked = this.requests.some((r) => r.matchId === match.id);
-      return [
-        el8("h2", {}, owner ? "We think you'd get on" : "Here's a garden for you"),
-        el8(
-          "div",
-          { class: "rt-card strong" },
-          el8("p", { class: "rt-example" }, "Example match"),
-          owner ? this.growerCard(match, me) : this.gardenCard(match)
-        ),
-        el8("div", { class: "rt-safe" }, ui_exports.icon("help"), el8(
-          "span",
-          {},
-          `Requests go to our team first, never straight to ${owner ? "the grower" : "the garden owner"}.`
-        )),
-        asked ? el8(
-          "div",
-          { class: "rt-card" },
-          el8("span", { class: "rt-pill on" }, "With the team"),
-          el8("h3", {}, "Request sent to our team"),
-          el8("p", {}, "Someone from Rooted Together will contact you first to talk it through and arrange a meeting. ", el8("span", { class: "rt-ph" }, "[We aim to reply within X days]"))
-        ) : this.confirming === match.id ? el8(
-          "div",
-          { class: "rt-card strong" },
-          el8("h3", {}, "Send this request to our team?"),
-          el8("p", {}, "Someone from Rooted Together will get in touch with you first. Nobody else sees your details."),
-          el8("button", { type: "button", class: "rt-btn", onclick: () => this.request(match) }, "Yes, send it"),
-          el8("button", { type: "button", class: "rt-btn alt", onclick: () => {
-            this.confirming = null;
-            this.refresh();
-          } }, "Not now")
-        ) : el8("button", { type: "button", class: "rt-btn", onclick: () => {
-          this.confirming = match.id;
-          this.refresh();
-        } }, "Request an introduction"),
-        el8("button", { type: "button", class: "rt-btn alt", onclick: () => {
-          this.index = next(list, this.index);
-          this.confirming = null;
-          this.refresh();
-        } }, "Show me someone else")
-      ];
-    }
-    gardenCard(g) {
-      return [el8("h3", {}, g.size), el8(
-        "dl",
-        { class: "rt-facts" },
-        el8("dt", {}, "Area"),
-        el8("dd", {}, g.area),
-        el8("dt", {}, "Help wanted"),
-        el8("dd", {}, g.help),
-        el8("dt", {}, "Visits"),
-        el8("dd", {}, g.visits)
-      )];
-    }
-    growerCard(p, me) {
-      return [el8("h3", {}, "A grower near you"), el8(
-        "dl",
-        { class: "rt-facts" },
-        el8("dt", {}, "Likes"),
-        el8("dd", {}, p.likes),
-        el8("dt", {}, "Experience"),
-        el8("dd", {}, p.experience),
-        el8("dt", {}, "Free"),
-        el8("dd", {}, p.free),
-        el8("dt", {}, "Area"),
-        el8("dd", {}, me.answers.area || "Durham")
-      )];
-    }
-    request(match) {
-      this.confirming = null;
-      this.requests.push({ matchId: match.id, at: Date.now() });
-      this.storage.set("requests", this.requests);
-      this.emit("intro:requested", { matchId: match.id });
-      this.refresh();
-      this.toast("Sent to the Rooted Together team.");
     }
   };
 
@@ -2780,17 +2766,17 @@ body { font-size: 20px; line-height: 1.5; }
   // dist/web/standalone-entry.js
   globalThis.__folioFeature0 = About;
   var url0 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature0;"], { type: "text/javascript" }));
-  globalThis.__folioFeature1 = Events2;
+  globalThis.__folioFeature1 = Safeguarding;
   var url1 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature1;"], { type: "text/javascript" }));
-  globalThis.__folioFeature2 = Seeds;
+  globalThis.__folioFeature2 = Welcome;
   var url2 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature2;"], { type: "text/javascript" }));
-  globalThis.__folioFeature3 = GardenLog;
+  globalThis.__folioFeature3 = Allotment;
   var url3 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature3;"], { type: "text/javascript" }));
-  globalThis.__folioFeature4 = Safeguarding;
+  globalThis.__folioFeature4 = Events2;
   var url4 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature4;"], { type: "text/javascript" }));
-  globalThis.__folioFeature5 = Welcome;
+  globalThis.__folioFeature5 = Seeds;
   var url5 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature5;"], { type: "text/javascript" }));
-  globalThis.__folioFeature6 = Match;
+  globalThis.__folioFeature6 = GardenLog;
   var url6 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature6;"], { type: "text/javascript" }));
   globalThis.__folioFeature7 = TextSize;
   var url7 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature7;"], { type: "text/javascript" }));
@@ -2803,7 +2789,7 @@ body { font-size: 20px; line-height: 1.5; }
     "framework": "1.12.0",
     "test": false
   };
-  var features = [{ "id": "about", "name": "About the team", "description": "Who made Rooted Together and the UN goals it supports.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/about/About.js" }, { "id": "events", "name": "Events", "description": "Harvest markets and the end of season festival, with dates to come.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/events/Events.js" }, { "id": "seeds", "name": "Seed library", "description": "Browse the shared seed box, reserve a packet and return saved seeds.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/seeds/Seeds.js" }, { "id": "garden-log", "name": "My garden", "description": "A simple log of jobs done and food grown, which adds up to the scheme's impact.", "version": "0.1.0", "requires": [], "uses": ["seeds"], "platforms": ["web", "android", "ios"], "path": "features/garden-log/GardenLog.js" }, { "id": "safeguarding", "name": "Keeping everyone safe", "description": "The safeguarding page in the menu, built from short notes the other features add about what they do.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/safeguarding/Safeguarding.js" }, { "id": "welcome", "name": "Welcome and sign-up", "description": "The first screen and the two short sign-up paths, for garden owners and for growers. Saved on this phone only.", "version": "0.1.0", "requires": [], "uses": ["safeguarding"], "platforms": ["web", "android", "ios"], "path": "features/welcome/Welcome.js" }, { "id": "match", "name": "Match", "description": "A suggested match for you, and asking our team for an introduction. The app never contacts the other person itself.", "version": "0.1.0", "requires": [], "uses": ["welcome", "safeguarding"], "platforms": ["web", "android", "ios"], "path": "features/match/Match.js" }, { "id": "text-size", "name": "Text size", "description": "Make everything in the app bigger, from Settings or the menu. Saved on this phone.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/text-size/TextSize.js" }];
+  var features = [{ "id": "about", "name": "About the team", "description": "Who made Rooted Together and the UN goals it supports.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/about/About.js" }, { "id": "safeguarding", "name": "Keeping everyone safe", "description": "The safeguarding page in the menu, built from short notes the other features add about what they do.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/safeguarding/Safeguarding.js" }, { "id": "welcome", "name": "Welcome and sign-up", "description": "The first screen and the two short sign-up paths, for garden owners and for growers. Saved on this phone only.", "version": "0.1.0", "requires": [], "uses": ["safeguarding"], "platforms": ["web", "android", "ios"], "path": "features/welcome/Welcome.js" }, { "id": "allotment", "name": "Allotment", "description": "The start tab: the community allotment, the three memberships, your plot request and what's coming later.", "version": "0.1.0", "requires": [], "uses": ["welcome"], "platforms": ["web", "android", "ios"], "path": "features/allotment/Allotment.js" }, { "id": "events", "name": "What's on", "description": "Wednesday and Sunday sessions, the seasons, harvest markets and the festival.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/events/Events.js" }, { "id": "seeds", "name": "Seed library", "description": "Browse the shared seed box, reserve a packet and return saved seeds.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/seeds/Seeds.js" }, { "id": "garden-log", "name": "My plot", "description": "A simple log of jobs done and food grown, which adds up to the scheme's impact.", "version": "0.1.0", "requires": [], "uses": ["seeds"], "platforms": ["web", "android", "ios"], "path": "features/garden-log/GardenLog.js" }, { "id": "text-size", "name": "Text size", "description": "Make everything in the app bigger, from Settings or the menu. Saved on this phone.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/text-size/TextSize.js" }];
   new App(config, [{ ...features[0], path: url0 }, { ...features[1], path: url1 }, { ...features[2], path: url2 }, { ...features[3], path: url3 }, { ...features[4], path: url4 }, { ...features[5], path: url5 }, { ...features[6], path: url6 }, { ...features[7], path: url7 }]).start();
 })();
 </script>

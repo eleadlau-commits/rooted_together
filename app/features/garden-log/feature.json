@@ -1,5 +1,5 @@
 {
-  "name": "My garden",
+  "name": "My plot",
   "description": "A simple log of jobs done and food grown, which adds up to the scheme's impact.",
   "version": "0.1.0",
   "main": "GardenLog.js",

@@ -1,9 +1,9 @@
-// Welcome and sign-up. On first open, a full-screen page asks "I have a garden" or "I want to
-// grow", then two short steps of big buttons (questions.js) and a page to check the answers. The answers are saved on this
+// Welcome and sign-up. On first open, a full-screen page asks "I'd like a plot" or "I'd like to
+// help out", then two short steps of big buttons (questions.js) and a page to check the answers. The answers are saved on this
 // phone. "Edit my details" in the menu opens it again.
 //
 // Service 'profile':
-//   get()    → { role: 'owner' | 'grower', answers: {…} } or null before sign-up
+//   get()    → { role: 'member' | 'volunteer', answers: {…} } or null before sign-up
 //   isSet()  → true once someone has finished signing up
 //   edit()   → opens the sign-up page again
 // Event 'profile:saved' { role } after signing up or changing details.
@@ -23,7 +23,7 @@ export default class Welcome extends Feature {
       edit: () => this.open(),
     });
     this.add('header.buttons', { id: 'details', label: 'Edit my details', icon: 'note', order: 20, onClick: () => this.open() });
-    this.add('safety.notes', { order: 10, text: () => 'Sign-up only asks for a rough area, never your street, house number or phone number.' });
+    this.add('safety.notes', { order: 10, text: () => 'Sign-up never asks for your address or phone number.' });
     this.on('app:ready', () => { if (!this.profile) this.open(); });
   }
 
@@ -48,9 +48,9 @@ export default class Welcome extends Feature {
     return [
       el('h2', {}, 'Welcome to Rooted Together! What would you like to do?'),
       el('p', { class: 'rt-muted' }, 'Choose one. You can change it later.'),
-      el('button', { type: 'button', class: 'rt-choice', onclick: pick('owner') }, el('b', {}, 'I have a garden'), el('span', {}, 'I\'d like some help, and some company.')),
-      el('button', { type: 'button', class: 'rt-choice', onclick: pick('grower') }, el('b', {}, 'I want to grow'), el('span', {}, 'I\'d like some space to grow food.')),
-      el('div', { class: 'rt-safe' }, ui.icon('help'), el('span', {}, 'We never show your address or phone number. Our team arranges every first meeting.')),
+      el('button', { type: 'button', class: 'rt-choice', onclick: pick('member') }, el('b', {}, 'I\'d like a plot'), el('span', {}, 'Grow your own food and join the community.')),
+      el('button', { type: 'button', class: 'rt-choice', onclick: pick('volunteer') }, el('b', {}, 'I\'d like to help out'), el('span', {}, 'Share your skills on Wednesdays or Sundays.')),
+      el('div', { class: 'rt-safe' }, ui.icon('help'), el('span', {}, 'We never ask for or show your address or phone number.')),
     ];
   }
 
@@ -109,8 +109,8 @@ export default class Welcome extends Feature {
     this.storage.set('profile', this.profile);
     this.window.close();
     this.emit('profile:saved', { role: this.profile.role });
-    this.app.shell.selectView('match');
+    this.app.shell.selectView('allotment');
     this.refresh();
-    this.toast('You\'re signed up. Here\'s a suggested match.');
+    this.toast('Thank you! Our team will be in touch.');
   }
 }

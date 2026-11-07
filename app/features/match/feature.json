@@ -4,5 +4,6 @@
   "version": "0.1.0",
   "main": "Match.js",
   "styles": ["style.css"],
+  "enabled": false,
   "uses": ["welcome", "safeguarding"]
 }

@@ -16,7 +16,7 @@ export default class GardenLog extends Feature {
     this.provide('impact', { totals: () => totals(this.log) });
     this.on('seeds:reserved', ({ name }) => this.addEntry({ type: 'job', text: `Reserved ${name} seeds` }));
     this.add('views', {
-      id: 'garden', label: 'My garden', icon: 'home', order: 40, subtitle: () => 'Your log',
+      id: 'garden', label: 'My plot', icon: '<path d="M4 20h16"/><path d="M7 20v-6h10v6"/><path d="M12 14V8"/><path d="M12 8c-2-3-5-3-6-2 1 2 4 3 6 2zM12 8c2-3 5-3 6-2-1 2-4 3-6 2z"/>', order: 40, subtitle: () => 'Your log',
       mount: (container) => { this.box = el('div', { class: 'rt', 'data-own-swipe': true }); container.append(this.box); },
       render: () => this.box.replaceChildren(...this.page().flat(Infinity).filter(Boolean)),
     });
@@ -49,7 +49,7 @@ export default class GardenLog extends Feature {
       el('h3', {}, 'Your log'),
       el('ul', { class: 'log-list' }, this.log.map((e) => el('li', { class: e.type },
         e.text, e.kg ? ` · ${e.kg} kg` : '', e.example && el('span', { class: 'rt-example' }, ' (example)')))),
-      el('p', { class: 'rt-muted rt-small' }, 'Your log helps us show the difference Rooted Together makes. ', el('span', { class: 'rt-ph' }, '[How impact data is used and stored]')),
+      el('p', { class: 'rt-muted rt-small' }, 'Your log helps us show the difference Rooted Together makes to health, food and friendships. ', el('span', { class: 'rt-ph' }, '[How impact data is used and stored]')),
     ];
   }
 

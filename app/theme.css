@@ -113,3 +113,4 @@ body { font-size: 20px; line-height: 1.5; }
 .rt-safe { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 14px; background: var(--surface-2); font-size: 18px; }
 .rt-safe svg { width: 26px; height: 26px; flex: none; color: var(--accent); }
 .rt-error { color: var(--danger); font-weight: 700; }
+.about-hmw { font: 800 22px/1.3 var(--font-head); color: var(--accent); }

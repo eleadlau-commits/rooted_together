@@ -1,35 +1,31 @@
 // The sign-up questions for each path, and whether a step is answered, with no screen code.
-// The area is a rough neighbourhood only: there is never a box for a street, house or phone.
+// There is never a box for an address or phone number.
 
 export const AREAS = ['Belmont', 'Elvet', 'Framwellgate Moor', 'Gilesgate', 'Neville\'s Cross', 'Newton Hall', 'Pity Me', 'Sherburn Road', 'Other or not sure'];
 
 export const PATHS = {
-  owner: {
-    title: 'Your garden',
-    finish: 'Find me a grower',
+  member: {
+    title: 'Your plot',
+    finish: 'Ask for a plot',
     steps: [
-      { heading: 'Tell us about your garden', questions: [
-        { key: 'size', label: 'How big is it?', kind: 'one', options: ['Small', 'Medium', 'Large'] },
-        { key: 'area', label: 'Roughly where is it?', kind: 'area', note: 'Just the area. Please don\'t add your street or house number.' },
+      { heading: 'Which membership suits you?', questions: [
+        { key: 'tier', label: 'Choose one', check: 'Membership', kind: 'one', options: ['Starter', 'Standard', 'Supported'] },
       ] },
-      { heading: 'What help would you like?', questions: [
-        { key: 'help', label: 'Pick any that fit', check: 'Help you would like', kind: 'many', options: ['Weeding', 'Growing vegetables', 'Mowing the lawn', 'Pruning', 'Just some company'] },
-        { key: 'visits', label: 'How often can a grower visit?', kind: 'one', options: ['Once a week', 'Twice a week', 'Once a fortnight', 'Not sure yet'] },
-      ] },
-    ],
-  },
-  grower: {
-    title: 'About you',
-    finish: 'Find me a garden',
-    steps: [
       { heading: 'What would you like to grow?', questions: [
         { key: 'interests', label: 'Pick any that interest you', check: 'What you would like to grow', kind: 'many', options: ['Vegetables', 'Fruit', 'Herbs', 'Flowers', 'Anything!'] },
         { key: 'experience', label: 'How much growing have you done?', kind: 'one', options: ['None yet', 'A little', 'Lots'] },
       ] },
-      { heading: 'When are you free?', questions: [
-        { key: 'free', label: 'Pick any that fit', check: 'When you are free', kind: 'many', options: ['Weekday mornings', 'Weekday afternoons', 'Evenings', 'Weekends'] },
-        { key: 'area', label: 'Which area suits you?', kind: 'area' },
+      { heading: 'Which days suit you?', questions: [{ key: 'days', label: 'Pick any that suit you', check: 'Days', kind: 'many', options: ['Wednesday: Social Gardening', 'Sunday: Community and Skills'] }] },
+    ],
+  },
+  volunteer: {
+    title: 'Helping out',
+    finish: 'Offer to help',
+    steps: [
+      { heading: 'How would you like to help?', questions: [
+        { key: 'help', label: 'Pick any that fit', check: 'How you would like to help', kind: 'many', options: ['Teaching growing skills', 'Running a workshop', 'Sharing music', 'Building wildlife homes', 'Refreshments', 'Anything!'] },
       ] },
+      { heading: 'Which days suit you?', questions: [{ key: 'days', label: 'Pick any that suit you', check: 'Days', kind: 'many', options: ['Wednesday: Social Gardening', 'Sunday: Community and Skills'] }] },
     ],
   },
 };
