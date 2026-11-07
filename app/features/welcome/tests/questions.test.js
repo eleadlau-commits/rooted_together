@@ -12,9 +12,9 @@ test('many-choice questions add and remove', () => {
   assert.deepEqual(choose(q, ['Fruit', 'Herbs'], 'Fruit'), ['Herbs']);
 });
 test('a step is done only when every question is answered', () => {
-  const step = PATHS.owner.steps[0];
-  assert.equal(stepDone(step, { size: 'Small' }), false);
-  assert.equal(stepDone(step, { size: 'Small', area: 'Elvet' }), true);
+  const step = PATHS.member.steps[1];
+  assert.equal(stepDone(step, { interests: ['Fruit'] }), false);
+  assert.equal(stepDone(step, { interests: ['Fruit'], experience: 'Lots' }), true);
 });
 test('no question ever asks for an address or phone number', () => {
   const keys = Object.values(PATHS).flatMap((p) => p.steps.flatMap((s) => s.questions.map((q) => q.key)));

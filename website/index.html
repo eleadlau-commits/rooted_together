@@ -63,7 +63,7 @@ a { color: var(--moss); }
 /* hero */
 .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; align-items: center; padding-block: 2.5rem 3.5rem; }
 .hero .lede { font-size: 1.5rem; color: var(--fg); }
-.actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 .beds { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; aspect-ratio: 1 / 1; max-width: 100%; }
 .bed { border-radius: 10px; background: var(--soil); position: relative; overflow: hidden; }
 .bed::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 14px, rgba(255,255,255,.08) 14px 16px); }
@@ -126,14 +126,34 @@ footer { padding-block: 2rem; color: var(--muted); font-size: 1.05rem; border-to
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 html { scroll-behavior: smooth; }
+
+/* allotment additions */
+.hmw { font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.25; color: var(--moss); }
+.tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2rem; }
+.tier { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; padding: 1.4rem; display: grid; gap: .6rem; align-content: start; }
+.tier.mid { border-color: var(--moss); border-width: 3px; }
+.tier .fee { font-family: var(--display); font-weight: 800; font-size: 1.3rem; color: var(--soil); }
+.days { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+.day { background: var(--surface); border-radius: 14px; padding: 1.5rem; border: 2px solid var(--line); display: grid; gap: .6rem; align-content: start; }
+.day ul, .later ul { margin: 0; padding-left: 1.2rem; display: grid; gap: .3rem; }
+.seasons { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.seasons li { border-top: 6px solid var(--moss); background: var(--surface); border-radius: 0 0 12px 12px; padding: 1rem; display: grid; gap: .3rem; }
+.seasons li:nth-child(2) { border-top-color: var(--marigold); } .seasons li:nth-child(3) { border-top-color: var(--soil); } .seasons li:nth-child(4) { border-top-color: var(--muted); }
+.impact-wrap { overflow-x: auto; margin-top: 2rem; }
+.impact { border-collapse: collapse; width: 100%; min-width: 30rem; background: var(--surface); }
+.impact th, .impact td { text-align: left; padding: .8rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.impact th { font-family: var(--display); }
+.steps-plain { margin: 1.5rem 0 0; padding-left: 1.4rem; display: grid; gap: .5rem; }
+.later { border: 3px dashed var(--soil); border-radius: 16px; padding: 1.6rem; display: grid; gap: .8rem; margin-top: 1.5rem; background: var(--surface); }
+@media (max-width: 760px) { .tiers, .days, .seasons { grid-template-columns: 1fr; } }
 </style>
 
 <header class="wrap top">
   <a class="brand" href="#top">Rooted Together</a>
   <nav aria-label="Sections">
-    <a href="#how">How it works</a>
-    <a href="#seeds">Seed library</a>
-    <a href="#events">Events</a>
+    <a href="#membership">Membership</a>
+    <a href="#week">Our week</a>
+    <a href="#impact">Impact</a>
     <a href="#join">Get involved</a>
     <a href="https://eleadlau-commits.github.io/rooted_together/try-app/">Try the app</a>
   </nav>
@@ -142,19 +162,18 @@ html { scroll-behavior: smooth; }
 <main id="top">
   <div class="wrap hero">
     <div class="stack">
-      <p class="eyebrow">Community growing in Durham</p>
+      <p class="eyebrow">A community allotment in Durham</p>
       <h1>Rooted Together</h1>
-      <p class="lede">Your garden, their green fingers. We pair people who have a garden with people who want to grow food, and share the harvest.</p>
+      <p class="lede">A community allotment bringing generations together. Grow your own food, make friends and learn from each other.</p>
       <div class="actions">
         <a class="btn" href="#join">Sign up</a>
-        <a class="btn alt" href="#how">How it works</a>
         <a class="btn alt" href="https://eleadlau-commits.github.io/rooted_together/try-app/">Try the app</a>
       </div>
     </div>
     <div class="beds" aria-hidden="true">
-      <div class="bed grow"><span>Beans</span></div><div class="bed"></div><div class="bed bloom"><span>Squash</span></div>
-      <div class="bed"></div><div class="bed grow"><span>Kale</span></div><div class="bed grow"></div>
-      <div class="bed bloom"></div><div class="bed"><span>Seeds</span></div><div class="bed grow"><span>Herbs</span></div>
+      <div class="bed grow"><span>Plot 1</span></div><div class="bed"></div><div class="bed bloom"><span>Flowers</span></div>
+      <div class="bed"></div><div class="bed grow"><span>Veg</span></div><div class="bed grow"></div>
+      <div class="bed bloom"></div><div class="bed"><span>Seeds</span></div><div class="bed grow"><span>Fruit</span></div>
     </div>
   </div>
 
@@ -162,36 +181,58 @@ html { scroll-behavior: smooth; }
     <div class="wrap stack">
       <p class="eyebrow">Why we're doing this</p>
       <div class="problem stack">
-        <p>Notice the overgrown gardens around Durham? Older people have the space, students have the energy, and nobody is bringing them together.</p>
-        <p>Elderly cannot manage them, and students have no space. Both are missing out on fresh food, exercise, companionship and learning from each other.</p>
+        <p class="hmw">How might we help older people feel less isolated and more connected to their communities?</p>
       </div>
-      <p>Rooted Together is a community allotment hub plus a <strong>Garden Share</strong> scheme. Alongside it we run a free seed library, a small harvest market at the end of each crop cycle, and a festival at the end of the season.</p>
+      <p>Rooted Together tackles isolation and loneliness with a shared community allotment: a regular reason to get outside, a plot to care for and people to share it with. It is designed to improve mental wellbeing, encourage healthy lifestyles and bring younger and older generations together through gardening.</p>
     </div>
   </section>
 
-  <section id="how">
+  <section id="idea">
+    <div class="wrap stack">
+      <p class="eyebrow">Our idea</p>
+      <h2>Your own plot, and a community around it</h2>
+      <p>We aim to secure a small piece of land in Durham <span class="ph">[site to be confirmed]</span> and divide it into individual growing plots for a first group of up to 20 members.</p>
+      <p>Each member grows whichever flowers, fruit or vegetables they choose, and looks after their own plot. That gives a regular reason to leave the house, spend time outdoors and work towards something meaningful.</p>
+      <p>It's about much more than gardening: a welcoming place to socialise, share skills, learn from one another and improve the local environment.</p>
+    </div>
+  </section>
+
+  <section id="membership" class="band">
     <div class="wrap">
-      <p class="eyebrow">Garden Share</p>
-      <h2>How it works</h2>
-      <div class="paths">
-        <div class="path">
-          <h3>If you have a garden</h3>
-          <ol class="steps">
-            <li><div><strong>Tell us about your garden</strong>Its size, roughly where it is, and what help you'd like.</div></li>
-            <li><div><strong>We find you a grower</strong>Our team suggests someone nearby and introduces you in person.</div></li>
-            <li><div><strong>Enjoy it again</strong>Your garden is looked after, and you share the food and the company.</div></li>
-          </ol>
+      <p class="eyebrow">Membership</p>
+      <h2>Three ways to join</h2>
+      <div class="tiers">
+        <article class="tier"><h3>Starter</h3><p class="fee"><span class="ph">[£ fee TBC]</span></p><p>A smaller growing plot and shared community activities.</p></article>
+        <article class="tier mid"><h3>Standard</h3><p class="fee"><span class="ph">[£ fee TBC]</span></p><p>A larger plot, the seed library and workshops.</p></article>
+        <article class="tier"><h3>Supported</h3><p class="fee">Reduced cost or sponsored</p><p>For anyone who may struggle to afford the standard fee, so cost is never a barrier.</p></article>
+      </div>
+      <p style="margin-top:1.5rem">Fees help pay for land rental, water, seeds, tools, compost, insurance and upkeep. You keep everything you grow, and may sell permitted surplus at our seasonal harvest market.</p>
+    </div>
+  </section>
+
+  <section id="week">
+    <div class="wrap">
+      <p class="eyebrow">Our weekly programme</p>
+      <h2>Two days a week, each with its own feel</h2>
+      <div class="days">
+        <div class="day">
+          <h3>Wednesdays: Social Gardening</h3>
+          <p>A relaxed, informal afternoon to tend your plot and enjoy each other's company.</p>
+          <ul><li>Gardening and looking after your plot</li><li>Music-sharing: swapping songs across generations</li><li>Shared picnics and refreshments</li><li>Time to chat and make friends</li></ul>
         </div>
-        <div class="path">
-          <h3>If you want to grow</h3>
-          <ol class="steps">
-            <li><div><strong>Sign up as a grower</strong>Tell us what you'd like to grow, your experience, and when you're free.</div></li>
-            <li><div><strong>Meet your garden owner</strong>Our team arranges the first meeting and comes along.</div></li>
-            <li><div><strong>Grow and log it</strong>Look after the space, record what you grow, and bring the extra to market.</div></li>
-          </ol>
+        <div class="day">
+          <h3>Sundays: Community and Skills</h3>
+          <p>A more organised day for learning, sharing skills and helping local wildlife.</p>
+          <ul><li>Gardening workshops and demonstrations</li><li>Older members teaching traditional growing skills</li><li>Students sharing sustainability know-how</li><li>Building bird feeders, hedgehog shelters and insect homes</li><li>Composting and recycling workshops</li></ul>
         </div>
       </div>
-      <div class="safe-note"><strong>Your safety comes first.</strong> We never show anyone's address or phone number on this site or in the app. Every first introduction is arranged by the Rooted Together team.</div>
+      <h3 style="margin-top:2.5rem">Through the seasons</h3>
+      <ul class="seasons">
+        <li><strong>Spring</strong>Planting days, seed sharing and preparing plots.</li>
+        <li><strong>Summer</strong>Gardening, outdoor socials and environmental workshops.</li>
+        <li><strong>Autumn</strong>Harvest celebrations and our community market.</li>
+        <li><strong>Winter</strong>Seed library, planning next season and indoor workshops.</li>
+      </ul>
     </div>
   </section>
 
@@ -199,16 +240,11 @@ html { scroll-behavior: smooth; }
     <div class="wrap">
       <p class="eyebrow">Seed library</p>
       <h2>Borrow seeds, grow them, bring some back</h2>
-      <p style="margin-top:1rem">The seed library is a shared box of seeds anyone can use for free. Take what you need for the season. When your plants go to seed, save a few and return them so the library keeps growing.</p>
+      <p style="margin-top:1rem">The seed library comes with Standard membership. Take what you need for the season, then save a few seeds from your plants and return them so the library keeps growing.</p>
       <div class="how-seeds">
-        <div><h3>Borrow</h3><p>Pick up a packet at <span class="ph">[library location and opening times]</span> or reserve one in the app.</p></div>
-        <div><h3>Grow</h3><p>Each packet has simple growing notes. Ask us if you're not sure.</p></div>
+        <div><h3>Borrow</h3><p>Pick up a packet at <span class="ph">[library location and times]</span> or reserve one in the app.</p></div>
+        <div><h3>Grow</h3><p>Each packet has simple growing notes. Ask at a Sunday session if you're unsure.</p></div>
         <div><h3>Return or swap</h3><p>Bring back saved seeds, or swap seeds from your own garden.</p></div>
-      </div>
-      <div class="packets" aria-label="Example seed packets">
-        <article class="packet"><h3>Runner beans</h3><dl><dt>Sow</dt><dd><span class="ph">[month to check]</span></dd><dt>Good for</dt><dd>Beginners</dd><dt>In stock</dt><dd><span class="ph">[number]</span></dd></dl></article>
-        <article class="packet"><h3>Kale</h3><dl><dt>Sow</dt><dd><span class="ph">[month to check]</span></dd><dt>Good for</dt><dd>Small spaces</dd><dt>In stock</dt><dd><span class="ph">[number]</span></dd></dl></article>
-        <article class="packet"><h3>Courgette</h3><dl><dt>Sow</dt><dd><span class="ph">[month to check]</span></dd><dt>Good for</dt><dd>Big harvests</dd><dt>In stock</dt><dd><span class="ph">[number]</span></dd></dl></article>
       </div>
     </div>
   </section>
@@ -218,16 +254,51 @@ html { scroll-behavior: smooth; }
       <p class="eyebrow">Harvest market and festival</p>
       <h2>Dates coming soon</h2>
       <div class="dates">
-        <div class="date-card">
-          <span class="tag">Coming soon</span>
-          <h3>Harvest market</h3>
-          <p>At the end of each crop cycle, growers sell or share what they've grown. <span class="ph">[Date, time and venue TBC]</span></p>
-        </div>
-        <div class="date-card">
-          <span class="tag">Coming soon</span>
-          <h3>End of season festival</h3>
-          <p>Food, music and thank-yous to everyone who grew with us this year. <span class="ph">[Date, time and venue TBC]</span></p>
-        </div>
+        <div class="date-card"><span class="tag">Coming soon</span><h3>Harvest market</h3><p>Members share or sell permitted surplus produce. <span class="ph">[Date, time and venue TBC]</span></p></div>
+        <div class="date-card"><span class="tag">Coming soon</span><h3>End of season festival</h3><p>Food, music and thank-yous to everyone who grew with us. <span class="ph">[Date, time and venue TBC]</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact" class="band">
+    <div class="wrap">
+      <p class="eyebrow">The difference we want to make</p>
+      <h2>Our intended impact</h2>
+      <div class="impact-wrap"><table class="impact">
+        <thead><tr><th scope="col">Area</th><th scope="col">Intended impact</th></tr></thead>
+        <tbody>
+          <tr><td>Mental wellbeing</td><td>Reduce loneliness and encourage social interaction.</td></tr>
+          <tr><td>Physical health</td><td>Encourage regular outdoor activity and gardening.</td></tr>
+          <tr><td>Healthy eating</td><td>Give people opportunities to grow their own fresh food.</td></tr>
+          <tr><td>Intergenerational relationships</td><td>Connect older and younger people through shared interests and skills.</td></tr>
+          <tr><td>Environmental sustainability</td><td>Encourage composting, reuse and sustainable growing.</td></tr>
+          <tr><td>Biodiversity</td><td>Create habitats that support local wildlife.</td></tr>
+          <tr><td>Education</td><td>Develop practical gardening and environmental skills.</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:1.5rem">We especially want to welcome people who might otherwise feel isolated or have few chances to join community activities.</p>
+      <h3 style="margin-top:2rem">How it keeps going</h3>
+      <p style="margin-top:.5rem">Rooted Together will run as a community-focused social enterprise, funded by membership fees, paid workshops, harvest markets and festival activities, community grants and sponsorship, and partnerships with local organisations. Supported memberships keep it affordable.</p>
+    </div>
+  </section>
+
+  <section id="plan">
+    <div class="wrap">
+      <p class="eyebrow">Our first steps</p>
+      <h2>Testing that it works and is affordable</h2>
+      <ol class="steps-plain">
+        <li><strong>Secure land:</strong> approach Durham County Council, Durham University and local landowners.</li>
+        <li><strong>Check demand:</strong> talk to older residents, students and local families about joining and what they'd pay.</li>
+        <li><strong>Work out costs:</strong> land rental, insurance, water, tools and compost.</li>
+        <li><strong>Build partnerships</strong> with local gardening, environmental and community groups.</li>
+        <li><strong>Prepare the site</strong> and divide it into plots.</li>
+        <li><strong>Recruit our first 20 members</strong>, then launch Wednesday and Sunday sessions.</li>
+      </ol>
+      <p style="margin-top:1rem">Before launching we'll also look into insurance, accessibility, land permissions and safeguarding.</p>
+      <div class="later">
+        <span class="tag">Future plan</span>
+        <h3>Garden Share</h3>
+        <p>Later on, we'd like to match older people who can no longer manage their gardens with students and young people who want space to grow. Every first introduction would go through our team, and nobody's address or phone number would ever be shown.</p>
       </div>
     </div>
   </section>
@@ -242,9 +313,9 @@ html { scroll-behavior: smooth; }
         <div><label for="email">Email address</label><input type="email" id="email" autocomplete="email"></div>
         <fieldset>
           <legend>I'd like to…</legend>
-          <label class="choice"><input type="radio" name="role" id="role-garden" value="garden">I have a garden</label>
-          <label class="choice"><input type="radio" name="role" id="role-grow" value="grow">I want to grow</label>
-          <label class="choice"><input type="radio" name="role" id="role-volunteer" value="volunteer">I want to volunteer</label>
+          <label class="choice"><input type="radio" name="role" id="role-plot" value="plot">Have a plot</label>
+          <label class="choice"><input type="radio" name="role" id="role-volunteer" value="volunteer">Volunteer or share my skills</label>
+          <label class="choice"><input type="radio" name="role" id="role-partner" value="partner">Partner with you or offer land</label>
         </fieldset>
         <p class="error" id="err" hidden></p>
         <div><button class="btn" type="submit">Send my details</button></div>
@@ -257,9 +328,8 @@ html { scroll-behavior: smooth; }
         <h3>Keeping everyone safe</h3>
         <ul>
           <li>We never share your home address or phone number publicly.</li>
-          <li>All first introductions go through the Rooted Together team, never straight to a garden owner.</li>
           <li>We only use your details to run Rooted Together. <span class="ph">[Privacy policy link]</span></li>
-          <li><span class="ph">[Checks for volunteers and growers, e.g. DBS, to be confirmed with Enactus Durham and the university]</span></li>
+          <li><span class="ph">[Checks for volunteers and session leaders, e.g. DBS, to be confirmed with Enactus Durham and the university]</span></li>
           <li>Worried about anything? Contact <span class="ph">[safeguarding lead name and email]</span>.</li>
         </ul>
       </div>
@@ -271,6 +341,7 @@ html { scroll-behavior: smooth; }
       <p class="eyebrow">About us</p>
       <h2>Team Green Durham</h2>
       <p>We're Team Green Durham, students from Durham University's Enactus society. <span class="ph">[Team names and roles]</span></p>
+      <p>We want Rooted Together to become a place where people of different ages and backgrounds meet, build friendships, learn new skills and contribute to their community: helping tackle loneliness, encouraging healthier lifestyles and creating a more connected, environmentally conscious Durham.</p>
       <p>Rooted Together supports these UN Sustainable Development Goals:</p>
       <ul class="sdgs">
         <li>2 Zero hunger</li>
@@ -283,7 +354,7 @@ html { scroll-behavior: smooth; }
 </main>
 
 <footer>
-  <div class="wrap">Rooted Together · a draft for testing · <span class="ph">[contact email]</span></div>
+  <div class="wrap">Rooted Together · Growing food, friendships and a stronger community · a draft for testing · <span class="ph">[contact email]</span></div>
 </footer>
 
 <script>

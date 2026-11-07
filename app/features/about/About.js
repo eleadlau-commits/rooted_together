@@ -20,8 +20,10 @@ export default class About extends Feature {
         el('h2', {}, 'Team Green Durham'),
         el('p', {}, 'We\'re students from Durham University\'s Enactus society. ', el('span', { class: 'rt-ph' }, '[Team names and roles]')),
         el('h3', {}, 'Why we\'re doing this'),
-        el('p', {}, 'Notice the overgrown gardens around Durham? Older people have the space, students have the energy, and nobody is bringing them together. Elderly cannot manage them, and students have no space. Both are missing out on fresh food, exercise, companionship and learning from each other.'),
-        el('p', {}, 'Rooted Together pairs people who have a garden with people who want to grow food. It also runs a seed library, harvest markets and an end of season festival.'),
+        el('p', { class: 'about-hmw' }, 'How might we help older people feel less isolated and more connected to their communities?'),
+        el('p', {}, 'Rooted Together is a community allotment designed to improve mental wellbeing, encourage healthy lifestyles and bring younger and older generations together through gardening.'),
+        el('p', {}, 'Our vision: a place where people of different ages and backgrounds meet, build friendships, learn new skills and help create a more connected, environmentally conscious Durham.'),
+        el('p', {}, el('b', {}, 'Future plan: '), 'Garden Share, matching people who can no longer manage their gardens with people who want space to grow.'),
         el('h3', {}, 'UN goals we support'),
         el('div', { class: 'rt-chips' }, GOALS.map((g) => el('span', { class: 'rt-pill' }, g))),
         el('p', { class: 'rt-muted rt-small' }, 'This is a draft for testing. ', el('span', { class: 'rt-ph' }, '[contact email]'))));

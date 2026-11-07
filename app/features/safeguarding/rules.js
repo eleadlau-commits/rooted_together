@@ -3,7 +3,7 @@
 
 export const PROMISES = [
   'We never show anyone\'s home address or phone number.',
-  'Every first introduction is arranged by the Rooted Together team, never straight between people.',
+  'Sessions are run by the Rooted Together team, with a named person you can talk to.',
   'Everything you type in this draft app stays on this phone.',
 ];
 

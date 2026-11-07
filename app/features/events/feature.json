@@ -1,6 +1,7 @@
 {
-  "name": "Events",
-  "description": "Harvest markets and the end of season festival, with dates to come.",
+  "name": "What's on",
+  "description": "Wednesday and Sunday sessions, the seasons, harvest markets and the festival.",
   "version": "0.1.0",
-  "main": "Events.js"
+  "main": "Events.js",
+  "styles": ["style.css"]
 }

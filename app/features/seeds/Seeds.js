@@ -24,6 +24,7 @@ export default class Seeds extends Feature {
     const mine = STOCK.filter((s) => this.mine.includes(s.id));
     return [
       el('h2', {}, 'Borrow seeds for free'),
+      el('p', { class: 'rt-pill on' }, 'Comes with Standard membership'),
       el('p', { class: 'rt-muted' }, 'Reserve a packet, then collect it from ', el('span', { class: 'rt-ph' }, '[library location]'), '. Save some seeds at the end of the season and bring them back.'),
       mine.length > 0 && el('h3', {}, 'My seeds'),
       mine.map((s) => el('div', { class: 'rt-card' }, el('div', { class: 'rt-row' },

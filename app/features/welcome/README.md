@@ -1,7 +1,7 @@
 # Welcome and sign-up
 
-First screen ("I have a garden" / "I want to grow") and two short steps for each path.
-Questions live in `questions.js`. Only a rough area is asked for, never an address or phone.
+First screen ("I'd like a plot" / "I'd like to help out"), short steps for each path, and a page to check the answers.
+Questions live in `questions.js`. Never asks for an address or phone number.
 
 **Service `profile`:** `get()` → `{ role, answers }` or `null`; `isSet()`; `edit()` opens sign-up again.
 **Event:** `profile:saved` `{ role }`.

@@ -1,0 +1,8 @@
+{
+  "name": "Allotment",
+  "description": "The start tab: the community allotment, the three memberships, your plot request and what's coming later.",
+  "version": "0.1.0",
+  "main": "Allotment.js",
+  "styles": ["style.css"],
+  "uses": ["welcome"]
+}
