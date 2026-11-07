@@ -1,0 +1,2811 @@
+<!doctype html>
+<!-- Made by standalone.py from app/. Don't edit: change app/ and run python standalone.py. -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Rooted Together</title>
+<meta name="description" content="Garden Share for Durham: people with gardens meet people who want to grow food. A draft by Team Green Durham for testing. Nothing you enter leaves this phone.">
+<meta name="theme-color" content="#2a3d26" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e130d" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Rooted Together">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAHlklEQVR4nOzdW2xUdQLH8f8Ml5kOlmCBRVi0XYtQNF0VjRoLWmih0HXd7trg0qyLtwejiZcHEzVGH3zxxcSoD0ajJt41opZiW1t7FRAUwUuloIUCRmvU0qLS6WXa8WDJMO3MtNP+Osyp5/tJ08w5c07TzHxz5n9u7dQjrW0GGK+pBhAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQGd0v7z0Tdee7fb31OwNveCvy+NZ5WPd+ypqqhLz1hYVFyYmnqGcR7XkdY2A2N6envvvv2Bbw9/Nzj52BOPLFm6aORVPt31+cP3Pzr4eEnWoseefMQ4j9vgDw0120L1WF5/5e1RV3npuTdCj/fva9n18WfGeQjopC2lVeGTn+zc80PbjyMsv7+5paWldehPeN84DwGdsPer/QcPHBo2s3xz9QirbNk8PBdrC/TTj+3GYQjohPeGbn4GVZTX9PX2RV3+l19+bajdHjl/8zsVxmEIyHQc7fywYUfkfH+Xv752W9RVKspqBgYGIudXltfGau7PioBOvOtRazAxhjXWwmWllVGXt5qrrdlqnITjQKa8LOZY50DLoWeffnGGzxc+s/2njs6OYzF/2uaqgnUrjWM4PaCtDTutj7DQZOrM1GWXZDfUnRrflG4aZVizem1udWV9aNJqbl/zN1lLzzPO4PSPsB0f7QqfXLNu5T/+tcaMxfoNRSvzlofP2da40ziG0wM6/tvx8Mm81Vedf8GS9Iyz41vbXLQse/6CefkFV4fPPHbsV+MYTg9ooH/I8Nnj8Vjf7773tqnTRv9wn3HGjNvvvNl64PV6jVM5fhDtGjrlClrfz1t87vMvP9lYt73reFes9azRUm5ejjNPoIZzfEDBoVPBk0Glpc0quq7QYDTsxkNCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECTJD6h579d9fYFhM70ez+KszMHH+5q/6Y242cozffqof/wgHi73kCvK3OO6QtPlchmnSmZANVWNTz3+XF9fb9RnfTNSVq/NrdxS09MTfQFvive+B++69LKLjGDYez++FJwcUDKviS4vq45Vj6XruL90U0Wseizd/u7qyjqjGXZNdH9/0IxdrPsSnSCZW6DDh741moMHjhgkFYNoSOwSkDXiKfpPYSAQePO10ljLlNxwnfX91Zc2heZMwNgj2l0ZiJ9d7gtL8flK/l+8vqQo9gJeawHra8qUKaGZQf3tjnFXBuJkly1Q/O9bf3//qbXYAiWbXbZA8b9vbIFshUE0JPa6N97r9c6dOzvqUxkZ5xjYj10CCp1RiPXXVdZdkzf4IHwM5JYHQZzKENnlIyw0mim+/tqcFZd/WL89EDgZisfryV2VM3tOWpS1jDoICg4dRgXHNaoKBp079LZNQGGP5y+Yt77k37GWtAbRoY0Qg+ikYxANCQFBQkCQEBAkBAQJAUFil4Dcce8+hx9IbPv+h2tWbzATZ0IOJNZWN1pfRjZt2vTsC7NuvLXk3Mx0Y1d2ORI9EPcRnfCTqRP/a4zr2tQEHUjs6+vdveuLyvc+MDZml4DiP36Xksg/yuzzeczYeVMS+Ct9trvJ2Njku5zj0isuNomx9PzFqTNTzdilZyyMdQ5YN8JtBXYw+cZAN9x4/YK/nrW3aX8gEDATZIrbvWhJ5qr8FWa87n/onvraba0HD0/Ix1nTF81mkrBLQPGPgeadNWfw4mhbWZyVGboTUld87U3d/m4zGbAbD8nk+whzAnfYy9H+89ERDlVcuCz7fxuLrdGbSZLJtxvvBANxvxyf7/7yrdfLTPLY7opEWGannRn/wk1fJnPEzRbIjq5ccVn8C4cfmj/9GAPZ0cZb/ntO+sL6mq09vdEPAoXv57uT+tpNvt14h1iZv9z6ivXsxg13WIPrwccDSX3t2I2HhIAgISBICAgSAoKEgCAhIEgICBICgoSAICEgSAgIktMR0JbSqurKugMth0ZYhrPx49bt7468ZDFzUUZBYV7hP/NNgiX8eqCent7nn3l55HoMZ+MnmvWCv/DsK5H/BmnCJTygo+0dkf+sKdKc2WO4Bg9nps0adRm/v7uzo9MkWMIDmr9gXvrfzh51sZyrrjCIW86Ky0ddxvoUm/uXOSbBXEda20yCdXYcq6qo3bO7KepNdz5fSn7B1VcuH8NFnLBsbdhZ80Gjv8sf+ZTL5br4kuw161bNmjXTJNjpCAh/YuzGQ0JAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkBAQJAUFCQJAQECQEBAkBQUJAkBAQJAQECQFBQkCQEBAkvwMAAP//o4HXvgAAAAZJREFUAwCJh/rki32wjAAAAABJRU5ErkJggg==">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@600;800&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<style>
+/* Folio base styles: colours, the app frame, and the building blocks every feature shares
+   (buttons, inputs, pop-up windows, switches, messages). Features add their own styles
+   in their folder; the compiler puts this file first and each feature's styles after it.
+   The accent colour comes from app/app.json ("theme"). */
+
+:root {
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --surface-2: #eceef5;
+  --text: #151925;
+  --muted: #5f6678;
+  --line: #dfe2eb;
+  --accent: #3d5afe;
+  --accent-ink: #ffffff;
+  --accent-soft: #e6eaff;
+  --danger: #c62828;
+  --danger-soft: #fdecec;
+  --shadow: 0 1px 2px rgb(16 20 32 / .05), 0 6px 18px rgb(16 20 32 / .06);
+  --radius: 14px;
+  /* Corner shapes, from large to small. An app can give them uneven corners in app/theme.css
+     (e.g. a "knife" shape: three small corners and one large one). */
+  --shape: var(--radius);        /* cards, pop-up windows, "Missing content" boxes */
+  --shape-btn: 12px;             /* buttons, text boxes, switches between choices, the selected tab */
+  --shape-sm: 10px;              /* small tags, pills and icon tiles */
+  /* Used by the frame. app/theme.css can change any of these. */
+  --text-2: var(--text);
+  --top: #1d2130;           /* the dark area at the top: top bar and view titles */
+  --top-2: #262b3d;
+  --on-top: #ffffff;
+  --on-top-muted: #c3c8d6;
+  --tab-ink: var(--muted);  /* tabs that aren't selected */
+  --glow: var(--accent);    /* the line above the selected tab */
+  --gutter: 16px;           /* space at the screen's sides */
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1117;
+    --surface: #181b24;
+    --surface-2: #232733;
+    --text: #e8eaf0;
+    --muted: #9aa1b2;
+    --line: #2c313e;
+    --accent: #8c9eff;
+    --accent-ink: #0f1117;
+    --accent-soft: #252c4d;
+    --danger: #ff8a80;
+    --danger-soft: #3a1f22;
+    --shadow: 0 1px 2px rgb(0 0 0 / .3);
+    --top: #0b0d12;
+    --top-2: #111520;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.45 var(--font);
+  -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] { display: none !important; }
+
+svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+code {
+  font: 0.88em var(--font-mono);
+  background: var(--surface-2);
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+
+h1, h2, h3 { margin: 0; line-height: 1.2; }
+
+/* ---- App frame ---- */
+
+.app {
+  max-width: 560px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(84px + env(safe-area-inset-bottom));
+}
+.app:has(> .tabbar[hidden]) { padding-bottom: calc(32px + env(safe-area-inset-bottom)); }
+
+/* The top bar: menu on the left; other features' buttons, then account and settings, on the right */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(10px + env(safe-area-inset-top)) var(--gutter) 6px;
+  background: linear-gradient(180deg, var(--top), var(--top-2));
+  color: var(--on-top);
+}
+/* Under the top bar, the dark area fades into the page, unless the view's title is on it too. */
+.topbar::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: linear-gradient(180deg, var(--top-2), var(--bg));
+  pointer-events: none;
+}
+.dark-head > .topbar { background: var(--top); }
+.dark-head > .topbar::after { display: none; }
+.top-btn {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  margin-left: -10px;
+  border: 0;
+  border-radius: var(--shape-btn);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.top-btn svg { width: 24px; height: 24px; }
+.top-right { display: flex; align-items: center; gap: 8px; }
+.top-actions { display: flex; gap: 8px; }
+.top-actions:empty { display: none; }
+.top-btn.top-action { margin: 0; background: rgb(255 255 255 / .14); }
+.top-btn.top-action svg { width: 22px; height: 22px; }
+.top-btn.account { margin: 0 -10px 0 0; }
+.top-btn.account svg { width: 24px; height: 24px; }
+.top-btn:focus-visible, .tab:focus-visible { outline: 2px solid var(--glow); outline-offset: 2px; }
+
+main, .view-host { flex: 1; display: flex; flex-direction: column; }
+.view { flex: 1; display: flex; flex-direction: column; }
+.screen-host { padding: 0 var(--gutter); }
+
+/* Each view's title. Views can add more there (mount's `head`). It's on the page, or on the
+   dark area for views that ask for that (darkHead). */
+.page-head { position: relative; padding: 22px var(--gutter) 0; color: var(--text); }
+.dark-head .page-head {
+  padding: 6px var(--gutter) 18px;
+  background: linear-gradient(180deg, var(--top), var(--top-2));
+  color: var(--on-top);
+}
+.dark-head .page-head::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background: linear-gradient(180deg, var(--top-2), var(--bg));
+  pointer-events: none;
+}
+.page-title { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.page-title h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.01em; }
+.page-sub { margin: 0; padding-bottom: 4px; font-size: 14px; color: var(--muted); text-align: right; }
+.page-title h1 { margin-right: auto; }
+.page-actions { display: flex; align-items: center; gap: 4px; margin: 0 -6px 0 -8px; }
+.page-actions:empty { display: none; }
+.dark-head .page-sub { color: var(--on-top-muted); }
+.page-extra:empty { display: none; }
+.page-title:not([hidden]) + .page-extra { margin-top: 14px; }
+.page-body { position: relative; flex: 1; display: flex; flex-direction: column; padding: 18px var(--gutter) 0; }
+
+/* The tab bar along the bottom. The selected tab is filled in the accent colour (a "pill" that
+   slides between tabs), and the line above the bar glows over it. Tabs.js sets --pos (which tab,
+   maybe between two while swiping), --glow-x and --shift (the bar following a finger a little). */
+@property --glow-x { syntax: "<percentage>"; inherits: true; initial-value: 50%; }
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+  background: var(--surface);
+  touch-action: none;
+  transition: --glow-x 0.25s ease;
+}
+.tabbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent calc(var(--glow-x) - 55%), var(--glow) var(--glow-x), transparent calc(var(--glow-x) + 55%));
+}
+.tab-track {
+  position: relative;
+  display: flex;
+  gap: 2px;
+  transform: translateX(var(--shift, 0px));
+  transition: transform 0.25s ease;
+}
+.tab-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc((100% - (var(--tabs) - 1) * 2px) / var(--tabs));
+  height: 100%;
+  border-radius: var(--shape-btn);
+  background: var(--accent);
+  transform: translateX(calc(var(--pos, 0) * (100% + 2px)));
+  transition: transform 0.25s cubic-bezier(.2, .8, .2, 1);
+}
+.tabbar.dragging, .tabbar.dragging .tab-track, .tabbar.dragging .tab-pill { transition: none; }
+.tab {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 0;
+  border-radius: var(--shape-btn);
+  background: transparent;
+  color: var(--tab-ink);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.tab svg { width: 22px; height: 22px; }
+.tab span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tab.lit { color: var(--accent-ink); font-weight: 600; }
+
+/* The menu: a panel that slides in from the left, over most of the screen. The rest is dimmed. */
+dialog.menu-drawer {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+}
+.menu-drawer::backdrop { background: rgb(0 0 0 / .45); opacity: 0; transition: opacity 0.28s ease; }
+.menu-drawer.shown::backdrop { opacity: 1; }
+.menu-panel {
+  width: min(85vw, 476px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--shape);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 20px 60px rgb(0 0 0 / .25);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transform: translateX(-100%);
+  transition: transform 0.28s cubic-bezier(.2, .8, .2, 1);
+  touch-action: pan-y;
+  outline: none;
+}
+.menu-drawer.shown .menu-panel { transform: none; }
+.menu-drawer.dragging .menu-panel { transition: none; }
+
+/* The top of the menu: who is signed in, and the status line, on the dark area */
+.menu-top {
+  width: 100%;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: calc(22px + env(safe-area-inset-top)) 20px 20px;
+  background: linear-gradient(180deg, var(--top), var(--top-2));
+  color: var(--on-top);
+}
+.menu-avatar {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgb(255 255 255 / .14);
+}
+.menu-avatar svg { width: 26px; height: 26px; }
+.menu-who { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.menu-top:focus-visible { outline: 2px solid var(--glow); outline-offset: -4px; }
+.menu-who b { font-size: 17px; font-weight: 600; overflow-wrap: anywhere; }
+.menu-who small { font-size: 13px; color: var(--on-top-muted); }
+.menu-list { display: grid; padding: 8px 12px calc(16px + env(safe-area-inset-bottom)); }
+.menu-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 8px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+.menu-row:last-child { border-bottom: 0; }
+.menu-row svg { width: 22px; height: 22px; color: var(--accent); }
+.menu-row:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: var(--shape-btn); }
+.menu-row.spin svg { animation: spin 0.9s linear infinite; }
+
+/* Round buttons */
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--shape-btn);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+.icon-btn.ghost { background: transparent; box-shadow: none; width: 32px; height: 40px; color: var(--muted); }
+.icon-btn.spin svg { animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Switch between a few choices (e.g. Day · Week · Upcoming) */
+.seg {
+  display: grid;
+  grid-template-columns: repeat(var(--tabs, 3), 1fr);
+  gap: 4px;
+  padding: 3px;
+  border-radius: var(--shape-btn);
+  background: var(--surface-2);
+}
+.seg button {
+  height: 34px;
+  border: 0;
+  border-radius: var(--shape-btn);
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.seg button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.page-head .seg { background: var(--surface); }
+.dark-head .page-head .seg { background: rgb(255 255 255 / .10); }
+.dark-head .page-head .seg button { color: var(--on-top-muted); }
+.page-head .seg button[aria-selected="true"] { color: var(--accent-ink); }
+
+/* Something with nothing to show yet (ui.missing) */
+.missing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: 14px 16px;
+  border: 1.5px dashed var(--line);
+  border-radius: var(--shape);
+  color: var(--muted);
+  font-size: 13px;
+}
+.missing b { color: var(--text-2); font-size: 14px; font-weight: 600; }
+button.missing { font: inherit; font-size: 13px; text-align: left; background: transparent; cursor: pointer; }
+
+.link-btn {
+  border: 0;
+  background: none;
+  padding: 4px 0;
+  color: var(--accent);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.list { display: flex; flex-direction: column; gap: 10px; }
+
+.empty { padding: 48px 16px; text-align: center; color: var(--muted); }
+.empty b { display: block; color: var(--text); font-size: 17px; margin-bottom: 4px; }
+
+/* ---- Panels, text and forms ---- */
+
+.panel {
+  margin-top: 12px;
+  padding: 18px;
+  border-radius: var(--shape);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.panel h2 { font-size: 20px; margin-bottom: 8px; }
+.panel h3 { font-size: 16px; margin-bottom: 12px; }
+.hint { color: var(--muted); font-size: 15px; margin: 0 0 16px; }
+.hint.small { font-size: 13px; margin: 12px 0 0; }
+
+.label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.field { display: flex; gap: 8px; }
+input[type="url"], input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="datetime-local"], select, textarea {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--shape-btn);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 16px; /* prevents iOS zoom on focus */
+}
+textarea { min-height: 84px; resize: vertical; line-height: 1.4; }
+input[type="url"]:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="datetime-local"]:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.btn {
+  padding: 12px 16px;
+  border: 0;
+  border-radius: var(--shape-btn);
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.danger { background: transparent; color: var(--danger); }
+.btn.block { display: block; width: 100%; margin-top: 12px; }
+.btn.small { padding: 7px 12px; font-size: 14px; text-decoration: none; white-space: nowrap; }
+.btn:disabled { opacity: 0.6; cursor: default; }
+
+.error {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: var(--shape-btn);
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: 14px;
+}
+
+.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+.stack { display: grid; gap: 12px; }
+.sub-head { font-size: 16px; margin-top: 8px; }
+
+.advanced summary { cursor: pointer; font-weight: 600; font-size: 15px; padding: 4px 0; }
+.advanced .hint { margin: 8px 0 10px; }
+
+.check { display: flex; align-items: center; gap: 10px; font-size: 15px; }
+.check input { width: 20px; height: 20px; margin: 0; accent-color: var(--accent); }
+
+/* On/off switch */
+.switch { position: relative; width: 46px; height: 28px; flex: none; }
+.switch input { position: absolute; inset: 0; z-index: 1; margin: 0; opacity: 0; cursor: pointer; }
+.switch input:disabled { cursor: default; }
+.slider { position: absolute; inset: 0; border-radius: 999px; background: var(--line); transition: background 0.2s; }
+.slider::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / .3);
+  transition: transform 0.2s;
+}
+.switch input:checked + .slider { background: var(--accent); }
+.switch input:checked + .slider::after { transform: translateX(18px); }
+.switch input:focus-visible + .slider { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---- Pop-up windows ---- */
+
+dialog {
+  padding: 0;
+  border: 0;
+  background: var(--surface);
+  color: var(--text);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+dialog::backdrop { background: rgb(0 0 0 / .45); }
+
+/* Most pop-ups fill the screen. The title bar stays at the top while the rest scrolls, and on a
+   wide screen the content keeps to a readable width in the middle. */
+dialog.dialog-full {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  border-radius: 0;
+  transition: transform 0.22s ease; /* springing back after a pull that didn't close it */
+}
+dialog.dialog-full.pulling { transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  dialog.dialog-full { transition: none; }
+}
+.dialog-full .dialog-body {
+  width: min(100%, 680px);
+  margin: 0 auto;
+  padding: 0 var(--gutter) calc(24px + env(safe-area-inset-bottom));
+}
+.dialog-full .dialog-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  align-items: center;
+  margin: 0 calc(-1 * var(--gutter));
+  padding: calc(10px + env(safe-area-inset-top)) 10px 10px var(--gutter);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.dialog-full .dialog-head h2 { padding-top: 0; }
+
+/* A small box in the middle (size: 'box'), with the rest of the screen dimmed. */
+dialog.dialog-box {
+  width: min(520px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  border-radius: var(--shape);
+  box-shadow: 0 20px 60px rgb(0 0 0 / .25);
+}
+.dialog-body { display: grid; gap: 12px; padding: 18px; }
+.dialog-content { display: grid; gap: 12px; }
+.dialog-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.dialog-head h2 { font-size: 20px; padding-top: 8px; overflow-wrap: anywhere; }
+.dialog-body .label { margin: 0 0 -6px; }
+.dialog-body .error { margin: 0; }
+.dialog-body .hint { margin: 0; }
+.dialog-body .hint.small { margin-top: -6px; }
+.dialog-body .group { display: grid; gap: 6px; }
+.dialog-body .group .label { margin: 6px 0 0; }
+.dialog-body .group .label:first-child { margin-top: 0; }
+.dialog-body .group .hint.small { margin: 0; }
+.advanced .group { margin-top: 10px; }
+
+/* ---- Settings window ---- */
+
+.settings-section { display: grid; gap: 12px; }
+.settings-section + .settings-section { padding-top: 16px; border-top: 1px solid var(--line); }
+.settings-section .sub-head { margin-top: 0; }
+.features-fold summary { font-size: 16px; }
+.features-fold summary small { float: right; padding-top: 2px; font-size: 13px; font-weight: 400; color: var(--muted); }
+.features-fold[open] summary { margin-bottom: 8px; }
+.feature-list { display: grid; }
+.feature-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.feature-row:last-child { border-bottom: 0; }
+.feature-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.feature-text small { font-size: 13px; color: var(--muted); }
+.feature-row.off .feature-text { opacity: 0.6; }
+.problems { margin: 6px 0 0; padding-left: 18px; font-size: 13px; color: var(--muted); }
+
+/* ---- Message at the bottom ---- */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(84px + env(safe-area-inset-bottom)); /* above the tab bar */
+  z-index: 50;
+  max-width: calc(100vw - 32px);
+  padding: 10px 16px;
+  border-radius: var(--shape-btn);
+  background: var(--text);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-btn.spin svg, .menu-row.spin svg { animation: none; }
+  .tabbar, .tab-track, .tab-pill, .tab { transition: none; }
+  .menu-panel, .menu-drawer::backdrop { transition: none; }
+  .toast { transition: none; }
+}
+
+/* ---- Theme from app/app.json ---- */
+:root { --accent: #2f5d34; }
+@media (prefers-color-scheme: dark) { :root { --accent: #8cc68f; } }
+
+/* ---- app/theme.css ---- */
+/* Rooted Together's look: earthy greens and soil, big text, strong contrast, few steps.
+   Older users come first: body text 20px, every button at least 56px tall.
+   Fonts: Alegreya (headings) and Alegreya Sans (everything else), loaded by the page;
+   Georgia and the system font stand in if they don't load.
+   Sign-in is left out of this app, so the account button, the menu's account line and its
+   Account row are hidden here (the framework's Account row is always the menu's first). */
+
+:root {
+  --font: "Alegreya Sans", system-ui, "Segoe UI", Arial, sans-serif;
+  --font-head: "Alegreya", Georgia, "Times New Roman", serif;
+  --bg: #f1f3ea;
+  --surface: #ffffff;
+  --surface-2: #e2e8d5;
+  --text: #1d2a1c;
+  --muted: #45533f;
+  --line: #c9d1bc;
+  --accent: #2f5d34;
+  --accent-ink: #ffffff;
+  --accent-soft: #e2e8d5;
+  --soil: #5b3d27;
+  --marigold: #e3a82b;
+  --marigold-ink: #3a2a00;
+  --placeholder-bg: #fff3c9;
+  --placeholder-fg: #5a4300;
+  --danger: #b3261e;
+  --top: #2a3d26;
+  --top-2: #2f4a2a;
+  --on-top: #ffffff;
+  --on-top-muted: #d6e2cf;
+  --tab-ink: #45533f;
+  --glow: var(--marigold);
+  --radius: 16px;
+  --shape: 16px;
+  --shape-btn: 14px;
+  --shape-sm: 999px;
+  --gutter: 18px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #151c14;
+    --surface: #1f291e;
+    --surface-2: #1b2519;
+    --text: #eef2e6;
+    --muted: #c3cdb8;
+    --line: #3a4a37;
+    --accent: #8cc68f;
+    --accent-ink: #10200f;
+    --accent-soft: #24331f;
+    --soil: #e0b48e;
+    --marigold: #f2c14e;
+    --placeholder-bg: #4a3b0a;
+    --placeholder-fg: #ffe69a;
+    --danger: #ffb4ab;
+    --top: #0e130d;
+    --top-2: #141c13;
+    --tab-ink: #c3cdb8;
+  }
+}
+
+body { font-size: 20px; line-height: 1.5; }
+.page-title h1, .dialog-head h2, .rt h2, .rt h3 { font-family: var(--font-head); }
+.page-title h1 { font-size: 32px; font-weight: 800; }
+.page-sub { font-size: 17px; }
+.tab { height: 62px; font-size: 15px; }
+.tab svg { width: 26px; height: 26px; }
+.menu-row { font-size: 20px; min-height: 56px; }
+.menu-list { padding-top: calc(16px + env(safe-area-inset-top)); }
+
+/* No sign-in in this app. */
+.top-btn.account, .menu-top, .menu-list > .menu-row:first-child { display: none !important; }
+
+/* ---- Shared pieces every Rooted Together feature uses ---- */
+.rt { display: flex; flex-direction: column; gap: 18px; padding-bottom: 24px; }
+.rt h2 { font-size: 27px; font-weight: 800; line-height: 1.15; text-wrap: balance; }
+.rt h3 { font-size: 22px; font-weight: 600; }
+.rt p { margin: 0; }
+.rt-muted { color: var(--muted); }
+.rt-small { font-size: 17px; }
+.rt-ph { background: var(--placeholder-bg); color: var(--placeholder-fg); padding: 0 .3em; border-radius: 4px; }
+.rt-eyebrow { font-size: 16px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--soil); }
+
+.rt-btn { display: block; width: 100%; min-height: 60px; padding: 14px 18px; border: 0; border-radius: var(--shape-btn);
+  background: var(--accent); color: var(--accent-ink); font: 700 21px/1.2 var(--font); cursor: pointer; text-align: center; }
+.rt-btn.alt { background: var(--surface); color: var(--accent); box-shadow: inset 0 0 0 3px var(--accent); }
+.rt-btn.small { display: inline-block; width: auto; min-height: 50px; padding: 10px 18px; font-size: 18px; }
+.rt-btn:disabled { opacity: .45; cursor: not-allowed; }
+.rt-btn:focus-visible, .rt-chip:focus-visible, .rt-choice:focus-visible { outline: 4px solid var(--marigold); outline-offset: 2px; }
+
+.rt-choice { display: grid; gap: 4px; text-align: left; width: 100%; padding: 20px; border: 3px solid var(--line);
+  border-radius: 18px; background: var(--surface); color: var(--text); font: inherit; cursor: pointer; }
+.rt-choice b { font: 800 25px var(--font-head); color: var(--accent); }
+
+.rt-q { display: grid; gap: 10px; }
+.rt-q > .rt-label, .rt-q > label { font-weight: 700; }
+.rt-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.rt-chip { min-height: 54px; padding: 10px 18px; border-radius: 999px; border: 2px solid var(--muted);
+  background: var(--surface); color: var(--text); font: 500 19px var(--font); cursor: pointer; }
+.rt-chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.rt-chip[aria-pressed="true"]::before { content: "✓ "; }
+.rt select, .rt input[type=text], .rt input[type=number] { width: 100%; min-height: 58px; padding: 12px; font: 20px var(--font);
+  border: 2px solid var(--muted); border-radius: 12px; background: var(--surface); color: var(--text); }
+
+.rt-card { display: grid; gap: 10px; padding: 18px; background: var(--surface); border: 2px solid var(--line); border-radius: var(--shape); }
+.rt-card.strong { border: 3px solid var(--accent); }
+.rt-facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; }
+.rt-facts dt { font-weight: 700; color: var(--muted); }
+.rt-facts dd { margin: 0; }
+.rt-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.rt-row > div { min-width: 0; }
+.rt-pill { justify-self: start; padding: 3px 12px; border-radius: 999px; background: var(--surface-2); font-size: 16px; font-weight: 700; }
+.rt-pill.on { background: var(--marigold); color: var(--marigold-ink); }
+.rt-example { font-size: 15px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--soil); }
+.rt-safe { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 14px; background: var(--surface-2); font-size: 18px; }
+.rt-safe svg { width: 26px; height: 26px; flex: none; color: var(--accent); }
+.rt-error { color: var(--danger); font-weight: 700; }
+
+/* ---- feature: seeds (style.css) ---- */
+/* Seeds uses the shared pieces in app/theme.css. */
+
+/* ---- feature: garden-log (style.css) ---- */
+.log-totals { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.log-num { display: block; font: 800 34px/1 var(--font-head); color: var(--accent); font-variant-numeric: tabular-nums; }
+.log-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.log-list li { padding: 12px 14px; border-radius: 10px; background: var(--surface); border-left: 6px solid var(--accent); }
+.log-list li.food { border-left-color: var(--marigold); }
+
+/* ---- feature: safeguarding (style.css) ---- */
+.safety-list { margin: 0; padding-left: 1.3em; display: grid; gap: 10px; }
+
+/* ---- feature: welcome (style.css) ---- */
+.welcome .rt-btn.alt { margin-top: -6px; }
+.welcome-check { grid-template-columns: 1fr; gap: 2px; }
+.welcome-check dd { margin-bottom: 10px; font-weight: 700; }
+
+/* ---- feature: match (style.css) ---- */
+/* Match uses the shared pieces in app/theme.css; nothing of its own yet. */
+
+</style>
+</head>
+<body>
+<div id="folio-root"></div>
+<noscript>This app needs JavaScript.</noscript>
+
+<script>
+(() => {
+  var __defProp = Object.defineProperty;
+  var __export = (target, all) => {
+    for (var name in all)
+      __defProp(target, name, { get: all[name], enumerable: true });
+  };
+
+  // dist/web/folio/ui.js
+  var ui_exports = {};
+  __export(ui_exports, {
+    ICONS: () => ICONS,
+    dialog: () => dialog,
+    el: () => el,
+    errorBox: () => errorBox,
+    filePicker: () => filePicker,
+    hint: () => hint,
+    icon: () => icon,
+    loadScript: () => loadScript,
+    missing: () => missing,
+    onSwipe: () => onSwipe,
+    ownsSwipe: () => ownsSwipe,
+    select: () => select,
+    toast: () => toast,
+    toggle: () => toggle
+  });
+  function el(tag, attrs = {}, ...kids) {
+    const node = document.createElement(tag);
+    for (const [key, value] of Object.entries(attrs || {})) {
+      if (value == null || value === false) continue;
+      if (key === "class") node.className = value;
+      else if (key.startsWith("on") && typeof value === "function") node.addEventListener(key.slice(2), value);
+      else node.setAttribute(key, value === true ? "" : value);
+    }
+    for (const kid of kids.flat(Infinity)) {
+      if (kid == null || kid === false || kid === "") continue;
+      node.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
+    }
+    return node;
+  }
+  var ICONS = {
+    close: '<path d="M18 6L6 18M6 6l12 12"/>',
+    refresh: '<path d="M20 11a8 8 0 0 0-14.3-4.9L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0 0 14.3 4.9L20 16"/><path d="M20 21v-5h-5"/>',
+    gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
+    bell: '<path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 8 2.5 8h-17S6 15 6 9z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/>',
+    card: '<rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M6 9v6M8.5 9v6M11.5 9v6M13.5 9v6M16.5 9v6M18 9v6"/>',
+    pin: '<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    note: '<path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/>',
+    trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+    left: '<path d="M15 18l-6-6 6-6"/>',
+    right: '<path d="M9 18l6-6-6-6"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
+    account: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/>',
+    people: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M18 14.3c2.1.7 3.5 2.8 3.5 5.7"/>',
+    calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+    home: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
+    book: '<path d="M2.5 5.5C5 4 8.5 4 12 6c3.5-2 7-2 9.5-.5V19c-2.5-1.5-6-1.5-9.5.5-3.5-2-7-2-9.5-.5z"/><path d="M12 6v13.5"/>',
+    dots: '<circle cx="12" cy="5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="19" r="1.4"/>',
+    link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+    palette: '<path d="M12 3a9 9 0 0 0 0 18c1.2 0 2-.8 2-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7" r="1"/>',
+    help: '<circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.2-2.4 3.8"/><path d="M12 17h.01"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><path d="M12 7.5h.01"/>',
+    chat: '<path d="M4 5.5h16v10.5H10l-4.5 3.5V16H4z"/><path d="M8 9.5h8M8 12.5h5"/>',
+    qr: '<rect x="3.5" y="3.5" width="6" height="6" rx="1"/><rect x="14.5" y="3.5" width="6" height="6" rx="1"/><rect x="3.5" y="14.5" width="6" height="6" rx="1"/><path d="M14.5 14.5h2.5v2.5M20.5 14.5v6h-3M14.5 18.5v2"/>'
+  };
+  function icon(nameOrDrawing) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+    svg.innerHTML = ICONS[nameOrDrawing] ?? nameOrDrawing;
+    return svg;
+  }
+  var toastTimer;
+  function toast(message) {
+    let box = document.getElementById("folio-toast");
+    if (!box) {
+      box = el("div", { id: "folio-toast", class: "toast", role: "status", "aria-live": "polite" });
+      document.body.append(box);
+    }
+    box.textContent = message;
+    box.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => box.classList.remove("show"), 4e3);
+  }
+  function dialog({ title = "", className = "", size = "full", onClose } = {}) {
+    const heading = el("h2", {}, title);
+    const content = el("div", { class: "dialog-content" });
+    const element = el(
+      "dialog",
+      { class: `${size === "box" ? "dialog-box" : "dialog-full"} ${className}`.trim() },
+      el(
+        "div",
+        { class: "dialog-body" },
+        el(
+          "div",
+          { class: "dialog-head" },
+          heading,
+          el("button", { type: "button", class: "icon-btn ghost", "aria-label": "Close", onclick: () => element.close() }, icon("close"))
+        ),
+        content
+      )
+    );
+    element.addEventListener("click", (e) => {
+      if (e.target === element) element.close();
+    });
+    if (onClose) element.addEventListener("close", onClose);
+    if (size !== "box") pullToClose(element);
+    document.body.append(element);
+    return {
+      element,
+      content,
+      get isOpen() {
+        return element.open;
+      },
+      open() {
+        if (!element.open) element.showModal();
+      },
+      close() {
+        if (element.open) element.close();
+      },
+      setTitle(text) {
+        heading.textContent = text;
+      },
+      setContent(...nodes) {
+        content.replaceChildren(...nodes.flat().filter((n) => n != null && n !== false));
+      }
+    };
+  }
+  function errorBox() {
+    const box = el("div", { class: "error", role: "alert", hidden: true });
+    box.show = (message) => {
+      box.textContent = message || "";
+      box.hidden = !message;
+    };
+    return box;
+  }
+  function missing(reason = "", attrs = {}) {
+    return el("div", { class: "missing", ...attrs }, el("b", {}, "Missing content"), reason && el("span", {}, reason));
+  }
+  var hint = (text, { small = false } = {}) => el("p", { class: small ? "hint small" : "hint" }, text);
+  function select(options, { value, id, onChange } = {}) {
+    const node = el(
+      "select",
+      { id, onchange: onChange && ((e) => onChange(e.target.value)) },
+      options.map(([v, label]) => el("option", { value: v }, label))
+    );
+    if (value != null) node.value = String(value);
+    return node;
+  }
+  function toggle({ checked = false, label = "", disabled = false, onChange } = {}) {
+    return el(
+      "label",
+      { class: "switch" },
+      el("input", { type: "checkbox", checked, disabled, "aria-label": label, onchange: onChange && ((e) => onChange(e.target.checked)) }),
+      el("span", { class: "slider", "aria-hidden": "true" })
+    );
+  }
+  function filePicker(accept) {
+    const input = el("input", { type: "file", accept, hidden: true });
+    document.body.append(input);
+    return {
+      pick() {
+        return new Promise((resolve) => {
+          input.onchange = () => {
+            const file = input.files[0] || null;
+            input.value = "";
+            resolve(file);
+          };
+          input.click();
+        });
+      }
+    };
+  }
+  function onSwipe(target, fn) {
+    let x = 0;
+    let y = 0;
+    let start = null;
+    target.addEventListener("touchstart", (e) => {
+      x = e.changedTouches[0].clientX;
+      y = e.changedTouches[0].clientY;
+      start = e.target;
+    }, { passive: true });
+    target.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - x;
+      const dy = e.changedTouches[0].clientY - y;
+      if (Math.abs(dx) > 60 && Math.abs(dy) < Math.abs(dx) * 0.6) fn(dx < 0 ? 1 : -1, start);
+    }, { passive: true });
+  }
+  function ownsSwipe(node, stop) {
+    for (let n = node instanceof Element ? node : node?.parentElement; n && n !== stop; n = n.parentElement) {
+      if (n.hasAttribute("data-own-swipe")) return true;
+      if (n.scrollWidth > n.clientWidth + 1 && /auto|scroll/.test(getComputedStyle(n).overflowX)) return true;
+    }
+    return false;
+  }
+  var PULL_DECIDE = 8;
+  var PULL_CLOSE = 110;
+  function pullToClose(dialog2) {
+    let pull = null;
+    const reset = () => {
+      dialog2.classList.remove("pulling");
+      dialog2.style.transform = "";
+    };
+    dialog2.addEventListener("touchstart", (e) => {
+      const t = e.changedTouches[0];
+      const atTop = dialog2.scrollTop <= 0;
+      pull = atTop && !e.target.closest?.("input, textarea, select") ? { x: t.clientX, y: t.clientY, dy: 0, down: null } : null;
+    }, { passive: true });
+    dialog2.addEventListener("touchmove", (e) => {
+      if (!pull) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - pull.x;
+      pull.dy = t.clientY - pull.y;
+      if (pull.down === null && Math.hypot(dx, pull.dy) > PULL_DECIDE) pull.down = pull.dy > 0 && pull.dy > Math.abs(dx);
+      if (!pull.down) return;
+      dialog2.classList.add("pulling");
+      dialog2.style.transform = `translateY(${Math.max(0, pull.dy)}px)`;
+    }, { passive: true });
+    const end = () => {
+      const p = pull;
+      pull = null;
+      if (!p?.down) return reset();
+      if (p.dy > PULL_CLOSE) {
+        dialog2.close();
+        reset();
+      } else {
+        dialog2.classList.remove("pulling");
+        dialog2.style.transform = "";
+      }
+    };
+    dialog2.addEventListener("touchend", end, { passive: true });
+    dialog2.addEventListener("touchcancel", end, { passive: true });
+  }
+  var scripts = /* @__PURE__ */ new Map();
+  function loadScript(src) {
+    if (!scripts.has(src)) {
+      scripts.set(src, new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        s.src = src;
+        s.onload = resolve;
+        s.onerror = () => {
+          scripts.delete(src);
+          reject(new Error(`Couldn't load ${src}`));
+        };
+        document.head.append(s);
+      }));
+    }
+    return scripts.get(src);
+  }
+
+  // dist/web/folio/net.js
+  async function getText(url, platform) {
+    const http = platform?.native ? platform.plugin("CapacitorHttp") : null;
+    if (http) {
+      const res2 = await http.request({ url, method: "GET", responseType: "text", headers: { "Cache-Control": "no-cache" } });
+      if (res2.status >= 400) throw Object.assign(new Error("http"), { status: res2.status });
+      return typeof res2.data === "string" ? res2.data : JSON.stringify(res2.data);
+    }
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw Object.assign(new Error("http"), { status: res.status });
+    return res.text();
+  }
+
+  // dist/web/folio/Feature.js
+  var Feature = class {
+    constructor(app, manifest) {
+      this.app = app;
+      this.id = manifest.id;
+      this.manifest = manifest;
+      this.storage = app.storage.area(manifest.id);
+    }
+    // Override this. It may be async.
+    start() {
+    }
+    // ---- Slots: places to add things ----
+    // Adds an item to a slot. Returns a function that removes it again.
+    add(slotName, item) {
+      return this.app.slot(slotName).add(item, this.id);
+    }
+    // Creates a new slot that other features can add to. Describe what an item looks like.
+    defineSlot(name, description = "") {
+      return this.app.defineSlot(name, this.id, description);
+    }
+    slot(name) {
+      return this.app.slot(name);
+    }
+    // ---- Services: objects one feature offers to others ----
+    provide(name, service) {
+      this.app.provide(name, service, this.id);
+    }
+    // Another feature's service, or null if that feature isn't installed or didn't start.
+    // Always handle null: that's what keeps the app working when a folder is deleted.
+    use(name) {
+      return this.app.use(name);
+    }
+    // ---- Events ----
+    on(name, fn) {
+      return this.app.on(name, fn, this.id);
+    }
+    emit(name, data) {
+      this.app.emit(name, data);
+    }
+    // ---- Screen ----
+    // Asks the app to redraw the top bar and the current view.
+    refresh() {
+      this.app.refresh();
+    }
+    // A copy of <template id="name"> from this feature's templates.html.
+    template(name) {
+      const t = document.getElementById(`${this.id}--${name}`);
+      if (!t) throw new Error(`No template "${name}" in ${this.id}/templates.html`);
+      return t.content.cloneNode(true);
+    }
+    toast(message) {
+      toast(message);
+    }
+    // ---- Platform ----
+    // True inside the Android or iPhone app, false in the web version.
+    get native() {
+      return this.app.platform.native;
+    }
+    plugin(name) {
+      return this.app.platform.plugin(name);
+    }
+    // Downloads text from another website (see net.js): through the phone in the Android app,
+    // so sites that block web pages still work; an ordinary fetch on the web.
+    getText(url) {
+      return getText(url, this.app.platform);
+    }
+  };
+
+  // dist/web/folio/Slot.js
+  var Slot = class {
+    constructor(app, name) {
+      this.app = app;
+      this.name = name;
+      this.owner = null;
+      this.description = "";
+      this.entries = [];
+    }
+    // Adds an item. Items are kept in ascending `order` (default 50), then in the order added.
+    // Returns a function that removes the item again.
+    add(item, owner = null) {
+      this.entries.push({ item, owner });
+      this.entries.sort((a, b) => (a.item.order ?? 50) - (b.item.order ?? 50));
+      return () => this.remove(item);
+    }
+    remove(item) {
+      this.entries = this.entries.filter((e) => e.item !== item);
+    }
+    removeOwner(owner) {
+      this.entries = this.entries.filter((e) => e.owner !== owner);
+    }
+    get items() {
+      return this.entries.map((e) => e.item);
+    }
+    get size() {
+      return this.entries.length;
+    }
+    ownerOf(item) {
+      return this.entries.find((e) => e.item === item)?.owner ?? null;
+    }
+    // Runs fn(item) for one item, reporting a failure against the feature that added it.
+    // Returns fn's result, or `fallback` if it threw.
+    run(item, fn, fallback = void 0) {
+      try {
+        return fn(item);
+      } catch (err) {
+        this.app.report(this.ownerOf(item), err, `in "${this.name}"`);
+        return fallback;
+      }
+    }
+    // Runs fn(item) for every item.
+    each(fn) {
+      for (const { item } of [...this.entries]) this.run(item, fn);
+    }
+    // fn(item) for every item, keeping results that aren't null, undefined or false.
+    map(fn) {
+      const out = [];
+      this.each((item) => {
+        const result = fn(item);
+        if (result != null && result !== false) out.push(result);
+      });
+      return out;
+    }
+    // The first result of fn(item) that isn't null, undefined or an empty string.
+    first(fn) {
+      for (const { item } of [...this.entries]) {
+        const result = this.run(item, fn);
+        if (result != null && result !== "") return result;
+      }
+      return void 0;
+    }
+    // True if fn(item) is true for any item. An item that throws counts as false.
+    some(fn) {
+      return this.entries.some(({ item }) => this.run(item, fn, false) === true);
+    }
+  };
+
+  // dist/web/folio/Storage.js
+  var Area = class {
+    constructor(prefix, onFail = () => {
+    }) {
+      this.prefix = prefix;
+      this.onFail = onFail;
+    }
+    get(key, fallback = null) {
+      try {
+        const raw = localStorage.getItem(this.prefix + key);
+        return raw == null ? fallback : JSON.parse(raw);
+      } catch {
+        return fallback;
+      }
+    }
+    // Saves a value (null or undefined removes it). Returns false if the device refused,
+    // for example because storage is full or blocked.
+    set(key, value) {
+      try {
+        if (value == null) localStorage.removeItem(this.prefix + key);
+        else localStorage.setItem(this.prefix + key, JSON.stringify(value));
+        return true;
+      } catch {
+        this.onFail(key);
+        return false;
+      }
+    }
+    remove(key) {
+      return this.set(key, null);
+    }
+    has(key) {
+      try {
+        return localStorage.getItem(this.prefix + key) != null;
+      } catch {
+        return false;
+      }
+    }
+    keys() {
+      const out = [];
+      try {
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k?.startsWith(this.prefix)) out.push(k.slice(this.prefix.length));
+        }
+      } catch {
+      }
+      return out;
+    }
+    // Removes everything in this area, except the record of which `once` steps have run.
+    clear() {
+      for (const k of this.keys()) if (!k.startsWith("__once.")) this.remove(k);
+    }
+    // Runs fn the first time only (per device), e.g. to bring over data saved by an older
+    // version of the app. Returns true if it ran now.
+    once(name, fn) {
+      const flag = `__once.${name}`;
+      if (this.has(flag)) return false;
+      fn();
+      this.set(flag, Date.now());
+      return true;
+    }
+  };
+  var Storage = class extends Area {
+    constructor(appId, onFail) {
+      super(`${appId}.`, onFail);
+      this.appId = appId;
+    }
+    // The private area for one feature (or for the framework itself, 'folio').
+    area(name) {
+      return new Area(`${this.appId}.${name}.`, this.onFail);
+    }
+    // Reads a key exactly as stored, outside any area. Only for importing data saved before
+    // the app used Folio.
+    raw(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    }
+    rawJSON(key, fallback = null) {
+      try {
+        const raw = this.raw(key);
+        return raw == null ? fallback : JSON.parse(raw);
+      } catch {
+        return fallback;
+      }
+    }
+    removeRaw(key) {
+      try {
+        localStorage.removeItem(key);
+      } catch {
+      }
+    }
+  };
+
+  // dist/web/folio/Events.js
+  var Events = class {
+    constructor(app) {
+      this.app = app;
+      this.listeners = /* @__PURE__ */ new Map();
+    }
+    on(name, fn, owner = null) {
+      const list = this.listeners.get(name) || [];
+      const entry = { fn, owner };
+      list.push(entry);
+      this.listeners.set(name, list);
+      return () => {
+        const current = this.listeners.get(name) || [];
+        this.listeners.set(name, current.filter((e) => e !== entry));
+      };
+    }
+    emit(name, data) {
+      for (const { fn, owner } of [...this.listeners.get(name) || []]) {
+        try {
+          const result = fn(data);
+          if (result?.catch) result.catch((err) => this.app.report(owner, err, `handling "${name}"`));
+        } catch (err) {
+          this.app.report(owner, err, `handling "${name}"`);
+        }
+      }
+    }
+    removeOwner(owner) {
+      for (const [name, list] of this.listeners) {
+        this.listeners.set(name, list.filter((e) => e.owner !== owner));
+      }
+    }
+  };
+
+  // dist/web/folio/Platform.js
+  var Platform = class {
+    get native() {
+      return !!window.Capacitor?.isNativePlatform?.();
+    }
+    // 'web', 'android' or 'ios'.
+    get name() {
+      return this.native ? window.Capacitor.getPlatform?.() || "android" : "web";
+    }
+    get online() {
+      return navigator.onLine;
+    }
+    // A Capacitor plugin (e.g. 'LocalNotifications'), or null in the web version or when the
+    // plugin isn't installed.
+    plugin(name) {
+      return window.Capacitor?.Plugins?.[name] ?? null;
+    }
+  };
+
+  // dist/web/folio/Menu.js
+  var SLIDE_MS = 280;
+  var Menu = class {
+    constructor({ label = "Menu" } = {}) {
+      this.panel = el("div", { class: "menu-panel", tabindex: "-1", autofocus: true });
+      this.element = el("dialog", { class: "menu-drawer", "aria-label": label }, this.panel);
+      this.closing = 0;
+      this.inHistory = false;
+      this.ownBacks = 0;
+      this.element.addEventListener("click", (e) => {
+        if (e.target === this.element) this.close();
+      });
+      this.element.addEventListener("cancel", (e) => {
+        e.preventDefault();
+        this.close();
+      });
+      this.element.addEventListener("close", () => this.finish());
+      window.addEventListener("popstate", () => {
+        if (this.ownBacks > 0) {
+          this.ownBacks -= 1;
+          return;
+        }
+        if (!this.inHistory) return;
+        this.inHistory = false;
+        this.close();
+      });
+      this.followSwipes();
+      document.body.append(this.element);
+    }
+    get isOpen() {
+      return this.element.open && !this.closing;
+    }
+    setContent(...nodes) {
+      this.panel.replaceChildren(...nodes.flat().filter((n) => n != null && n !== false));
+    }
+    open() {
+      if (this.closing) {
+        clearTimeout(this.closing);
+        this.closing = 0;
+      } else if (this.element.open) {
+        return;
+      } else {
+        this.element.showModal();
+        this.element.getBoundingClientRect();
+      }
+      this.panel.style.transform = "";
+      this.element.classList.add("shown");
+      if (!this.inHistory) {
+        history.pushState({ folioMenu: true }, "", location.href);
+        this.inHistory = true;
+      }
+    }
+    // Slides the panel out, then closes it.
+    close() {
+      if (!this.element.open || this.closing) return;
+      this.element.classList.remove("shown");
+      this.panel.style.transform = "";
+      const wait = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : SLIDE_MS;
+      this.closing = setTimeout(() => {
+        this.closing = 0;
+        this.element.close();
+      }, wait);
+    }
+    finish() {
+      clearTimeout(this.closing);
+      this.closing = 0;
+      this.element.classList.remove("shown", "dragging");
+      this.panel.style.transform = "";
+      if (this.inHistory) {
+        this.inHistory = false;
+        this.ownBacks += 1;
+        history.back();
+      }
+    }
+    // The panel follows a finger dragging it left, and closes if it went far enough or fast.
+    followSwipes() {
+      let start = null;
+      this.panel.addEventListener("touchstart", (e) => {
+        const t = e.changedTouches[0];
+        start = { x: t.clientX, y: t.clientY, at: Date.now(), dx: 0, sideways: null };
+      }, { passive: true });
+      this.panel.addEventListener("touchmove", (e) => {
+        if (!start) return;
+        const t = e.changedTouches[0];
+        const dx = t.clientX - start.x;
+        const dy = t.clientY - start.y;
+        if (start.sideways === null && Math.hypot(dx, dy) > 8) start.sideways = Math.abs(dx) > Math.abs(dy);
+        if (!start.sideways) return;
+        start.dx = Math.min(0, dx);
+        this.element.classList.add("dragging");
+        this.panel.style.transform = `translateX(${start.dx}px)`;
+      }, { passive: true });
+      const end = () => {
+        if (!start) return;
+        const { dx, at, sideways } = start;
+        start = null;
+        this.element.classList.remove("dragging");
+        if (!sideways) return;
+        const fast = dx < -40 && Date.now() - at < 250;
+        if (dx < -this.panel.offsetWidth / 3 || fast) this.close();
+        else this.panel.style.transform = "";
+      };
+      this.panel.addEventListener("touchend", end, { passive: true });
+      this.panel.addEventListener("touchcancel", end, { passive: true });
+    }
+  };
+
+  // dist/web/folio/appearance.js
+  var APPEARANCES = [["auto", "Automatic"], ["light", "Light"], ["dark", "Dark"]];
+  var DARK = /\(\s*prefers-color-scheme\s*:\s*dark\s*\)/g;
+  var LIGHT = /\(\s*prefers-color-scheme\s*:\s*light\s*\)/g;
+  function mediaFor(original, mode) {
+    if (mode !== "light" && mode !== "dark") return original;
+    const dark = mode === "dark";
+    return original.split(",").map((query) => {
+      const q = query.trim().replace(DARK, dark ? "all" : "NEVER").replace(LIGHT, dark ? "NEVER" : "all");
+      return q.includes("NEVER") ? "not all" : q;
+    }).join(", ");
+  }
+  var originals = /* @__PURE__ */ new WeakMap();
+  function rewrite(rules, mode) {
+    for (const rule of rules) {
+      if (rule instanceof CSSMediaRule) {
+        if (!originals.has(rule)) originals.set(rule, rule.media.mediaText);
+        const original = originals.get(rule);
+        if (/prefers-color-scheme/.test(original)) rule.media.mediaText = mediaFor(original, mode);
+      }
+      if (rule.cssRules) rewrite(rule.cssRules, mode);
+    }
+  }
+  function applyAppearance(mode = "auto") {
+    for (const sheet of document.styleSheets) {
+      let rules;
+      try {
+        rules = sheet.cssRules;
+      } catch {
+        continue;
+      }
+      rewrite(rules, mode);
+    }
+    for (const meta of document.querySelectorAll('meta[name="theme-color"][media]')) {
+      if (!originals.has(meta)) originals.set(meta, meta.getAttribute("media"));
+      meta.setAttribute("media", mediaFor(originals.get(meta), mode));
+    }
+    document.documentElement.dataset.appearance = mode;
+  }
+  function startAppearance(mode) {
+    applyAppearance(mode);
+    if (document.readyState !== "complete") window.addEventListener("load", () => applyAppearance(mode), { once: true });
+  }
+
+  // dist/web/folio/Settings.js
+  var Settings = class {
+    constructor(app) {
+      this.app = app;
+      this.prefs = app.storage.area("folio");
+      startAppearance(this.prefs.get("appearance", "auto"));
+      this.restartNeeded = false;
+      this.featuresOpen = false;
+    }
+    // ---- Settings window ----
+    open() {
+      if (!this.window) this.window = dialog({ title: "Settings", className: "settings-dialog", onClose: () => {
+        this.featuresOpen = false;
+      } });
+      this.render();
+      this.window.open();
+    }
+    // Redraws the window if it's open, e.g. after a section's data changed.
+    refresh() {
+      if (this.window?.isOpen) this.render();
+    }
+    close() {
+      this.window?.close();
+    }
+    render() {
+      const slot = this.app.slot("settings");
+      const sections = slot.map((s) => {
+        const body = s.render();
+        if (!body) return null;
+        return el("section", { class: "settings-section" }, s.title && el("h3", { class: "sub-head" }, s.title), body);
+      });
+      this.window.setContent(this.appearanceSection(), ...sections, this.featuresSection(), el(
+        "section",
+        { class: "settings-section about" },
+        el("h3", { class: "sub-head" }, "About"),
+        ...this.aboutParts()
+      ));
+    }
+    // Light or dark: follow the phone, or always one of them. Saved as 'appearance' on this phone.
+    appearanceSection() {
+      const current = this.prefs.get("appearance", "auto");
+      const choose2 = (mode) => {
+        this.prefs.set("appearance", mode);
+        applyAppearance(mode);
+        this.render();
+      };
+      return el(
+        "section",
+        { class: "settings-section" },
+        el("h3", { class: "sub-head" }, "Appearance"),
+        el(
+          "div",
+          { class: "seg", role: "radiogroup", "aria-label": "Appearance", style: `--tabs:${APPEARANCES.length}` },
+          APPEARANCES.map(([mode, label]) => el("button", {
+            type: "button",
+            role: "radio",
+            "aria-checked": String(mode === current),
+            "aria-selected": String(mode === current),
+            onclick: () => choose2(mode)
+          }, label))
+        ),
+        hint(current === "auto" ? "Follows your phone's light or dark setting." : `Always ${current}, whatever your phone is set to.`, { small: true })
+      );
+    }
+    featuresSection() {
+      const disabled = new Set(this.prefs.get("disabled", []));
+      const features2 = [...this.app.features.values()].filter((f) => f.status !== "not-for-platform");
+      const rows = features2.map((f) => {
+        const on = !disabled.has(f.manifest.id);
+        const note = {
+          active: f.problem ? `Had a problem: ${f.problem}` : f.manifest.description,
+          failed: `Couldn't start: ${f.reason}`,
+          disabled: "Switched off",
+          skipped: f.reason
+        }[f.status] || f.manifest.description;
+        return el(
+          "div",
+          { class: `feature-row${f.status === "active" ? "" : " off"}` },
+          el("div", { class: "feature-text" }, el("b", {}, f.manifest.name), el("small", {}, note)),
+          toggle({
+            checked: on,
+            label: `Use ${f.manifest.name}`,
+            onChange: (checked) => {
+              if (checked) disabled.delete(f.manifest.id);
+              else disabled.add(f.manifest.id);
+              this.prefs.set("disabled", [...disabled]);
+              this.restartNeeded = true;
+              this.render();
+            }
+          })
+        );
+      });
+      const off = features2.filter((f) => f.status !== "active").length;
+      const fold = el(
+        "details",
+        { class: "advanced features-fold", open: this.featuresOpen, ontoggle: () => {
+          this.featuresOpen = fold.open;
+        } },
+        el("summary", {}, "Features", el("small", {}, off ? `${features2.length - off} on, ${off} off` : `All ${features2.length} on`)),
+        hint("Switch off anything you don't use. Features that need a switched-off feature are switched off too.", { small: true }),
+        el("div", { class: "feature-list" }, rows)
+      );
+      return el(
+        "section",
+        { class: "settings-section" },
+        fold,
+        this.restartNeeded && el("button", { type: "button", class: "btn primary", onclick: () => location.reload() }, "Restart the app to apply")
+      );
+    }
+    // ---- About ----
+    aboutParts() {
+      const { name, version, build, framework } = this.app.config;
+      const problems = this.app.problems;
+      return [
+        hint(`${name} ${version}${build ? ` (build ${build})` : ""} · Made with Folio ${framework}`, { small: true }),
+        problems.length > 0 && el(
+          "details",
+          { class: "advanced" },
+          el("summary", {}, `${problems.length} problem${problems.length > 1 ? "s" : ""} since the app opened`),
+          el("ul", { class: "problems" }, problems.slice(-20).map((p) => el("li", {}, `${p.feature || "app"}: ${p.message}${p.where ? ` (${p.where})` : ""}`)))
+        )
+      ];
+    }
+    openAbout() {
+      if (!this.about) this.about = dialog({ title: "About", className: "about-dialog" });
+      const { description } = this.app.config;
+      this.about.setContent(description && hint(description), ...this.aboutParts());
+      this.about.open();
+    }
+  };
+
+  // dist/web/folio/Tabs.js
+  var DECIDE = 8;
+  var SWITCH = 30;
+  var Tabs = class {
+    constructor(select2) {
+      this.select = select2;
+      this.pill = el("span", { class: "tab-pill", "aria-hidden": "true" });
+      this.track = el("div", { class: "tab-track" }, this.pill);
+      this.nav = el("nav", { class: "tabbar", "aria-label": "Main", hidden: true }, this.track);
+      this.views = [];
+      this.buttons = [];
+      this.index = 0;
+      this.drag = null;
+      this.swallowClick = false;
+      this.followSwipes();
+    }
+    render(views, current) {
+      this.views = views;
+      this.index = Math.max(0, views.indexOf(current));
+      this.nav.style.setProperty("--tabs", Math.max(views.length, 1));
+      this.buttons = views.map((v) => el("button", {
+        type: "button",
+        class: "tab",
+        "aria-current": v === current ? "page" : null,
+        onclick: () => this.select(v.id)
+      }, icon(v.icon || "dots"), el("span", {}, v.label)));
+      this.track.replaceChildren(this.pill, ...this.buttons);
+      this.place(this.drag?.sideways ? this.drag.pos : this.index);
+    }
+    // Goes to the next (+1) or previous (-1) tab, stopping at the ends.
+    move(direction) {
+      const target = this.views[this.index + direction];
+      if (target) this.select(target.id);
+    }
+    // Puts the highlight and glow at a tab (a fraction is between two tabs).
+    place(pos) {
+      const n = Math.max(this.views.length, 1);
+      this.nav.style.setProperty("--pos", pos);
+      this.nav.style.setProperty("--glow-x", `${(pos + 0.5) / n * 100}%`);
+      const lit = Math.round(pos);
+      this.buttons.forEach((b, i) => b.classList.toggle("lit", i === lit));
+    }
+    followSwipes() {
+      const nav = this.nav;
+      nav.addEventListener("touchstart", (e) => {
+        const t = e.changedTouches[0];
+        this.drag = { x: t.clientX, y: t.clientY, dx: 0, sideways: null, pos: this.index };
+      }, { passive: true });
+      nav.addEventListener("touchmove", (e) => {
+        const d = this.drag;
+        if (!d) return;
+        const t = e.changedTouches[0];
+        d.dx = t.clientX - d.x;
+        const dy = t.clientY - d.y;
+        if (d.sideways === null && Math.hypot(d.dx, dy) > DECIDE) d.sideways = Math.abs(d.dx) > Math.abs(dy);
+        if (!d.sideways || this.views.length < 2) return;
+        nav.classList.add("dragging");
+        const width = this.track.offsetWidth / this.views.length || 1;
+        const last = this.views.length - 1;
+        let pos = this.index + Math.max(-1, Math.min(1, -d.dx / width / 2));
+        if (pos < 0) pos *= 0.3;
+        if (pos > last) pos = last + (pos - last) * 0.3;
+        d.pos = pos;
+        this.place(pos);
+        nav.style.setProperty("--shift", `${Math.max(-12, Math.min(12, d.dx * 0.08))}px`);
+      }, { passive: true });
+      const end = () => {
+        const d = this.drag;
+        this.drag = null;
+        nav.classList.remove("dragging");
+        nav.style.setProperty("--shift", "0px");
+        if (!d?.sideways) return;
+        this.swallowClick = true;
+        setTimeout(() => {
+          this.swallowClick = false;
+        }, 400);
+        const target = Math.abs(d.dx) >= SWITCH ? this.index + (d.dx < 0 ? 1 : -1) : this.index;
+        if (target !== this.index && this.views[target]) this.select(this.views[target].id);
+        else this.place(this.index);
+      };
+      nav.addEventListener("touchend", end, { passive: true });
+      nav.addEventListener("touchcancel", end, { passive: true });
+      nav.addEventListener("click", (e) => {
+        if (!this.swallowClick) return;
+        this.swallowClick = false;
+        e.stopPropagation();
+        e.preventDefault();
+      }, true);
+    }
+  };
+
+  // dist/web/folio/Shell.js
+  var Shell = class {
+    constructor(app) {
+      this.app = app;
+      this.settings = new Settings(app);
+      this.sections = /* @__PURE__ */ new Map();
+      this.screens = [];
+      this.currentId = null;
+      this.ready = false;
+      this.wanted = new URLSearchParams(location.hash.slice(1)).get("view");
+      this.menuButton = el("button", { type: "button", class: "top-btn", "aria-label": "Menu", onclick: () => this.openMenu() }, icon("menu"));
+      this.accountButton = el("button", { type: "button", class: "top-btn account", "aria-label": "Account", onclick: () => this.openAccount() }, icon("account"));
+      this.actions = el("div", { class: "top-actions" });
+      this.viewHost = el("div", { class: "view-host" });
+      this.empty = el("div", { class: "empty", hidden: true });
+      this.screenHost = el("div", { class: "screen-host", hidden: true });
+      this.main = el("main", {}, this.viewHost, this.empty);
+      this.tabBar = new Tabs((id) => this.selectView(id));
+      this.tabs = this.tabBar.nav;
+      const root = document.getElementById("folio-root") || document.body.appendChild(el("div", { id: "folio-root" }));
+      this.frame = el(
+        "div",
+        { class: "app" },
+        el("header", { class: "topbar" }, this.menuButton, el("div", { class: "top-right" }, this.actions, this.accountButton)),
+        this.screenHost,
+        this.main,
+        this.tabs
+      );
+      root.replaceChildren(this.frame);
+      onSwipe(this.main, (dir, start) => {
+        if (!ownsSwipe(start, this.main)) this.tabBar.move(dir);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (this.main.hidden || document.querySelector("dialog[open]")) return;
+        if (e.target.matches?.("input, textarea, select")) return;
+        if (e.key === "ArrowLeft") this.step(-1);
+        if (e.key === "ArrowRight") this.step(1);
+      });
+    }
+    // ---- Title ----
+    // The name in the browser tab (the top bar itself has no title).
+    setTitle(text) {
+      document.title = text || this.app.config.name;
+    }
+    // ---- Full-screen pages, e.g. a setup screen shown before there's anything to see ----
+    showScreen(owner, node) {
+      this.screens = this.screens.filter((s) => s.owner !== owner);
+      this.screens.push({ owner, node });
+      this.render();
+    }
+    hideScreen(owner) {
+      const before = this.screens.length;
+      this.screens = this.screens.filter((s) => s.owner !== owner);
+      if (this.screens.length !== before) this.render();
+    }
+    // ---- Views ----
+    get views() {
+      const slot = this.app.slot("views");
+      return slot.items.filter((v) => slot.run(v, (x) => x.visible ? x.visible() : true, false));
+    }
+    get currentView() {
+      const views = this.views;
+      if (this.currentId === null && this.ready) {
+        this.currentId = (views.find((v) => v.start) || views[0])?.id ?? null;
+        if (this.wanted) this.selectView(this.wanted, { quiet: true });
+      }
+      return views.find((v) => v.id === this.currentId) || views.find((v) => v.start) || views[0] || null;
+    }
+    // Switches to a view, or to a view inside another (such as Day inside Planner). Returns false
+    // if no view with that id is installed.
+    selectView(id, { quiet = false } = {}) {
+      const slot = this.app.slot("views");
+      const views = this.views;
+      let view = views.find((v) => v.id === id);
+      if (!view) {
+        view = views.find((v) => slot.run(v, (x) => !!x.contains?.(id), false));
+        if (!view) return false;
+        slot.run(view, (x) => x.open?.(id));
+      }
+      const changed = this.currentId !== view.id;
+      this.currentId = view.id;
+      if (!quiet) {
+        if (changed) window.scrollTo(0, 0);
+        this.render();
+      }
+      return true;
+    }
+    step(direction) {
+      const view = this.currentView;
+      if (view?.step) this.app.slot("views").run(view, (v) => v.step(direction));
+    }
+    // ---- Drawing ----
+    render() {
+      this.renderStatus();
+      this.renderActions();
+      if (this.menu?.isOpen) this.renderMenu();
+      const screen = this.screens.at(-1);
+      this.screenHost.hidden = !screen;
+      this.main.hidden = !!screen;
+      this.frame.classList.toggle("dark-head", !screen && !!this.currentView?.darkHead);
+      if (screen) {
+        this.tabs.hidden = true;
+        if (this.screenHost.firstChild !== screen.node) this.screenHost.replaceChildren(screen.node);
+        return;
+      }
+      this.screenHost.replaceChildren();
+      this.renderViews();
+    }
+    renderStatus() {
+      const parts = this.app.slot("header.status").map((s) => s.text());
+      if (!navigator.onLine) parts.push("offline");
+      this.statusText = parts.filter(Boolean).join(" · ");
+    }
+    // Buttons other features put in the top bar ('header.actions'), left of the account button.
+    renderActions() {
+      const slot = this.app.slot("header.actions");
+      this.actions.replaceChildren(...slot.items.filter((a) => slot.run(a, (x) => x.visible ? x.visible() : true, false)).map((a) => el("button", {
+        type: "button",
+        class: "top-btn top-action",
+        "aria-label": a.label,
+        title: a.label,
+        onclick: () => slot.run(a, (x) => x.onClick())
+      }, icon(a.icon || "plus"))));
+    }
+    renderViews() {
+      const slot = this.app.slot("views");
+      const views = this.views;
+      const current = this.currentView;
+      this.tabs.hidden = views.length < 2;
+      this.tabBar.render(views, current);
+      for (const v of views) {
+        let part2 = this.sections.get(v);
+        if (!part2) {
+          part2 = { title: el("h1"), subtitle: el("p", { class: "page-sub" }), actions: el("div", { class: "page-actions" }), extra: el("div", { class: "page-extra" }), body: el("div", { class: "page-body" }), mounted: false };
+          part2.head = el("div", { class: "page-head" }, el("div", { class: "page-title" }, part2.title, part2.subtitle, part2.actions), part2.extra);
+          part2.section = el("section", { class: `view view-${v.id}` }, part2.head, part2.body);
+          this.sections.set(v, part2);
+          this.viewHost.append(part2.section);
+        }
+        if (!part2.mounted && v === current) {
+          part2.mounted = true;
+          slot.run(v, (x) => x.mount?.(part2.body, { head: part2.extra, actions: part2.actions }));
+        }
+        part2.section.hidden = v !== current;
+      }
+      for (const [v, part2] of this.sections) if (!views.includes(v)) part2.section.hidden = true;
+      this.empty.hidden = !!current;
+      if (!current) {
+        this.empty.replaceChildren(
+          el("b", {}, "Nothing to show yet"),
+          el("div", {}, "This app has no views installed. Add a view feature to the app/features folder.")
+        );
+        return;
+      }
+      const part = this.sections.get(current);
+      part.title.parentNode.hidden = !!current.hideTitle;
+      part.title.textContent = current.label;
+      part.subtitle.textContent = slot.run(current, (v) => v.subtitle?.(), null) ?? this.statusText;
+      slot.run(current, (v) => v.render?.());
+    }
+    // ---- Menu: who is signed in and the status line, then the rows ----
+    // The rows are the 'header.buttons' items mixed in by `order` with the framework's own:
+    // Account (10), Settings (60) and About (80). Leave room for features between them.
+    openMenu() {
+      if (!this.menu) this.menu = new Menu();
+      this.renderMenu();
+      this.menu.open();
+    }
+    closeMenu() {
+      this.menu?.close();
+    }
+    renderMenu() {
+      const slot = this.app.slot("header.buttons");
+      const own = [
+        { label: "Account", icon: "account", order: 10, onClick: () => this.openAccount() },
+        { label: "Settings", icon: "gear", order: 60, onClick: () => this.openSettings() },
+        { label: "About", icon: "info", order: 80, onClick: () => this.openAbout() }
+      ];
+      const theirs = slot.items.filter((b) => slot.run(b, (x) => x.visible ? x.visible() : true, false)).map((b) => ({ ...b, order: b.order ?? 50, onClick: () => slot.run(b, (x) => x.onClick()), busy: slot.run(b, (x) => !!x.busy?.(), false) }));
+      const rows = [...own, ...theirs].sort((a, b) => a.order - b.order).map((r) => el("button", {
+        type: "button",
+        class: `menu-row${r.busy ? " spin" : ""}`,
+        onclick: () => {
+          this.closeMenu();
+          r.onClick();
+        }
+      }, icon(r.icon || "plus"), el("span", {}, r.label)));
+      const who = this.accountName();
+      this.menu.setContent(
+        el(
+          "button",
+          {
+            type: "button",
+            class: "menu-top",
+            "aria-label": who ? `Signed in as ${who}. Open your account` : "Not signed in. Open your account",
+            onclick: () => {
+              this.closeMenu();
+              this.openAccount();
+            }
+          },
+          el("span", { class: "menu-avatar" }, icon("account")),
+          el("span", { class: "menu-who" }, el("b", {}, who || "Not signed in"), this.statusText && el("small", {}, this.statusText))
+        ),
+        el("div", { class: "menu-list" }, rows)
+      );
+    }
+    // ---- Account: the 'account' item, if a feature offers accounts ----
+    // The signed-in person's name, or null.
+    accountName() {
+      const slot = this.app.slot("account");
+      return slot.first((a) => a.name?.()) || null;
+    }
+    // Opens the account page, or says it's coming if no feature offers accounts yet.
+    openAccount() {
+      const slot = this.app.slot("account");
+      const item = slot.items[0];
+      if (item) slot.run(item, (a) => a.open());
+      else toast("Account is coming soon.");
+    }
+    // ---- Settings and About (see Settings.js) ----
+    openSettings() {
+      this.settings.open();
+    }
+    refreshSettings() {
+      this.settings.refresh();
+    }
+    closeSettings() {
+      this.settings.close();
+    }
+    openAbout() {
+      this.settings.openAbout();
+    }
+  };
+
+  // dist/web/folio/App.js
+  var STATUS_WORDS = {
+    disabled: "switched off",
+    failed: "not working",
+    skipped: "not available",
+    "not-for-platform": "not available here"
+  };
+  var App = class {
+    // config:   { id, name, version, build, framework, test }
+    // registry: [{ id, name, description, version, requires, uses, platforms, path }] in start order
+    // options:  { seed(app) } — test builds only: fills in sample data before features start
+    constructor(config2, registry, options = {}) {
+      this.config = config2;
+      this.registry = registry;
+      this.options = options;
+      this.platform = new Platform();
+      this.storage = new Storage(config2.id, () => toast("Couldn't save that change on this device."));
+      this.events = new Events(this);
+      this.slots = /* @__PURE__ */ new Map();
+      this.services = /* @__PURE__ */ new Map();
+      this.features = /* @__PURE__ */ new Map();
+      this.problems = [];
+      this.shell = null;
+      this.pending = false;
+    }
+    // ---- Starting ----
+    async start() {
+      const html = document.documentElement;
+      html.dataset.folio = "starting";
+      this.catchStrayErrors();
+      this.shell = new Shell(this);
+      if (this.options.seed) {
+        try {
+          await this.options.seed(this);
+        } catch (err) {
+          this.report("seed", err, "adding test data");
+        }
+      }
+      const disabled = new Set(this.storage.area("folio").get("disabled", []));
+      const modules = await Promise.allSettled(
+        this.registry.map((f) => import(new URL(f.path, document.baseURI).href))
+      );
+      for (const [i, manifest] of this.registry.entries()) {
+        const record = { manifest, status: "skipped", reason: "", problem: null, instance: null };
+        this.features.set(manifest.id, record);
+        if (!(manifest.platforms || ["web", "android", "ios"]).includes(this.platform.name)) {
+          record.status = "not-for-platform";
+          record.reason = `Only in the ${manifest.platforms.join(" and ")} version`;
+          continue;
+        }
+        if (disabled.has(manifest.id)) {
+          record.status = "disabled";
+          continue;
+        }
+        const missing2 = (manifest.requires || []).find((id) => this.features.get(id)?.status !== "active");
+        if (missing2) {
+          const dep = this.features.get(missing2);
+          record.reason = dep ? `Needs ${dep.manifest.name}, which is ${STATUS_WORDS[dep.status] || "not running"}` : `Needs "${missing2}", which isn't installed`;
+          continue;
+        }
+        const loaded = modules[i];
+        if (loaded.status === "rejected") {
+          this.fail(record, loaded.reason, "loading its code");
+          continue;
+        }
+        const FeatureClass = loaded.value.default;
+        if (typeof FeatureClass !== "function" || !(FeatureClass.prototype instanceof Feature)) {
+          this.fail(record, new Error("its main file must export a class that extends Feature"), "loading its code");
+          continue;
+        }
+        try {
+          record.instance = new FeatureClass(this, manifest);
+          await record.instance.start();
+          record.status = "active";
+        } catch (err) {
+          this.fail(record, err, "starting");
+        }
+      }
+      html.dataset.folioActive = [...this.features.values()].filter((f) => f.status === "active").map((f) => f.manifest.id).join(",");
+      this.listenToDevice();
+      this.emit("app:ready");
+      this.shell.ready = true;
+      this.shell.render();
+      this.registerOfflineSupport();
+      html.dataset.folio = "ready";
+    }
+    fail(record, err, where) {
+      const id = record.manifest.id;
+      this.removeEverythingFrom(id);
+      record.status = "failed";
+      record.reason = err?.message || String(err);
+      this.report(id, err, where);
+    }
+    // Removes every slot item, listener and service a feature added (used when it fails to start).
+    removeEverythingFrom(owner) {
+      for (const slot of this.slots.values()) slot.removeOwner(owner);
+      this.events.removeOwner(owner);
+      for (const [name, entry] of this.services) if (entry.owner === owner) this.services.delete(name);
+    }
+    // ---- Slots ----
+    slot(name) {
+      let slot = this.slots.get(name);
+      if (!slot) this.slots.set(name, slot = new Slot(this, name));
+      return slot;
+    }
+    defineSlot(name, owner, description = "") {
+      const slot = this.slot(name);
+      if (slot.owner && slot.owner !== owner) console.warn(`Slot "${name}" is defined by both ${slot.owner} and ${owner}.`);
+      slot.owner = owner;
+      slot.description = description;
+      return slot;
+    }
+    // ---- Services ----
+    provide(name, service, owner) {
+      const existing = this.services.get(name);
+      if (existing && existing.owner !== owner) console.warn(`Service "${name}" from ${existing.owner} is replaced by ${owner}.`);
+      this.services.set(name, { service, owner });
+    }
+    use(name) {
+      return this.services.get(name)?.service ?? null;
+    }
+    // ---- Events ----
+    on(name, fn, owner) {
+      return this.events.on(name, fn, owner);
+    }
+    emit(name, data) {
+      this.events.emit(name, data);
+    }
+    // ---- Screen ----
+    // Redraws the top bar and the current view. Many calls in a row cause only one redraw.
+    refresh() {
+      if (this.pending) return;
+      this.pending = true;
+      queueMicrotask(() => {
+        this.pending = false;
+        try {
+          this.shell?.render();
+        } catch (err) {
+          this.report(null, err, "drawing the screen");
+        }
+      });
+    }
+    // ---- Problems ----
+    // Records a problem without stopping anything. Shown in Settings → About.
+    report(owner, err, where = "") {
+      const message = err?.message || String(err);
+      console.error(`[${owner || "app"}] ${message}${where ? ` (${where})` : ""}`, err);
+      this.problems.push({ feature: owner, message, where, at: Date.now() });
+      const record = owner && this.features.get(owner);
+      if (record && record.status === "active") record.problem = message;
+      document.documentElement.dataset.folioProblems = String(this.problems.length);
+    }
+    catchStrayErrors() {
+      window.addEventListener("error", (e) => this.report(null, e.error || e.message, "uncaught"));
+      window.addEventListener("unhandledrejection", (e) => this.report(null, e.reason, "uncaught"));
+    }
+    // ---- Device ----
+    listenToDevice() {
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState !== "visible") return;
+        this.emit("app:resume");
+        this.refresh();
+      });
+      setInterval(() => {
+        if (document.visibilityState !== "visible") return;
+        this.emit("app:tick");
+        this.refresh();
+      }, 6e4);
+      window.addEventListener("online", () => {
+        this.emit("app:online");
+        this.refresh();
+      });
+      window.addEventListener("offline", () => {
+        this.emit("app:offline");
+        this.refresh();
+      });
+    }
+    // Lets the web version open without internet. Not needed inside the Android/iPhone app.
+    registerOfflineSupport() {
+      if (this.platform.native || this.config.test) return;
+      if (!("serviceWorker" in navigator) || !location.protocol.startsWith("http")) return;
+      navigator.serviceWorker.register("sw.js").catch(() => {
+      });
+    }
+  };
+
+  // dist/web/folio/time.js
+  var MINUTE = 6e4;
+  var HOUR = 60 * MINUTE;
+  var DAY = 24 * HOUR;
+
+  // dist/web/features/about/About.js
+  var { el: el2 } = ui_exports;
+  var GOALS = ["2 Zero hunger", "3 Good health and wellbeing", "11 Sustainable cities and communities", "12 Responsible consumption and production"];
+  var About = class extends Feature {
+    start() {
+      this.add("header.buttons", { id: "team", label: "About the team", icon: "people", order: 40, onClick: () => this.open() });
+    }
+    open() {
+      if (!this.window) {
+        this.window = ui_exports.dialog({ title: "About the team", className: "team-dialog" });
+        this.window.setContent(el2(
+          "div",
+          { class: "rt" },
+          el2("h2", {}, "Team Green Durham"),
+          el2("p", {}, "We're students from Durham University's Enactus society. ", el2("span", { class: "rt-ph" }, "[Team names and roles]")),
+          el2("h3", {}, "Why we're doing this"),
+          el2("p", {}, "Notice the overgrown gardens around Durham? Older people have the space, students have the energy, and nobody is bringing them together. Elderly cannot manage them, and students have no space. Both are missing out on fresh food, exercise, companionship and learning from each other."),
+          el2("p", {}, "Rooted Together pairs people who have a garden with people who want to grow food. It also runs a seed library, harvest markets and an end of season festival."),
+          el2("h3", {}, "UN goals we support"),
+          el2("div", { class: "rt-chips" }, GOALS.map((g) => el2("span", { class: "rt-pill" }, g))),
+          el2("p", { class: "rt-muted rt-small" }, "This is a draft for testing. ", el2("span", { class: "rt-ph" }, "[contact email]"))
+        ));
+      }
+      this.window.open();
+    }
+  };
+
+  // dist/web/features/events/Events.js
+  var { el: el3 } = ui_exports;
+  var EVENTS = [
+    { id: "market", name: "Harvest market", about: "Growers share and sell what they've grown at the end of each crop cycle." },
+    { id: "festival", name: "End of season festival", about: "Food, music and a big thank you to everyone who grew with us." }
+  ];
+  var Events2 = class extends Feature {
+    start() {
+      this.remind = this.storage.get("remind", []);
+      this.add("views", {
+        id: "events",
+        label: "Events",
+        icon: "calendar",
+        order: 30,
+        subtitle: () => "Dates coming soon",
+        mount: (container) => {
+          this.box = el3("div", { class: "rt", "data-own-swipe": true });
+          container.append(this.box);
+        },
+        render: () => this.box.replaceChildren(...this.page().flat(Infinity).filter(Boolean))
+      });
+    }
+    page() {
+      return [
+        el3("h2", {}, "Coming up"),
+        EVENTS.map((e) => {
+          const on = this.remind.includes(e.id);
+          return el3(
+            "div",
+            { class: "rt-card" },
+            el3("span", { class: "rt-pill on" }, "Dates coming soon"),
+            el3("h3", {}, e.name),
+            el3("p", {}, e.about),
+            el3(
+              "dl",
+              { class: "rt-facts" },
+              el3("dt", {}, "When"),
+              el3("dd", {}, el3("span", { class: "rt-ph" }, "[date TBC]")),
+              el3("dt", {}, "Where"),
+              el3("dd", {}, el3("span", { class: "rt-ph" }, "[venue TBC]"))
+            ),
+            el3(
+              "button",
+              { type: "button", class: "rt-btn alt", "aria-pressed": String(on), onclick: () => this.toggle(e) },
+              on ? "✓ On your list" : "Remind me"
+            )
+          );
+        })
+      ];
+    }
+    toggle(e) {
+      const on = this.remind.includes(e.id);
+      this.remind = on ? this.remind.filter((id) => id !== e.id) : [...this.remind, e.id];
+      this.storage.set("remind", this.remind);
+      this.refresh();
+      if (!on) this.toast(`Added to your list. In this draft no reminder is sent yet.`);
+    }
+  };
+
+  // dist/web/features/seeds/stock.js
+  var STOCK = [
+    { id: "runner-beans", name: "Runner beans", note: "Easy for beginners", count: 6 },
+    { id: "kale", name: "Kale", note: "Good in small spaces", count: 4 },
+    { id: "courgette", name: "Courgette", note: "Big harvests", count: 0 },
+    { id: "salad", name: "Salad leaves", note: "Quick to grow", count: 8 },
+    { id: "potatoes", name: "Seed potatoes", note: "Needs a bigger bed", count: 3 }
+  ];
+  function left(seed, mine) {
+    return Math.max(0, seed.count - (mine.includes(seed.id) ? 1 : 0));
+  }
+  function canReserve(seed, mine) {
+    return !mine.includes(seed.id) && seed.count > 0;
+  }
+
+  // dist/web/features/seeds/Seeds.js
+  var { el: el4 } = ui_exports;
+  var Seeds = class extends Feature {
+    start() {
+      this.mine = this.storage.get("mine", []);
+      this.add("views", {
+        id: "seeds",
+        label: "Seeds",
+        icon: '<path d="M12 21V11"/><path d="M12 11C12 6 8 4 4 4c0 5 3 7 8 7zM12 13c0-4 3-6 8-6 0 4-3 6-8 6z"/>',
+        order: 20,
+        subtitle: () => "Free to borrow",
+        mount: (container) => {
+          this.box = el4("div", { class: "rt", "data-own-swipe": true });
+          container.append(this.box);
+        },
+        render: () => this.box.replaceChildren(...this.page().flat(Infinity).filter(Boolean))
+      });
+    }
+    page() {
+      const mine = STOCK.filter((s) => this.mine.includes(s.id));
+      return [
+        el4("h2", {}, "Borrow seeds for free"),
+        el4("p", { class: "rt-muted" }, "Reserve a packet, then collect it from ", el4("span", { class: "rt-ph" }, "[library location]"), ". Save some seeds at the end of the season and bring them back."),
+        mine.length > 0 && el4("h3", {}, "My seeds"),
+        mine.map((s) => el4("div", { class: "rt-card" }, el4(
+          "div",
+          { class: "rt-row" },
+          el4("div", {}, el4("b", {}, s.name), el4("br"), el4("span", { class: "rt-muted" }, "Reserved")),
+          el4("button", { type: "button", class: "rt-btn small alt", onclick: () => this.giveBack(s) }, "Return")
+        ))),
+        el4("h3", {}, "Browse"),
+        el4("p", { class: "rt-example" }, "Example stock"),
+        STOCK.map((s) => el4("div", { class: "rt-card" }, el4(
+          "div",
+          { class: "rt-row" },
+          el4("div", {}, el4("b", {}, s.name), el4("br"), el4("span", { class: "rt-muted" }, `${s.note} · ${left(s, this.mine)} left`)),
+          this.mine.includes(s.id) ? el4("span", { class: "rt-pill on" }, "Reserved") : canReserve(s, this.mine) ? el4("button", { type: "button", class: "rt-btn small", onclick: () => this.reserve(s) }, "Reserve") : el4("span", { class: "rt-pill" }, "None left")
+        )))
+      ];
+    }
+    save() {
+      this.storage.set("mine", this.mine);
+      this.refresh();
+    }
+    reserve(s) {
+      this.mine = [...this.mine, s.id];
+      this.save();
+      this.emit("seeds:reserved", { id: s.id, name: s.name });
+      this.toast(`${s.name} reserved. Collect from [library location].`);
+    }
+    giveBack(s) {
+      this.mine = this.mine.filter((id) => id !== s.id);
+      this.save();
+      this.emit("seeds:returned", { id: s.id, name: s.name });
+      this.toast(`Thanks for returning ${s.name}!`);
+    }
+  };
+
+  // dist/web/features/garden-log/log.js
+  function totals(log) {
+    return {
+      jobs: log.filter((e) => e.type === "job").length,
+      kg: Math.round(log.reduce((t, e) => t + (e.type === "food" ? Number(e.kg) || 0 : 0), 0) * 10) / 10
+    };
+  }
+  function problem(type, text, kg) {
+    if (!text.trim()) return "Please write a few words first.";
+    if (type === "food" && !(Number(kg) > 0)) return "Please add roughly how many kg.";
+    return null;
+  }
+  var EXAMPLES = [
+    { type: "job", text: "Sowed runner beans", example: true },
+    { type: "food", text: "Picked salad leaves", kg: 0.5, example: true },
+    { type: "job", text: "Weeded the vegetable bed", example: true }
+  ];
+
+  // dist/web/features/garden-log/GardenLog.js
+  var { el: el5 } = ui_exports;
+  var GardenLog = class extends Feature {
+    start() {
+      this.log = this.storage.get("log", EXAMPLES);
+      this.type = "job";
+      this.provide("impact", { totals: () => totals(this.log) });
+      this.on("seeds:reserved", ({ name }) => this.addEntry({ type: "job", text: `Reserved ${name} seeds` }));
+      this.add("views", {
+        id: "garden",
+        label: "My garden",
+        icon: "home",
+        order: 40,
+        subtitle: () => "Your log",
+        mount: (container) => {
+          this.box = el5("div", { class: "rt", "data-own-swipe": true });
+          container.append(this.box);
+        },
+        render: () => this.box.replaceChildren(...this.page().flat(Infinity).filter(Boolean))
+      });
+    }
+    page() {
+      const t = totals(this.log);
+      const food = this.type === "food";
+      const text = el5("input", { type: "text", id: "log-text", placeholder: food ? "e.g. Courgettes" : "e.g. Watered the beans" });
+      const kg = food && el5("input", { type: "number", id: "log-kg", min: "0", step: "0.1", inputmode: "decimal", placeholder: "e.g. 1.5" });
+      const error = ui_exports.errorBox();
+      const kind = (value, label) => el5("button", { type: "button", class: "rt-chip", "aria-pressed": String(this.type === value), onclick: () => {
+        this.type = value;
+        this.refresh();
+      } }, label);
+      return [
+        el5("h2", {}, "What have you done this week?"),
+        el5(
+          "div",
+          { class: "log-totals" },
+          el5("div", { class: "rt-card" }, el5("strong", { class: "log-num" }, String(t.jobs)), "jobs done"),
+          el5("div", { class: "rt-card" }, el5("strong", { class: "log-num" }, t.kg.toFixed(1)), "kg of food grown")
+        ),
+        el5(
+          "div",
+          { class: "rt-card" },
+          el5("h3", {}, "Add to your log"),
+          el5("div", { class: "rt-chips" }, kind("job", "A job I did"), kind("food", "Food I picked")),
+          el5("div", { class: "rt-q" }, el5("label", { for: "log-text" }, food ? "What did you pick?" : "What did you do?"), text),
+          kg && el5("div", { class: "rt-q" }, el5("label", { for: "log-kg" }, "Roughly how much? (kg)"), kg),
+          error,
+          el5("button", { type: "button", class: "rt-btn", onclick: () => {
+            const message = problem(this.type, text.value, kg?.value);
+            if (message) {
+              error.show(message);
+              return;
+            }
+            this.addEntry(food ? { type: "food", text: text.value.trim(), kg: Math.round(Number(kg.value) * 10) / 10 } : { type: "job", text: text.value.trim() });
+            this.toast("Added to your log.");
+          } }, "Add")
+        ),
+        el5("h3", {}, "Your log"),
+        el5("ul", { class: "log-list" }, this.log.map((e) => el5(
+          "li",
+          { class: e.type },
+          e.text,
+          e.kg ? ` · ${e.kg} kg` : "",
+          e.example && el5("span", { class: "rt-example" }, " (example)")
+        ))),
+        el5("p", { class: "rt-muted rt-small" }, "Your log helps us show the difference Rooted Together makes. ", el5("span", { class: "rt-ph" }, "[How impact data is used and stored]"))
+      ];
+    }
+    addEntry(entry) {
+      this.log = [{ ...entry, at: Date.now() }, ...this.log];
+      this.storage.set("log", this.log);
+      this.refresh();
+    }
+  };
+
+  // dist/web/features/safeguarding/rules.js
+  var PROMISES = [
+    "We never show anyone's home address or phone number.",
+    "Every first introduction is arranged by the Rooted Together team, never straight between people.",
+    "Everything you type in this draft app stays on this phone."
+  ];
+  var CHECKS_PLACEHOLDER = "[Checks for growers and volunteers, e.g. DBS, to be confirmed with Enactus Durham and the university]";
+  var CONTACT_PLACEHOLDER = "[safeguarding lead name and email]";
+
+  // dist/web/features/safeguarding/Safeguarding.js
+  var { el: el6 } = ui_exports;
+  var Safeguarding = class extends Feature {
+    start() {
+      this.defineSlot("safety.notes", "A line on the safeguarding page about what a feature does to keep people safe. Item: { order, text() → one sentence }.");
+      this.add("header.buttons", { id: "safety", label: "Keeping everyone safe", icon: "help", order: 30, onClick: () => this.open() });
+    }
+    open() {
+      if (!this.window) this.window = ui_exports.dialog({ title: "Keeping everyone safe", className: "safety-dialog" });
+      const notes = this.slot("safety.notes").map((n) => n.text()).filter(Boolean);
+      this.window.setContent(el6(
+        "div",
+        { class: "rt" },
+        el6("h2", {}, "Your safety comes first"),
+        el6("ul", { class: "safety-list" }, [...PROMISES, ...notes].map((line) => el6("li", {}, line))),
+        el6(
+          "div",
+          { class: "rt-card" },
+          el6("h3", {}, "Checks"),
+          el6("p", {}, el6("span", { class: "rt-ph" }, CHECKS_PLACEHOLDER))
+        ),
+        el6(
+          "div",
+          { class: "rt-card" },
+          el6("h3", {}, "Worried about something?"),
+          el6("p", {}, "Talk to ", el6("span", { class: "rt-ph" }, CONTACT_PLACEHOLDER), ".")
+        )
+      ));
+      this.window.open();
+    }
+  };
+
+  // dist/web/features/welcome/questions.js
+  var AREAS = ["Belmont", "Elvet", "Framwellgate Moor", "Gilesgate", "Neville's Cross", "Newton Hall", "Pity Me", "Sherburn Road", "Other or not sure"];
+  var PATHS = {
+    owner: {
+      title: "Your garden",
+      finish: "Find me a grower",
+      steps: [
+        { heading: "Tell us about your garden", questions: [
+          { key: "size", label: "How big is it?", kind: "one", options: ["Small", "Medium", "Large"] },
+          { key: "area", label: "Roughly where is it?", kind: "area", note: "Just the area. Please don't add your street or house number." }
+        ] },
+        { heading: "What help would you like?", questions: [
+          { key: "help", label: "Pick any that fit", check: "Help you would like", kind: "many", options: ["Weeding", "Growing vegetables", "Mowing the lawn", "Pruning", "Just some company"] },
+          { key: "visits", label: "How often can a grower visit?", kind: "one", options: ["Once a week", "Twice a week", "Once a fortnight", "Not sure yet"] }
+        ] }
+      ]
+    },
+    grower: {
+      title: "About you",
+      finish: "Find me a garden",
+      steps: [
+        { heading: "What would you like to grow?", questions: [
+          { key: "interests", label: "Pick any that interest you", check: "What you would like to grow", kind: "many", options: ["Vegetables", "Fruit", "Herbs", "Flowers", "Anything!"] },
+          { key: "experience", label: "How much growing have you done?", kind: "one", options: ["None yet", "A little", "Lots"] }
+        ] },
+        { heading: "When are you free?", questions: [
+          { key: "free", label: "Pick any that fit", check: "When you are free", kind: "many", options: ["Weekday mornings", "Weekday afternoons", "Evenings", "Weekends"] },
+          { key: "area", label: "Which area suits you?", kind: "area" }
+        ] }
+      ]
+    }
+  };
+  function stepDone(step, answers) {
+    return step.questions.every((q) => {
+      const v = answers[q.key];
+      return Array.isArray(v) ? v.length > 0 : !!v;
+    });
+  }
+  function choose(question, current, option) {
+    if (question.kind === "many") {
+      const list = Array.isArray(current) ? current : [];
+      return list.includes(option) ? list.filter((o) => o !== option) : [...list, option];
+    }
+    return current === option ? null : option;
+  }
+
+  // dist/web/features/welcome/Welcome.js
+  var { el: el7 } = ui_exports;
+  var Welcome = class extends Feature {
+    start() {
+      this.profile = this.storage.get("profile", null);
+      this.provide("profile", {
+        get: () => this.profile,
+        isSet: () => !!this.profile,
+        edit: () => this.open()
+      });
+      this.add("header.buttons", { id: "details", label: "Edit my details", icon: "note", order: 20, onClick: () => this.open() });
+      this.add("safety.notes", { order: 10, text: () => "Sign-up only asks for a rough area, never your street, house number or phone number." });
+      this.on("app:ready", () => {
+        if (!this.profile) this.open();
+      });
+    }
+    open() {
+      if (!this.window) this.window = ui_exports.dialog({ title: "Welcome", className: "welcome-dialog" });
+      this.draft = { role: this.profile?.role || null, answers: { ...this.profile?.answers || {} } };
+      this.step = this.profile ? 0 : -1;
+      this.draw();
+      this.window.open();
+    }
+    draw() {
+      const path = PATHS[this.draft.role];
+      this.window.setTitle(this.step < 0 ? "Welcome" : path.title);
+      const page = this.step < 0 ? this.choosePage() : this.step >= path.steps.length ? this.checkPage(path) : this.stepPage(path);
+      this.window.setContent(el7("div", { class: "rt welcome" }, page));
+      this.window.content.scrollTop = 0;
+    }
+    choosePage() {
+      const pick = (role) => () => {
+        this.draft = { role, answers: {} };
+        this.step = 0;
+        this.draw();
+      };
+      return [
+        el7("h2", {}, "Welcome to Rooted Together! What would you like to do?"),
+        el7("p", { class: "rt-muted" }, "Choose one. You can change it later."),
+        el7("button", { type: "button", class: "rt-choice", onclick: pick("owner") }, el7("b", {}, "I have a garden"), el7("span", {}, "I'd like some help, and some company.")),
+        el7("button", { type: "button", class: "rt-choice", onclick: pick("grower") }, el7("b", {}, "I want to grow"), el7("span", {}, "I'd like some space to grow food.")),
+        el7("div", { class: "rt-safe" }, ui_exports.icon("help"), el7("span", {}, "We never show your address or phone number. Our team arranges every first meeting."))
+      ];
+    }
+    stepPage(path) {
+      const step = path.steps[this.step];
+      const last = this.step === path.steps.length - 1;
+      const answers = this.draft.answers;
+      return [
+        el7("p", { class: "rt-eyebrow" }, `Step ${this.step + 1} of ${path.steps.length}`),
+        el7("h2", {}, step.heading),
+        step.questions.map((q) => this.question(q, answers)),
+        el7("button", {
+          type: "button",
+          class: "rt-btn",
+          disabled: !stepDone(step, answers),
+          onclick: () => {
+            this.step += 1;
+            this.draw();
+          }
+        }, last ? "Check my answers" : "Next"),
+        el7("button", { type: "button", class: "rt-btn alt", onclick: () => {
+          this.step -= 1;
+          this.draw();
+        } }, "Back")
+      ];
+    }
+    // The last page: every answer in plain words, with a way back to change them.
+    checkPage(path) {
+      const answers = this.draft.answers;
+      const rows = path.steps.flatMap((step) => step.questions).map((q) => {
+        const v = answers[q.key];
+        return [el7("dt", {}, q.check || q.label), el7("dd", {}, Array.isArray(v) ? v.join(", ") : v)];
+      });
+      return [
+        el7("p", { class: "rt-eyebrow" }, "Nearly done"),
+        el7("h2", {}, "Check your answers"),
+        el7("div", { class: "rt-card" }, el7("dl", { class: "rt-facts welcome-check" }, rows)),
+        el7("button", { type: "button", class: "rt-btn", onclick: () => this.finish() }, path.finish),
+        el7("button", { type: "button", class: "rt-btn alt", onclick: () => {
+          this.step = 0;
+          this.draw();
+        } }, "Change my answers")
+      ];
+    }
+    question(q, answers) {
+      if (q.kind === "area") {
+        const id = `welcome-area-${this.draft.role}`;
+        const select2 = el7(
+          "select",
+          { id, onchange: () => {
+            answers.area = select2.value || null;
+            this.draw();
+          } },
+          el7("option", { value: "" }, "Choose an area"),
+          AREAS.map((a) => el7("option", { value: a, selected: answers.area === a }, a))
+        );
+        return el7("div", { class: "rt-q" }, el7("label", { for: id }, q.label), select2, q.note && el7("p", { class: "rt-muted rt-small" }, q.note));
+      }
+      const value = answers[q.key];
+      return el7(
+        "div",
+        { class: "rt-q", role: "group", "aria-label": q.label },
+        el7("span", { class: "rt-label" }, q.label),
+        el7("div", { class: "rt-chips" }, q.options.map((o) => el7("button", {
+          type: "button",
+          class: "rt-chip",
+          "aria-pressed": String(Array.isArray(value) ? value.includes(o) : value === o),
+          onclick: () => {
+            answers[q.key] = choose(q, value, o);
+            this.draw();
+          }
+        }, o)))
+      );
+    }
+    finish() {
+      this.profile = { role: this.draft.role, answers: this.draft.answers };
+      this.storage.set("profile", this.profile);
+      this.window.close();
+      this.emit("profile:saved", { role: this.profile.role });
+      this.app.shell.selectView("match");
+      this.refresh();
+      this.toast("You're signed up. Here's a suggested match.");
+    }
+  };
+
+  // dist/web/features/match/examples.js
+  var GARDENS = [
+    { id: "g1", size: "A medium garden", area: "Gilesgate", help: "Growing vegetables, weeding", visits: "Once a week" },
+    { id: "g2", size: "A small garden", area: "Newton Hall", help: "Just some company, pruning", visits: "Once a fortnight" },
+    { id: "g3", size: "A large garden", area: "Belmont", help: "Growing vegetables, mowing the lawn", visits: "Twice a week" }
+  ];
+  var GROWERS = [
+    { id: "p1", likes: "Vegetables and herbs", experience: "A little", free: "Weekends" },
+    { id: "p2", likes: "Fruit and flowers", experience: "Lots", free: "Weekday mornings" },
+    { id: "p3", likes: "Anything!", experience: "None yet", free: "Evenings" }
+  ];
+  function next(list, index) {
+    return (index + 1) % list.length;
+  }
+
+  // dist/web/features/match/Match.js
+  var { el: el8 } = ui_exports;
+  var Match = class extends Feature {
+    start() {
+      this.index = 0;
+      this.requests = this.storage.get("requests", []);
+      this.add("safety.notes", { order: 20, text: () => "Asking for an introduction goes to our team first. Addresses are only shared after the team has met you both." });
+      this.on("profile:saved", () => {
+        this.index = 0;
+      });
+      this.add("views", {
+        id: "match",
+        label: "Match",
+        icon: "people",
+        order: 10,
+        start: true,
+        subtitle: () => "Garden Share",
+        mount: (container) => {
+          this.box = el8("div", { class: "rt", "data-own-swipe": true });
+          container.append(this.box);
+        },
+        render: () => this.box.replaceChildren(...this.page().flat(Infinity).filter(Boolean))
+      });
+    }
+    page() {
+      const profile = this.use("profile");
+      const me = profile?.get();
+      if (!me) {
+        return [
+          el8("h2", {}, "Tell us about you, and we'll suggest a match"),
+          el8("p", { class: "rt-muted" }, "It takes two short steps."),
+          profile ? el8("button", { type: "button", class: "rt-btn", onclick: () => profile.edit() }, "Get started") : ui_exports.missing("Sign-up isn't in this version.")
+        ];
+      }
+      const owner = me.role === "owner";
+      const list = owner ? GROWERS : GARDENS;
+      const match = list[this.index % list.length];
+      const asked = this.requests.some((r) => r.matchId === match.id);
+      return [
+        el8("h2", {}, owner ? "We think you'd get on" : "Here's a garden for you"),
+        el8(
+          "div",
+          { class: "rt-card strong" },
+          el8("p", { class: "rt-example" }, "Example match"),
+          owner ? this.growerCard(match, me) : this.gardenCard(match)
+        ),
+        el8("div", { class: "rt-safe" }, ui_exports.icon("help"), el8(
+          "span",
+          {},
+          `Requests go to our team first, never straight to ${owner ? "the grower" : "the garden owner"}.`
+        )),
+        asked ? el8(
+          "div",
+          { class: "rt-card" },
+          el8("span", { class: "rt-pill on" }, "With the team"),
+          el8("h3", {}, "Request sent to our team"),
+          el8("p", {}, "Someone from Rooted Together will contact you first to talk it through and arrange a meeting. ", el8("span", { class: "rt-ph" }, "[We aim to reply within X days]"))
+        ) : this.confirming === match.id ? el8(
+          "div",
+          { class: "rt-card strong" },
+          el8("h3", {}, "Send this request to our team?"),
+          el8("p", {}, "Someone from Rooted Together will get in touch with you first. Nobody else sees your details."),
+          el8("button", { type: "button", class: "rt-btn", onclick: () => this.request(match) }, "Yes, send it"),
+          el8("button", { type: "button", class: "rt-btn alt", onclick: () => {
+            this.confirming = null;
+            this.refresh();
+          } }, "Not now")
+        ) : el8("button", { type: "button", class: "rt-btn", onclick: () => {
+          this.confirming = match.id;
+          this.refresh();
+        } }, "Request an introduction"),
+        el8("button", { type: "button", class: "rt-btn alt", onclick: () => {
+          this.index = next(list, this.index);
+          this.confirming = null;
+          this.refresh();
+        } }, "Show me someone else")
+      ];
+    }
+    gardenCard(g) {
+      return [el8("h3", {}, g.size), el8(
+        "dl",
+        { class: "rt-facts" },
+        el8("dt", {}, "Area"),
+        el8("dd", {}, g.area),
+        el8("dt", {}, "Help wanted"),
+        el8("dd", {}, g.help),
+        el8("dt", {}, "Visits"),
+        el8("dd", {}, g.visits)
+      )];
+    }
+    growerCard(p, me) {
+      return [el8("h3", {}, "A grower near you"), el8(
+        "dl",
+        { class: "rt-facts" },
+        el8("dt", {}, "Likes"),
+        el8("dd", {}, p.likes),
+        el8("dt", {}, "Experience"),
+        el8("dd", {}, p.experience),
+        el8("dt", {}, "Free"),
+        el8("dd", {}, p.free),
+        el8("dt", {}, "Area"),
+        el8("dd", {}, me.answers.area || "Durham")
+      )];
+    }
+    request(match) {
+      this.confirming = null;
+      this.requests.push({ matchId: match.id, at: Date.now() });
+      this.storage.set("requests", this.requests);
+      this.emit("intro:requested", { matchId: match.id });
+      this.refresh();
+      this.toast("Sent to the Rooted Together team.");
+    }
+  };
+
+  // dist/web/features/text-size/sizes.js
+  var SIZES = [
+    { id: "normal", label: "Normal", scale: 1 },
+    { id: "large", label: "Larger", scale: 1.15 },
+    { id: "largest", label: "Largest", scale: 1.3 }
+  ];
+  function scaleFor(id) {
+    return (SIZES.find((s) => s.id === id) || SIZES[0]).scale;
+  }
+  function nextSize(id) {
+    const i = SIZES.findIndex((s) => s.id === id);
+    return SIZES[(i + 1) % SIZES.length].id;
+  }
+
+  // dist/web/features/text-size/TextSize.js
+  var { el: el9 } = ui_exports;
+  var TextSize = class extends Feature {
+    start() {
+      this.size = this.storage.get("size", "normal");
+      this.apply();
+      this.add("header.buttons", {
+        id: "text-size",
+        label: "Bigger text",
+        icon: "plus",
+        order: 50,
+        onClick: () => {
+          this.set(nextSize(this.size));
+          this.toast(`Text size: ${SIZES.find((s) => s.id === this.size).label}`);
+        }
+      });
+      this.add("settings", { id: "text-size", title: "Text size", order: 10, render: () => el9(
+        "div",
+        { class: "rt-chips", role: "radiogroup", "aria-label": "Text size" },
+        SIZES.map((s) => el9("button", {
+          type: "button",
+          class: "rt-chip",
+          role: "radio",
+          "aria-checked": String(s.id === this.size),
+          "aria-pressed": String(s.id === this.size),
+          onclick: () => {
+            this.set(s.id);
+            this.app.shell.refreshSettings();
+          }
+        }, s.label))
+      ) });
+    }
+    set(id) {
+      this.size = id;
+      this.storage.set("size", id);
+      this.apply();
+    }
+    apply() {
+      document.body.style.zoom = String(scaleFor(this.size));
+    }
+  };
+
+  // dist/web/standalone-entry.js
+  globalThis.__folioFeature0 = About;
+  var url0 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature0;"], { type: "text/javascript" }));
+  globalThis.__folioFeature1 = Events2;
+  var url1 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature1;"], { type: "text/javascript" }));
+  globalThis.__folioFeature2 = Seeds;
+  var url2 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature2;"], { type: "text/javascript" }));
+  globalThis.__folioFeature3 = GardenLog;
+  var url3 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature3;"], { type: "text/javascript" }));
+  globalThis.__folioFeature4 = Safeguarding;
+  var url4 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature4;"], { type: "text/javascript" }));
+  globalThis.__folioFeature5 = Welcome;
+  var url5 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature5;"], { type: "text/javascript" }));
+  globalThis.__folioFeature6 = Match;
+  var url6 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature6;"], { type: "text/javascript" }));
+  globalThis.__folioFeature7 = TextSize;
+  var url7 = URL.createObjectURL(new Blob(["export default globalThis.__folioFeature7;"], { type: "text/javascript" }));
+  var config = {
+    "id": "rooted-together",
+    "name": "Rooted Together",
+    "description": "Garden Share for Durham: people with gardens meet people who want to grow food. A draft by Team Green Durham for testing. Nothing you enter leaves this phone.",
+    "version": "0.1.0",
+    "build": "",
+    "framework": "1.12.0",
+    "test": false
+  };
+  var features = [{ "id": "about", "name": "About the team", "description": "Who made Rooted Together and the UN goals it supports.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/about/About.js" }, { "id": "events", "name": "Events", "description": "Harvest markets and the end of season festival, with dates to come.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/events/Events.js" }, { "id": "seeds", "name": "Seed library", "description": "Browse the shared seed box, reserve a packet and return saved seeds.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/seeds/Seeds.js" }, { "id": "garden-log", "name": "My garden", "description": "A simple log of jobs done and food grown, which adds up to the scheme's impact.", "version": "0.1.0", "requires": [], "uses": ["seeds"], "platforms": ["web", "android", "ios"], "path": "features/garden-log/GardenLog.js" }, { "id": "safeguarding", "name": "Keeping everyone safe", "description": "The safeguarding page in the menu, built from short notes the other features add about what they do.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/safeguarding/Safeguarding.js" }, { "id": "welcome", "name": "Welcome and sign-up", "description": "The first screen and the two short sign-up paths, for garden owners and for growers. Saved on this phone only.", "version": "0.1.0", "requires": [], "uses": ["safeguarding"], "platforms": ["web", "android", "ios"], "path": "features/welcome/Welcome.js" }, { "id": "match", "name": "Match", "description": "A suggested match for you, and asking our team for an introduction. The app never contacts the other person itself.", "version": "0.1.0", "requires": [], "uses": ["welcome", "safeguarding"], "platforms": ["web", "android", "ios"], "path": "features/match/Match.js" }, { "id": "text-size", "name": "Text size", "description": "Make everything in the app bigger, from Settings or the menu. Saved on this phone.", "version": "0.1.0", "requires": [], "uses": [], "platforms": ["web", "android", "ios"], "path": "features/text-size/TextSize.js" }];
+  new App(config, [{ ...features[0], path: url0 }, { ...features[1], path: url1 }, { ...features[2], path: url2 }, { ...features[3], path: url3 }, { ...features[4], path: url4 }, { ...features[5], path: url5 }, { ...features[6], path: url6 }, { ...features[7], path: url7 }]).start();
+})();
+</script>
+</body>
+</html>
